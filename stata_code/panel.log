@@ -2,9 +2,9 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_code\panel.log
   log type:  text
- opened on:  14 Oct 2015, 15:38:04
+ opened on:  14 Oct 2015, 16:08:05
 
-. use ..\data\dataset.dta, clear  /*opening the data file path relative to wd
+. use ../data/dataset.dta, clear  /*opening the data file path relative to wd
 > where do file is located */
 (Written by R.              )
 

@@ -4,7 +4,7 @@ capture log close  /* closes the log file if it is open */
 
 
 log using panel.log, replace text
-use ..\data\dataset.dta, clear  /*opening the data file path relative to wd
+use ../data/dataset.dta, clear  /*opening the data file path relative to wd
 where do file is located */
 
 
