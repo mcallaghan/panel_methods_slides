@@ -1,97 +1,110 @@
 \documentclass{beamer}
 
-% *****************************************************************
-% Estout related things
-% *****************************************************************
-\newcommand{\sym}[1]{\rlap{#1}}% Thanks to David Carlisle
+\usepackage{listings}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage{graphicx}
 
-\let\estinput=\input% define a new input command so that we can still flatten the document
 
-\newcommand{\estwide}[3]{
-		\vspace{.75ex}{
-			\begin{tabular*}
-			{\textwidth}{@{\hskip\tabcolsep\extracolsep\fill}l*{#2}{#3}}
-			\toprule
-			\estinput{#1}
-			\bottomrule
-			\addlinespace[.75ex]
-			\end{tabular*}
-			}
-		}	
 
-\newcommand{\estauto}[3]{\documentclass{beamer}
-		\vspace{.75ex}{
-			\begin{tabular}{l*{#2}{#3}}
-			\toprule
-			\estinput{#1}
-			\bottomrule
-			\addlinespace[.75ex]
-			\end{tabular}
-			}
-		}
 
-% Allow line breaks with \\ in specialcells
-	\newcommand{\specialcell}[2][c]{%
-	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-
-% *****************************************************************
-% Custom subcaptions
-% *****************************************************************
-% Note/Source/Text after Tables
-\newcommand{\figtext}[1]{
-	\vspace{-1.9ex}
-	\captionsetup{justification=justified,font=footnotesize}
-	\caption*{\hspace{6pt}\hangindent=1.5em #1}
-	}
-\newcommand{\fignote}[1]{\figtext{\emph{Note:~}~#1}}
-
-\newcommand{\figsource}[1]{\figtext{\emph{Source:~}~#1}}
-
-% Add significance note with \starnote
-\newcommand{\starnote}{\figtext{* p < 0.1, ** p < 0.05, *** p < 0.01. Standard errors in parentheses.}}
-
-% *****************************************************************
-% siunitx
-% *****************************************************************
-\usepackage{siunitx} % centering in tables
-	\sisetup{
-		detect-mode,
-		tight-spacing		= true,
-		group-digits		= false ,
-		input-signs		= ,
-		input-symbols		= ( ) [ ] - + *,
-		input-open-uncertainty	= ,
-		input-close-uncertainty	= ,
-		table-align-text-post	= false
-        }
-
+\title 
+{Applying Panel Data Methods to Other Data Structures}
+\author
+{Professor Jan Minx}
+\institute
+{Hertie School of Governance}
+\date
+{Stats II, Lecture ?, ? 2015}
 
 \begin{document}
+
+  \frame{\titlepage}
+
   \begin{frame}
-    \frametitle{this is the first slide}
-    Text on the first slide
+    \frametitle{Motivation}
+    \begin{itemize}
+      \item Panel data methods can be used with data structures that do not involve time
+      \item Hierarchical data structures contain clusters of observation which share commom characteristics
+      \item When these characteristics are unobservable and correlated with other explanatory variables, pooled OLS will give us estimates that are biased and inefficient
+    \end{itemize}
   \end{frame}
   
   \begin{frame}
-    \frametitle{this is the second slide}
-    \framesubtitle{more information}
+    \frametitle{Motivation}
+    \begin{itemize}
+      \item Consider a geographical dataset that observes variables for small areas (in this case MSOAs, 
+      or Middle Layer Super Output Areas)
+      \item Each small area belongs to a local authority
+      \item If local authority attributes that we cannot observe affect our other variables, we will get biased and inefficient estimates using OLS
+    \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Pooled OLS}
+    \footnotesize
+    \begin{alltt}
+    reg energy\_consumption income\_est
     
+    outtex, file(ols.tex) labels level detail legend key(stab) replace
+    est store ols
+    \end{alltt}
+
     \input{../stata_code/ols.tex}
   \end{frame}
   
   \begin{frame}
-    \frametitle{this is the second slide}
-    \framesubtitle{more information}
+    \frametitle{Pooled OLS}
+    \footnotesize
+    \begin{alltt}
+    graph twoway (scatter energy\_consumption income\_est) ///
+    
+    (lfit energy\_consumption income\_est)
+    \end{alltt}
+    
+    \begin{figure}
+    \includegraphics[width=8cm]{../stata_code/ols.png}
+    \centering
+    \end{figure}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Fixed Effects}
+    \footnotesize
+    \begin{alltt}
+    xtset LA\_CODE MSOA\_CODE
+    
+    xtreg energy\_consumption income\_est, fe
+    
+    outtex, file(fe.tex) labels level detail legend key(stab) replace
+    
+    est store fe
+    \end{alltt}
+    
     
     \input{../stata_code/fe.tex}
   \end{frame}
   
   \begin{frame}
-    \frametitle{this is the second slide}
-    \framesubtitle{more information}
+    \frametitle{Fixed Effects}
+    \tiny
+    \begin{alltt}
+xi: regress energy\_consumption income\_est i.LA\_CODE
+
+predict energy\_consumption\_fitted
+
+separate energy\_consumption, by(LA\_CODE)
+
+separate energy\_consumption\_fitted, by(LA\_CODE)
+
+graph twoway (scatter energy\_consumption1-energy\_consumption80 income\_est) ///
+	(line energy\_consumption\_fitted1-energy\_consumption\_fitted80 income\_est), legend(off) 
+    \end{alltt}
     
-    \input{../stata_code/table1.tex}
+    \begin{figure}
+    \includegraphics[width=8cm]{../stata_code/fe.png}
+    \centering
+    \end{figure}
   \end{frame}
-  
 
 \end{document}
