@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_code\panel.log
   log type:  text
- opened on:  14 Oct 2015, 16:52:46
+ opened on:  14 Oct 2015, 17:29:14
 
 . use ../data/dataset.dta, clear  /*opening the data file path relative to wd
 > where do file is located */
@@ -25,6 +25,9 @@ energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
   income_est |   11.68066   .2220741    52.60   0.000     11.24533    12.11599
        _cons |   16142.07    139.382   115.81   0.000     15868.84     16415.3
 ------------------------------------------------------------------------------
+
+. outtex, file(ols.tex) replace
+file ols.tex saved
 
 . est store ols
 
@@ -63,6 +66,10 @@ energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
          rho |  .61539872   (fraction of variance due to u_i)
 ------------------------------------------------------------------------------
 F test that all u_i=0: F(375, 6756) = 20.47                  Prob > F = 0.0000
+
+. outtex, file(fe.tex) replace
+(note: file fe.tex not found)
+file fe.tex saved
 
 . est store fe
 
@@ -460,6 +467,10 @@ _ILA_CODE_375 |   9795.827   2250.494     4.35   0.000     5384.149    14207.51
 _ILA_CODE_376 |   10414.76   2271.134     4.59   0.000     5962.621     14866.9
         _cons |   1412.273   2203.027     0.64   0.522    -2906.354      5730.9
 -------------------------------------------------------------------------------
+
+. outtex, file(lsdv.tex) replace
+(note: file lsdv.tex not found)
+file lsdv.tex saved
 
 . est store lsdv
 
@@ -1237,19 +1248,8 @@ energy_con~d376 float   %9.0g                 energy_consumption_fitted, LA_CODE
 
 .         
 . 
-. esttab ols fe using table1.tex
-file table1.tex already exists
-r(602);
-
-end of do-file
-
-r(602);
-
-. do "C:\Users\MEB08~1.CAL\AppData\Local\Temp\STD00000000.tmp"
-
 . esttab ols fe using table1.tex, replace
 (output written to table1.tex)
 
 . 
-end of do-file
-
+. capture log close

@@ -9,6 +9,7 @@ where do file is located */
 
 
 reg energy_consumption income_est
+outtex, file(ols.tex) replace
 est store ols
 graph twoway (scatter energy_consumption income_est) (lfit energy_consumption income_est)
 
@@ -17,11 +18,13 @@ graph twoway (scatter energy_consumption income_est) (lfit energy_consumption in
 
 xtset LA_CODE MSOA_CODE
 xtreg energy_consumption income_est, fe
+outtex, file(fe.tex) replace
 est store fe
 
 
 
 xi: regress energy_consumption income_est i.LA_CODE
+outtex, file(lsdv.tex) replace
 est store lsdv
 predict energy_consumption_fitted
 
@@ -32,6 +35,6 @@ graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
 	(line energy_consumption_fitted1-energy_consumption_fitted80 income_est), legend(off) 
 	
 
-esttab ols fe using table1.tex
+esttab ols fe using table1.tex, replace
 
 capture log close
