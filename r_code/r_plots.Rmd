@@ -1,0 +1,74 @@
+---
+title: "R Plots"
+date: "October 14, 2015"
+output: html_document
+---
+
+```{r echo=FALSE,message=FALSE}
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(texreg)
+
+possible_dir <- c("~/Documents/mcc/panel/panel_methods_slides/r_code")
+repmis::set_valid_wd(possible_dir)
+
+dataset <- read.csv("../data/dataset.csv") %>% 
+  filter(!is.na(energy_consumption) & !is.na(income_est))
+
+```
+
+## Pooled OLS Regression
+
+$$ energy\_consumption_{i} = \beta_{0} + \beta_{1}income_{i} + u_{i}, $$
+
+Where $i$ indexes MSOA
+
+```{r cache=TRUE, results='asis',warnings=FALSE,message=FALSE}
+
+pooled_ols <- lm(data = dataset,
+            energy_consumption~income_est,
+            na.action = na.omit)
+
+p1 <- ggplot(dataset, aes(x=income_est,y=energy_consumption)) + 
+  geom_point(shape=1) + geom_smooth(method=lm,se=FALSE) +
+  labs(title="Pooled OLS", x="Average weekly household income estimate (£)",y="Average energy consumption (kwh)")
+p1
+
+
+```
+
+## Fixed Effects Regression
+
+$$ energy\_consumption_{ij} = \beta_{0} + \beta_{1}income_{ij} + \alpha_{j} + u_{ij}, $$
+
+Where $i$ refers to each MSOA, and $j$ refers to each local authority. The unobserved variable $\alpha$ is the local authority fixed effect.
+
+```{r cache=TRUE, results='asis',warnings=FALSE,message=FALSE}
+
+lsdv = lm(energy_consumption~income_est + factor(LA_NAME) - 1,data=dataset)
+dataset$fitted <- lsdv$fitted
+
+p2 <- ggplot(dataset) + 
+  geom_point(aes(y=energy_consumption,x=income_est,color = LA_NAME),shape=1) + 
+  geom_smooth(aes(y=fitted,x=income_est,color = LA_NAME),method=lm,se=FALSE) +
+  geom_smooth(aes(y=energy_consumption,x=income_est),method=lm,se=FALSE,size=1,colour="black") +
+  theme(legend.position="bottom") +
+  labs(title="Fixed Effects", x="Average weekly household income estimate (£)",y="Average energy consumption (kwh)")
+
+p2
+
+htmlreg(list(pooled_ols,lsdv),file="regression_output.doc",digits=3,single.row=TRUE)
+htmlreg(list(pooled_ols,lsdv),digits=3,single.row=TRUE)
+
+```
+
+```{r include=FALSE}
+
+ggsave(p1,file="p1.png")
+ggsave(p2,file="p2.png",height=8)
+
+
+```
+
