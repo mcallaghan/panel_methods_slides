@@ -32,6 +32,6 @@ graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
 	(line energy_consumption_fitted1-energy_consumption_fitted80 income_est), legend(off) 
 	
 
-esttab ols fe lsdv using table1.tex
+esttab ols fe using table1.tex
 
 capture log close
