@@ -9,7 +9,7 @@ where do file is located */
 
 
 reg energy_consumption income_est
-outtex, file(ols.tex) replace
+outtex, file(ols.tex) labels level detail legend key(stab) replace
 est store ols
 graph twoway (scatter energy_consumption income_est) (lfit energy_consumption income_est)
 
@@ -18,13 +18,13 @@ graph twoway (scatter energy_consumption income_est) (lfit energy_consumption in
 
 xtset LA_CODE MSOA_CODE
 xtreg energy_consumption income_est, fe
-outtex, file(fe.tex) replace
+outtex, file(fe.tex) labels level detail legend key(stab) replace
 est store fe
 
 
 
 xi: regress energy_consumption income_est i.LA_CODE
-outtex, file(lsdv.tex) replace
+outtex, file(lsdv.tex) labels level detail legend key(stab) replace
 est store lsdv
 predict energy_consumption_fitted
 

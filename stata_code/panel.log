@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_code\panel.log
   log type:  text
- opened on:  14 Oct 2015, 17:29:14
+ opened on:  14 Oct 2015, 17:36:37
 
 . use ../data/dataset.dta, clear  /*opening the data file path relative to wd
 > where do file is located */
@@ -26,7 +26,7 @@ energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
        _cons |   16142.07    139.382   115.81   0.000     15868.84     16415.3
 ------------------------------------------------------------------------------
 
-. outtex, file(ols.tex) replace
+. outtex, file(ols.tex) labels level detail legend key(stab) replace
 file ols.tex saved
 
 . est store ols
@@ -67,8 +67,7 @@ energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ------------------------------------------------------------------------------
 F test that all u_i=0: F(375, 6756) = 20.47                  Prob > F = 0.0000
 
-. outtex, file(fe.tex) replace
-(note: file fe.tex not found)
+. outtex, file(fe.tex) labels level detail legend key(stab) replace
 file fe.tex saved
 
 . est store fe
@@ -468,8 +467,7 @@ _ILA_CODE_376 |   10414.76   2271.134     4.59   0.000     5962.621     14866.9
         _cons |   1412.273   2203.027     0.64   0.522    -2906.354      5730.9
 -------------------------------------------------------------------------------
 
-. outtex, file(lsdv.tex) replace
-(note: file lsdv.tex not found)
+. outtex, file(lsdv.tex) labels level detail legend key(stab) replace
 file lsdv.tex saved
 
 . est store lsdv
