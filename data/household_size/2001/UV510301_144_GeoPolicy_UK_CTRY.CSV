@@ -1,0 +1,8 @@
+DATASET_TITLE,Number of People Living in Households (UV51),,,,,,,,FROM,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001
+AREA_TYPE,Country,,,,,,,,TO,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001
+GEO_HIERARCHY,NeSS Geography Hierarchy,,,,,,,,HEADING,All Occupied Household Spaces,1 person living in Household,2 people living in Household,3 people living in Household,4 people living in Household,5 people living in Household,6 people living in Household,7 people living in Household,8 or more people living in Household
+,,,,,,,,,MEASUREMENT_UNIT,Count,Count,Count,Count,Count,Count,Count,Count,Count
+,,,,,,,,,STATISTICAL_UNIT,Households,Households,Households,Households,Households,Households,Households,Households,Households
+UK_CODE,UK_NAME,GB_CODE,GB_NAME,EW_CODE,EW_NAME,CTRY_CODE,CTRY_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England",,,20451427,6150264,6985981,3161192,2732975,1008873,297933,69731,44478
+"213","United Kingdom","078","Great Britain","727","England and Wales","220","Wales",,,1209048,352348,416168,197560,161523,60280,16114,3423,1632

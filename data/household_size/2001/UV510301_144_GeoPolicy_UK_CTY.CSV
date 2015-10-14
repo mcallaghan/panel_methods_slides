@@ -1,0 +1,40 @@
+DATASET_TITLE,Number of People Living in Households (UV51),,,,FROM,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001
+AREA_TYPE,County,,,,TO,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001
+GEO_HIERARCHY,NeSS Geography Hierarchy,,,,HEADING,All Occupied Household Spaces,1 person living in Household,2 people living in Household,3 people living in Household,4 people living in Household,5 people living in Household,6 people living in Household,7 people living in Household,8 or more people living in Household
+,,,,,MEASUREMENT_UNIT,Count,Count,Count,Count,Count,Count,Count,Count,Count
+,,,,,STATISTICAL_UNIT,Households,Households,Households,Households,Households,Households,Households,Households,Households
+GOR_CODE,GOR_NAME,CTY_CODE,CTY_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"A","North East","20","Durham",,,207436,60612,72241,35958,27779,8168,2152,373,153
+"A","North East","35","Northumberland",,,130780,37831,47817,20628,17693,5426,1110,198,77
+"B","North West","13","Cheshire",,,280031,77340,100977,44697,39602,12944,3365,785,321
+"B","North West","16","Cumbria",,,209027,62824,75821,31979,26924,9127,1689,453,210
+"B","North West","30","Lancashire",,,468868,137149,162689,74121,62178,22858,7229,1607,1037
+"D","Yorkshire and The Humber","36","North Yorkshire",,,237583,66122,90892,35281,31533,10374,2733,452,196
+"E","East Midlands","17","Derbyshire",,,308869,85400,112656,50554,43139,13164,3113,608,235
+"E","East Midlands","31","Leicestershire",,,245245,61561,90841,39713,37284,12146,2636,708,356
+"E","East Midlands","32","Lincolnshire",,,272153,73440,107246,40678,34972,11272,3578,607,360
+"E","East Midlands","34","Northamptonshire",,,259066,70646,92702,41832,36634,13099,3191,633,329
+"E","East Midlands","37","Nottinghamshire",,,314027,86078,116550,49782,43818,13767,3131,615,286
+"F","West Midlands","39","Shropshire",,,117301,32578,43931,18150,15655,5264,1320,285,118
+"F","West Midlands","41","Staffordshire",,,328234,83368,119896,56930,47977,14603,4282,797,381
+"F","West Midlands","44","Warwickshire",,,210898,58698,76417,33180,29135,10011,2696,473,288
+"F","West Midlands","47","Worcestershire",,,223049,59146,82280,36109,31528,10580,2536,591,279
+"G","East of England","09","Bedfordshire",,,153862,40710,54508,23841,23399,8044,2503,523,334
+"G","East of England","12","Cambridgeshire",,,222873,60180,82388,33214,32275,11384,2548,549,335
+"G","East of England","22","Essex",,,544701,152477,195477,82981,78089,27390,6486,1241,560
+"G","East of England","26","Hertfordshire",,,420650,115758,145150,66570,62719,23038,5744,1126,545
+"G","East of England","33","Norfolk",,,343135,100242,133647,48789,42380,13776,3185,801,315
+"G","East of England","42","Suffolk",,,281155,80719,104737,40616,37673,12937,3234,846,393
+"J","South East","11","Buckinghamshire",,,188086,46812,66557,30514,28998,10847,3198,682,478
+"J","South East","21","East Sussex",,,214638,69712,79368,28202,24489,9783,2299,543,242
+"J","South East","24","Hampshire",,,502706,129186,186910,78566,75056,24910,6344,1202,532
+"J","South East","29","Kent",,,546742,153797,195570,83803,75723,27943,7287,1806,813
+"J","South East","38","Oxfordshire",,,241218,65302,85962,38885,34324,12236,3432,683,394
+"J","South East","43","Surrey",,,433176,122472,152893,66050,61842,22800,5624,994,501
+"J","South East","45","West Sussex",,,320915,96617,119111,44634,41259,14298,3885,773,338
+"K","South West","15","Cornwall and Isles of Scilly",,,215695,64769,80781,31338,26229,9044,2735,553,246
+"K","South West","18","Devon",,,298576,86890,116474,40652,36353,13534,3606,736,331
+"K","South West","19","Dorset",,,167998,48388,68217,22556,19662,6812,1860,361,142
+"K","South West","23","Gloucestershire",,,237872,69909,86475,35296,31269,10903,3089,614,317
+"K","South West","40","Somerset",,,210587,61180,79929,29955,27340,8926,2553,481,223
+"K","South West","46","Wiltshire",,,176655,47409,65841,26629,25874,8315,2055,375,157

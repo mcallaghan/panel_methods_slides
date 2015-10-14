@@ -1,0 +1,40 @@
+DATASET_TITLE,Population Density (UV02),,,,FROM,Apr-2001,Apr-2001,Apr-2001
+AREA_TYPE,County,,,,TO,Apr-2001,Apr-2001,Apr-2001
+GEO_HIERARCHY,NeSS Geography Hierarchy,,,,HEADING,All People,Area (Hectares),Density (Number of Persons per Hectare)
+,,,,,MEASUREMENT_UNIT,Count,Hectares,Rate
+,,,,,STATISTICAL_UNIT,Persons,Areas,Persons
+GOR_CODE,GOR_NAME,CTY_CODE,CTY_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"A","North East","20","Durham",,,493470,222605,2.22
+"A","North East","35","Northumberland",,,307190,501301,.61
+"B","North West","13","Cheshire",,,673788,208301,3.23
+"B","North West","16","Cumbria",,,487607,676715,.72
+"B","North West","30","Lancashire",,,1134974,290296,3.91
+"D","Yorkshire and The Humber","36","North Yorkshire",,,569660,803761,.71
+"E","East Midlands","17","Derbyshire",,,734585,254667,2.88
+"E","East Midlands","31","Leicestershire",,,609578,208288,2.93
+"E","East Midlands","32","Lincolnshire",,,646645,592058,1.09
+"E","East Midlands","34","Northamptonshire",,,629676,236397,2.66
+"E","East Midlands","37","Nottinghamshire",,,748510,208477,3.59
+"F","West Midlands","39","Shropshire",,,283173,319730,.89
+"F","West Midlands","41","Staffordshire",,,806744,262028,3.08
+"F","West Midlands","44","Warwickshire",,,505860,197509,2.56
+"F","West Midlands","47","Worcestershire",,,542107,174052,3.11
+"G","East of England","09","Bedfordshire",,,381572,119208,3.2
+"G","East of England","12","Cambridgeshire",,,552658,304624,1.81
+"G","East of England","22","Essex",,,1310835,346434,3.78
+"G","East of England","26","Hertfordshire",,,1033977,164307,6.29
+"G","East of England","33","Norfolk",,,796728,537077,1.48
+"G","East of England","42","Suffolk",,,668553,380086,1.76
+"J","South East","11","Buckinghamshire",,,479026,156495,3.06
+"J","South East","21","East Sussex",,,492324,170849,2.88
+"J","South East","24","Hampshire",,,1240103,367896,3.37
+"J","South East","29","Kent",,,1329718,354347,3.75
+"J","South East","38","Oxfordshire",,,605488,260492,2.32
+"J","South East","43","Surrey",,,1059015,166250,6.37
+"J","South East","45","West Sussex",,,753614,199087,3.79
+"K","South West","15","Cornwall and Isles of Scilly",,,501267,356228,1.41
+"K","South West","18","Devon",,,704493,656411,1.07
+"K","South West","19","Dorset",,,390980,254159,1.54
+"K","South West","23","Gloucestershire",,,564559,265317,2.13
+"K","South West","40","Somerset",,,498093,345055,1.44
+"K","South West","46","Wiltshire",,,432973,325534,1.33

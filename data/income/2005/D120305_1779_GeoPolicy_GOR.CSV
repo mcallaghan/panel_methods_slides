@@ -1,0 +1,17 @@
+DATASET_TITLE,"Income: Model-Based Estimates at MSOA Level, 2004/05",,,,,,,,,,FROM,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004,Apr-2004
+AREA_TYPE,Region,,,,,,,,,,TO,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005,Mar-2005
+GEO_HIERARCHY,NeSS Geography Hierarchy,,,,,,,,,,HEADING,Average Weekly Household Total Income Estimate,Average Weekly Household Total Income 95% Confidence Interval Lower Limit,Average Weekly Household Total Income 95% Confidence Interval Upper Limit,Average Weekly Household Net Income Estimate,Average Weekly Household Net Income 95% Confidence Interval Lower Limit,Average Weekly Household Net Income 95% Confidence Interval Upper Limit,Average Weekly Household Net Income Estimate (equivalised before housing costs),Average Weekly Household Net Income (equivalised before housing costs) 95% Confidence Interval Lower Limit,Average Weekly Household Net Income (equivalised before housing costs) 95% Confidence Interval Upper Limit,Average Weekly Household Net Income Estimate (equivalised after housing costs),Average Weekly Household Net Income (equivalised after housing costs) 95% Confidence Interval Lower Limit,Average Weekly Household Net Income (equivalised after housing costs) 95% Confidence Interval Upper Limit
+,,,,,,,,,,,MEASUREMENT_UNIT,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling,Pounds Sterling
+,,,,,,,,,,,STATISTICAL_UNIT,Households,Households,Households,Households,Households,Households,Households,Households,Households,Households,Households,Households
+UK_CODE,UK_NAME,GB_CODE,GB_NAME,EW_CODE,EW_NAME,CTRY_CODE,CTRY_NAME,GOR_CODE,GOR_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England",,,,,.,.,.,.,.,.,.,.,.,.,.,.
+"213","United Kingdom","078","Great Britain","727","England and Wales","220","Wales",,,,,500,..,..,420,..,..,370,..,..,340,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","A","North East",,,490,..,..,410,..,..,360,..,..,330,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","B","North West",,,530,..,..,440,..,..,390,..,..,350,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","D","Yorkshire and The Humber",,,510,..,..,420,..,..,380,..,..,340,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","E","East Midlands",,,550,..,..,450,..,..,390,..,..,350,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","F","West Midlands",,,530,..,..,440,..,..,380,..,..,340,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","G","East of England",,,650,..,..,520,..,..,460,..,..,410,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","H","London",,,740,..,..,570,..,..,560,..,..,480,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","J","South East",,,730,..,..,570,..,..,500,..,..,440,..,..
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","K","South West",,,580,..,..,470,..,..,430,..,..,380,..,..

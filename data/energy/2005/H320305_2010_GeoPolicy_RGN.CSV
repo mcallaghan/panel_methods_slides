@@ -1,0 +1,18 @@
+DATASET_TITLE,"Domestic Energy Consumption, 2005",,,,,,,,,,FROM,Jan-2005,Jan-2005,Jan-2005,Jan-2005,Jan-2005,Jan-2005,Jan-2005,Jan-2005,Jan-2005,Jan-2005
+AREA_TYPE,Region,,,,,,,,,,TO,Dec-2005,Dec-2005,Dec-2005,Dec-2005,Dec-2005,Dec-2005,Dec-2005,Dec-2005,Dec-2005,Dec-2005
+GEO_HIERARCHY,2001 Statistical Geography Hierarchy,,,,,,,,,,HEADING,Total Consumption of Domestic Electricity and Gas,Consumption of Ordinary Domestic Electricity,Consumption of Economy 7 Domestic Electricity,Consumption of Domestic Gas,Number of Ordinary Domestic Electricity meters,Average Consumption of Ordinary Domestic Electricity,Number of Economy 7 Domestic Electricity meters,Average Consumption of Economy 7 Domestic Electricity,Number of Domestic Gas meters,Average Consumption of Domestic Gas
+,,,,,,,,,,,MEASUREMENT_UNIT,Count,Count,Count,Count,Count,Average,Count,Average,Count,Average
+,,,,,,,,,,,STATISTICAL_UNIT,Megawatt Hours,Megawatt Hours,Megawatt Hours,Megawatt Hours,Meter Points,Kilowatt Hours,Meter Points,Kilowatt Hours,Meter Points,Kilowatt Hours
+UK_CODE,UK_NAME,GB_CODE,GB_NAME,EW_CODE,EW_NAME,CTRY_CODE,CTRY_NAME,GOR_CODE,GOR_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000001","North East",,,25258915,3937310,610946,20710658,1078875,3649,91242,6696,1037403,19964
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000002","North West",,,66568173,11003316,2173982,53390874,2644638,4161,265936,8175,2747967,19429
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000003","Yorkshire and The Humber",,,48827694,8249448,1554103,39024143,2053379,4017,215625,7207,1989970,19610
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000004","East Midlands",,,40112962,3856178,4787763,31469021,1028136,3751,883261,5421,1620786,19416
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000005","West Midlands",,,48041343,7091694,3223460,37726190,1654757,4286,475783,6775,1984918,19006
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000006","East of England",,,47765597,6091276,5989883,35684438,1468231,4149,971915,6163,1892684,18854
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000007","London",,,66520534,10725945,3159261,52635328,2726735,3934,521857,6054,2901378,18141
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000008","South East",,,73657579,11895748,5461865,56299966,2710884,4388,840939,6495,2964021,18994
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England","E12000009","South West",,,39893263,7970541,3484721,28438002,1866678,4270,431099,8083,1642748,17311
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","E92000001","England",,,,,456646061,70821457,30445983,355378620,17232313,4110,4697657,6481,18781875,18921
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales",,,,,,,482190241,75443487,31479467,375267288,18427738,4094,4818955,6532,19823617,18930
+"K02000001","United Kingdom","K03000001","Great Britain","K04000001","England and Wales","W92000004","Wales",,,,,25544181,4622029,1033483,19888668,1195425,3866,121298,8520,1041742,19092

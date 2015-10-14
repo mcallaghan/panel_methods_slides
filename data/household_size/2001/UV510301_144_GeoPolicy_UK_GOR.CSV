@@ -1,0 +1,15 @@
+DATASET_TITLE,Number of People Living in Households (UV51),,,,,,,,,,FROM,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001
+AREA_TYPE,Region,,,,,,,,,,TO,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001,Apr-2001
+GEO_HIERARCHY,NeSS Geography Hierarchy,,,,,,,,,,HEADING,All Occupied Household Spaces,1 person living in Household,2 people living in Household,3 people living in Household,4 people living in Household,5 people living in Household,6 people living in Household,7 people living in Household,8 or more people living in Household
+,,,,,,,,,,,MEASUREMENT_UNIT,Count,Count,Count,Count,Count,Count,Count,Count,Count
+,,,,,,,,,,,STATISTICAL_UNIT,Households,Households,Households,Households,Households,Households,Households,Households,Households
+UK_CODE,UK_NAME,GB_CODE,GB_NAME,EW_CODE,EW_NAME,CTRY_CODE,CTRY_NAME,GOR_CODE,GOR_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","A","North East",,,1066292,327734,358511,176879,141629,44907,12496,2719,1417
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","B","North West",,,2812789,870234,925462,450849,372194,138043,39866,9935,6206
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","D","Yorkshire and The Humber",,,2064748,609134,717364,324216,275258,95288,29223,8141,6124
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","E","East Midlands",,,1732482,489098,624069,271429,236674,82027,21560,4935,2690
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","F","West Midlands",,,2153672,620770,730757,347415,292958,109251,36479,9164,6878
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","G","East of England",,,2231974,631128,802565,336330,312131,111452,28757,6228,3383
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","H","London",,,3015997,1046888,885233,453878,378497,166947,60401,13786,10367
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","J","South East",,,3287489,937468,1167958,499191,456875,167294,44168,9594,4941
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England","K","South West",,,2085984,617810,774062,301005,266759,93664,24983,5229,2472

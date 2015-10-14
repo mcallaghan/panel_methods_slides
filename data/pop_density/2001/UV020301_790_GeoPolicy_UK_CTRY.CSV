@@ -1,0 +1,8 @@
+DATASET_TITLE,Population Density (UV02),,,,,,,,FROM,Apr-2001,Apr-2001,Apr-2001
+AREA_TYPE,Country,,,,,,,,TO,Apr-2001,Apr-2001,Apr-2001
+GEO_HIERARCHY,NeSS Geography Hierarchy,,,,,,,,HEADING,All People,Area (Hectares),Density (Number of Persons per Hectare)
+,,,,,,,,,MEASUREMENT_UNIT,Count,Hectares,Rate
+,,,,,,,,,STATISTICAL_UNIT,Persons,Areas,Persons
+UK_CODE,UK_NAME,GB_CODE,GB_NAME,EW_CODE,EW_NAME,CTRY_CODE,CTRY_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"213","United Kingdom","078","Great Britain","727","England and Wales","064","England",,,49138831,13027872,3.77
+"213","United Kingdom","078","Great Britain","727","England and Wales","220","Wales",,,2903085,2074203,1.4

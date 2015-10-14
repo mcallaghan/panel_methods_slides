@@ -1,0 +1,7 @@
+DATASET_TITLE,Population Density (UV02),,FROM,Apr-2001,Apr-2001,Apr-2001
+AREA_TYPE,England Scotland Wales Northern Ireland,,TO,Apr-2001,Apr-2001,Apr-2001
+GEO_HIERARCHY,NeSS Geography Hierarchy,,HEADING,All People,Area (Hectares),Density (Number of Persons per Hectare)
+,,,MEASUREMENT_UNIT,Count,Hectares,Rate
+,,,STATISTICAL_UNIT,Persons,Areas,Persons
+UK_CODE,UK_NAME,AREA_METADATA,,DATA_VALUE,DATA_VALUE,DATA_VALUE
+"213","United Kingdom",,,,,
