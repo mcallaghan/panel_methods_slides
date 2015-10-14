@@ -19,7 +19,7 @@
 			}
 		}	
 
-\newcommand{\estauto}[3]{
+\newcommand{\estauto}[3]{\documentclass{beamer}
 		\vspace{.75ex}{
 			\begin{tabular}{l*{#2}{#3}}
 			\toprule
@@ -50,6 +50,21 @@
 % Add significance note with \starnote
 \newcommand{\starnote}{\figtext{* p < 0.1, ** p < 0.05, *** p < 0.01. Standard errors in parentheses.}}
 
+% *****************************************************************
+% siunitx
+% *****************************************************************
+\usepackage{siunitx} % centering in tables
+	\sisetup{
+		detect-mode,
+		tight-spacing		= true,
+		group-digits		= false ,
+		input-signs		= ,
+		input-symbols		= ( ) [ ] - + *,
+		input-open-uncertainty	= ,
+		input-close-uncertainty	= ,
+		table-align-text-post	= false
+        }
+
 
 \begin{document}
   \begin{frame}
@@ -60,11 +75,9 @@
   \begin{frame}
     \frametitle{this is the second slide}
     \framesubtitle{more information}
-    \begin{table}
-      \caption{Regression Output}
-      \estwide{../stata_code/table1.tex}{3}{c}
-      \label{table1}
-    \end{table}
+    
+    \input{../stata_code/table1.tex}
   \end{frame}
   
+
 \end{document}
