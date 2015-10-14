@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_code\panel.log
   log type:  text
- opened on:  14 Oct 2015, 16:08:05
+ opened on:  14 Oct 2015, 16:11:28
 
 . use ../data/dataset.dta, clear  /*opening the data file path relative to wd
 > where do file is located */
@@ -30,7 +30,9 @@ energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 
 . graph twoway (scatter energy_consumption income_est) (lfit energy_consumption income_est)
 
-. 
+. graph export ols.png, replace
+(file ols.png written in PNG format)
+
 . 
 . 
 . 
@@ -1235,7 +1237,10 @@ energy_con~d376 float   %9.0g                 energy_consumption_fitted, LA_CODE
 . graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
 >         (line energy_consumption_fitted1-energy_consumption_fitted80 income_est), legend(off) 
 
-.         
+. graph export fe.png, replace    
+(note: file fe.png not found)
+(file fe.png written in PNG format)
+
 . 
 . esttab ols fe lsdv
 
