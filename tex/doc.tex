@@ -22,16 +22,18 @@
   \frame{\titlepage}
 
   \begin{frame}
-    \frametitle{Motivation}
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Motivation}
     \begin{itemize}
       \item Panel data methods can be used with data structures that do not involve time
-      \item Hierarchical data structures contain clusters of observation which share commom characteristics
+      \item Hierarchical data structures contain clusters of observation which share common characteristics
       \item When these characteristics are unobservable and correlated with other explanatory variables, pooled OLS will give us estimates that are biased and inefficient
     \end{itemize}
   \end{frame}
   
   \begin{frame}
-    \frametitle{Motivation}
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Motivation}
     \begin{itemize}
       \item Consider a geographical dataset that observes variables for small areas (in this case MSOAs, 
       or Middle Layer Super Output Areas)
@@ -41,8 +43,35 @@
   \end{frame}
   
   \begin{frame}
-    \frametitle{Pooled OLS}
-    \footnotesize
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Motivation}
+    Remember that OLS regression is estimated using the equation
+    $$ y_{i} = \beta_{0} + \beta_{1}x_{i} + u_{i} $$
+    
+    When we use panel methods across time, our equation becomes
+    $$ y_{it} = \beta_{0} + \beta_{1}x_{it} + a_{i} + u_{it} $$
+    Here the variable $a_{i}$ captures all unobserved, time-constant factors that affect $y_{it}$
+  \end{frame}
+    
+  \begin{frame}
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Motivation}
+    
+    By constructing our dataset and a fixed effects model carefully, we can also account for fixed effects given by local authorities with the equation
+    $$ y_{pc} = \beta_{0} + \beta_{1}x_{pc} + a_{p} + u_{pc} $$
+    where, given our hierarchical data structure, $p$ indexes the parent (local authority) and $c$ indexes the child (MSOA)
+    
+    \bigskip
+    
+    Here the local authority fixed effect is given by $a_{p}$, and the coefficient $\beta_{1}x_{pc}$ describes the effect of our explanatory variable on our independent variable $x$ \textit{within} local authorities.
+    
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Pooled OLS}
+    When we use a pooled OLS regression on our dataset to estimate the effect of income on household energy consumption, we get the following results
+    \tiny
     \begin{alltt}
     reg energy\_consumption income\_est
     
@@ -54,8 +83,9 @@
   \end{frame}
   
   \begin{frame}
-    \frametitle{Pooled OLS}
-    \footnotesize
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Pooled OLS}
+    \tiny
     \begin{alltt}
     graph twoway (scatter energy\_consumption income\_est) ///
     
@@ -69,8 +99,10 @@
   \end{frame}
   
   \begin{frame}
-    \frametitle{Fixed Effects}
-    \footnotesize
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Fixed Effects}
+    When we use a fixed effects model to estimate the effect of income on household energy consumption \textit{within} local authorities, the size of the effect changes.
+    \tiny
     \begin{alltt}
     xtset LA\_CODE MSOA\_CODE
     
@@ -86,7 +118,8 @@
   \end{frame}
   
   \begin{frame}
-    \frametitle{Fixed Effects}
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Fixed Effects}
     \tiny
     \begin{alltt}
 xi: regress energy\_consumption income\_est i.LA\_CODE
@@ -105,6 +138,18 @@ graph twoway (scatter energy\_consumption1-energy\_consumption80 income\_est) //
     \includegraphics[width=8cm]{../stata_code/fe.png}
     \centering
     \end{figure}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Comparing OLS with Fixed Effects Models}
+    \tiny
+    \begin{alltt}
+      esttab ols fe using table1.tex, replace
+    \end{alltt}
+    \small
+    \input{../stata_code/table1.tex}
+    
   \end{frame}
 
 \end{document}
