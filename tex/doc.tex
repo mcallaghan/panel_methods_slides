@@ -131,7 +131,12 @@ separate energy\_consumption, by(LA\_CODE)
 separate energy\_consumption\_fitted, by(LA\_CODE)
 
 graph twoway (scatter energy\_consumption1-energy\_consumption80 income\_est) ///
-	(line energy\_consumption\_fitted1-energy\_consumption\_fitted80 income\_est), legend(off) 
+	
+	(line energy\_consumption\_fitted1-energy\_consumption\_fitted80 income\_est) ///
+	
+	(lfit energy\_consumption income\_est, ///
+	
+	color(black) lwidth(thick) lpattern(dash)), legend(off) , legend(off) 
     \end{alltt}
     
     \begin{figure}
