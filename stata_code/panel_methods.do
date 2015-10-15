@@ -32,7 +32,9 @@ separate energy_consumption, by(LA_CODE)
 separate energy_consumption_fitted, by(LA_CODE)
 
 graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
-	(line energy_consumption_fitted1-energy_consumption_fitted80 income_est), legend(off) 
+	(line energy_consumption_fitted1-energy_consumption_fitted80 income_est) ///
+	(lfit energy_consumption income_est, ///
+	color(black) lwidth(thick) lpattern(dash)), legend(off) 
 	
 
 esttab ols fe using table1.tex, replace

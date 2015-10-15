@@ -1,8 +1,9 @@
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_code\panel.log
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_co
+> de\panel.log
   log type:  text
- opened on:  14 Oct 2015, 17:36:37
+ opened on:  15 Oct 2015, 12:51:47
 
 . use ../data/dataset.dta, clear  /*opening the data file path relative to wd
 > where do file is located */
@@ -31,9 +32,12 @@ file ols.tex saved
 
 . est store ols
 
-. graph twoway (scatter energy_consumption income_est) (lfit energy_consumption income_est)
+. graph twoway (scatter energy_consumption income_est) (lfit energy_consumption 
+> income_est)
 
-. 
+. graph export ols.png, replace
+(file ols.png written in PNG format)
+
 . 
 . 
 . 
@@ -480,771 +484,1529 @@ file lsdv.tex saved
 
               storage   display    value
 variable name   type    format     label      variable label
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-energy_consu~n1 int     %9.0g                 energy_consumption, LA_CODE == 00AA
-energy_consu~n2 int     %9.0g                 energy_consumption, LA_CODE == 00AB
-energy_consu~n3 long    %9.0g                 energy_consumption, LA_CODE == 00AC
-energy_consu~n4 int     %9.0g                 energy_consumption, LA_CODE == 00AD
-energy_consu~n5 long    %9.0g                 energy_consumption, LA_CODE == 00AE
-energy_consu~n6 long    %9.0g                 energy_consumption, LA_CODE == 00AF
-energy_consu~n7 int     %9.0g                 energy_consumption, LA_CODE == 00AG
-energy_consu~n8 long    %9.0g                 energy_consumption, LA_CODE == 00AH
-energy_consu~n9 int     %9.0g                 energy_consumption, LA_CODE == 00AJ
-energy_cons~n10 long    %9.0g                 energy_consumption, LA_CODE == 00AK
-energy_cons~n11 int     %9.0g                 energy_consumption, LA_CODE == 00AL
-energy_cons~n12 int     %9.0g                 energy_consumption, LA_CODE == 00AM
-energy_cons~n13 int     %9.0g                 energy_consumption, LA_CODE == 00AN
-energy_cons~n14 int     %9.0g                 energy_consumption, LA_CODE == 00AP
-energy_cons~n15 long    %9.0g                 energy_consumption, LA_CODE == 00AQ
-energy_cons~n16 long    %9.0g                 energy_consumption, LA_CODE == 00AR
-energy_cons~n17 long    %9.0g                 energy_consumption, LA_CODE == 00AS
-energy_cons~n18 int     %9.0g                 energy_consumption, LA_CODE == 00AT
-energy_cons~n19 int     %9.0g                 energy_consumption, LA_CODE == 00AU
-energy_cons~n20 int     %9.0g                 energy_consumption, LA_CODE == 00AW
-energy_cons~n21 long    %9.0g                 energy_consumption, LA_CODE == 00AX
-energy_cons~n22 int     %9.0g                 energy_consumption, LA_CODE == 00AY
-energy_cons~n23 int     %9.0g                 energy_consumption, LA_CODE == 00AZ
-energy_cons~n24 long    %9.0g                 energy_consumption, LA_CODE == 00BA
-energy_cons~n25 int     %9.0g                 energy_consumption, LA_CODE == 00BB
-energy_cons~n26 int     %9.0g                 energy_consumption, LA_CODE == 00BC
-energy_cons~n27 long    %9.0g                 energy_consumption, LA_CODE == 00BD
-energy_cons~n28 int     %9.0g                 energy_consumption, LA_CODE == 00BE
-energy_cons~n29 long    %9.0g                 energy_consumption, LA_CODE == 00BF
-energy_cons~n30 int     %9.0g                 energy_consumption, LA_CODE == 00BG
-energy_cons~n31 int     %9.0g                 energy_consumption, LA_CODE == 00BH
-energy_cons~n32 int     %9.0g                 energy_consumption, LA_CODE == 00BJ
-energy_cons~n33 int     %9.0g                 energy_consumption, LA_CODE == 00BK
-energy_cons~n34 long    %9.0g                 energy_consumption, LA_CODE == 00BL
-energy_cons~n35 long    %9.0g                 energy_consumption, LA_CODE == 00BM
-energy_cons~n36 int     %9.0g                 energy_consumption, LA_CODE == 00BN
-energy_cons~n37 int     %9.0g                 energy_consumption, LA_CODE == 00BP
-energy_cons~n38 long    %9.0g                 energy_consumption, LA_CODE == 00BQ
-energy_cons~n39 int     %9.0g                 energy_consumption, LA_CODE == 00BR
-energy_cons~n40 long    %9.0g                 energy_consumption, LA_CODE == 00BS
-energy_cons~n41 int     %9.0g                 energy_consumption, LA_CODE == 00BT
-energy_cons~n42 long    %9.0g                 energy_consumption, LA_CODE == 00BU
-energy_cons~n43 int     %9.0g                 energy_consumption, LA_CODE == 00BW
-energy_cons~n44 int     %9.0g                 energy_consumption, LA_CODE == 00BX
-energy_cons~n45 long    %9.0g                 energy_consumption, LA_CODE == 00BY
-energy_cons~n46 int     %9.0g                 energy_consumption, LA_CODE == 00BZ
-energy_cons~n47 int     %9.0g                 energy_consumption, LA_CODE == 00CA
-energy_cons~n48 long    %9.0g                 energy_consumption, LA_CODE == 00CB
-energy_cons~n49 int     %9.0g                 energy_consumption, LA_CODE == 00CC
-energy_cons~n50 int     %9.0g                 energy_consumption, LA_CODE == 00CE
-energy_cons~n51 int     %9.0g                 energy_consumption, LA_CODE == 00CF
-energy_cons~n52 long    %9.0g                 energy_consumption, LA_CODE == 00CG
-energy_cons~n53 int     %9.0g                 energy_consumption, LA_CODE == 00CH
-energy_cons~n54 int     %9.0g                 energy_consumption, LA_CODE == 00CJ
-energy_cons~n55 long    %9.0g                 energy_consumption, LA_CODE == 00CK
-energy_cons~n56 int     %9.0g                 energy_consumption, LA_CODE == 00CL
-energy_cons~n57 int     %9.0g                 energy_consumption, LA_CODE == 00CM
-energy_cons~n58 long    %9.0g                 energy_consumption, LA_CODE == 00CN
-energy_cons~n59 int     %9.0g                 energy_consumption, LA_CODE == 00CQ
-energy_cons~n60 int     %9.0g                 energy_consumption, LA_CODE == 00CR
-energy_cons~n61 int     %9.0g                 energy_consumption, LA_CODE == 00CS
-energy_cons~n62 long    %9.0g                 energy_consumption, LA_CODE == 00CT
-energy_cons~n63 long    %9.0g                 energy_consumption, LA_CODE == 00CU
-energy_cons~n64 int     %9.0g                 energy_consumption, LA_CODE == 00CW
-energy_cons~n65 int     %9.0g                 energy_consumption, LA_CODE == 00CX
-energy_cons~n66 int     %9.0g                 energy_consumption, LA_CODE == 00CY
-energy_cons~n67 int     %9.0g                 energy_consumption, LA_CODE == 00CZ
-energy_cons~n68 long    %9.0g                 energy_consumption, LA_CODE == 00DA
-energy_cons~n69 int     %9.0g                 energy_consumption, LA_CODE == 00DB
-energy_cons~n70 int     %9.0g                 energy_consumption, LA_CODE == 00EB
-energy_cons~n71 int     %9.0g                 energy_consumption, LA_CODE == 00EC
-energy_cons~n72 int     %9.0g                 energy_consumption, LA_CODE == 00EE
-energy_cons~n73 int     %9.0g                 energy_consumption, LA_CODE == 00EF
-energy_cons~n74 int     %9.0g                 energy_consumption, LA_CODE == 00EH
-energy_cons~n75 int     %9.0g                 energy_consumption, LA_CODE == 00ET
-energy_cons~n76 long    %9.0g                 energy_consumption, LA_CODE == 00EU
-energy_cons~n77 int     %9.0g                 energy_consumption, LA_CODE == 00EX
-energy_cons~n78 int     %9.0g                 energy_consumption, LA_CODE == 00EY
-energy_cons~n79 int     %9.0g                 energy_consumption, LA_CODE == 00FA
-energy_cons~n80 int     %9.0g                 energy_consumption, LA_CODE == 00FB
-energy_cons~n81 int     %9.0g                 energy_consumption, LA_CODE == 00FC
-energy_cons~n82 int     %9.0g                 energy_consumption, LA_CODE == 00FD
-energy_cons~n83 int     %9.0g                 energy_consumption, LA_CODE == 00FF
-energy_cons~n84 int     %9.0g                 energy_consumption, LA_CODE == 00FK
-energy_cons~n85 int     %9.0g                 energy_consumption, LA_CODE == 00FN
-energy_cons~n86 int     %9.0g                 energy_consumption, LA_CODE == 00FP
-energy_cons~n87 int     %9.0g                 energy_consumption, LA_CODE == 00FY
-energy_cons~n88 int     %9.0g                 energy_consumption, LA_CODE == 00GA
-energy_cons~n89 int     %9.0g                 energy_consumption, LA_CODE == 00GF
-energy_cons~n90 int     %9.0g                 energy_consumption, LA_CODE == 00GL
-energy_cons~n91 int     %9.0g                 energy_consumption, LA_CODE == 00HA
-energy_cons~n92 int     %9.0g                 energy_consumption, LA_CODE == 00HB
-energy_cons~n93 int     %9.0g                 energy_consumption, LA_CODE == 00HC
-energy_cons~n94 int     %9.0g                 energy_consumption, LA_CODE == 00HD
-energy_cons~n95 int     %9.0g                 energy_consumption, LA_CODE == 00HG
-energy_cons~n96 int     %9.0g                 energy_consumption, LA_CODE == 00HH
-energy_cons~n97 int     %9.0g                 energy_consumption, LA_CODE == 00HN
-energy_cons~n98 int     %9.0g                 energy_consumption, LA_CODE == 00HP
-energy_cons~n99 int     %9.0g                 energy_consumption, LA_CODE == 00HX
-energy_cons~100 int     %9.0g                 energy_consumption, LA_CODE == 00JA
-energy_cons~101 int     %9.0g                 energy_consumption, LA_CODE == 00KA
-energy_cons~102 int     %9.0g                 energy_consumption, LA_CODE == 00KF
-energy_cons~103 int     %9.0g                 energy_consumption, LA_CODE == 00KG
-energy_cons~104 int     %9.0g                 energy_consumption, LA_CODE == 00LC
-energy_cons~105 int     %9.0g                 energy_consumption, LA_CODE == 00MA
-energy_cons~106 long    %9.0g                 energy_consumption, LA_CODE == 00MB
-energy_cons~107 int     %9.0g                 energy_consumption, LA_CODE == 00MC
-energy_cons~108 int     %9.0g                 energy_consumption, LA_CODE == 00MD
-energy_cons~109 long    %9.0g                 energy_consumption, LA_CODE == 00ME
-energy_cons~110 int     %9.0g                 energy_consumption, LA_CODE == 00MF
-energy_cons~111 int     %9.0g                 energy_consumption, LA_CODE == 00MG
-energy_cons~112 int     %9.0g                 energy_consumption, LA_CODE == 00ML
-energy_cons~113 int     %9.0g                 energy_consumption, LA_CODE == 00MR
-energy_cons~114 int     %9.0g                 energy_consumption, LA_CODE == 00MS
-energy_cons~115 int     %9.0g                 energy_consumption, LA_CODE == 00MW
-energy_cons~116 int     %9.0g                 energy_consumption, LA_CODE == 00NA
-energy_cons~117 int     %9.0g                 energy_consumption, LA_CODE == 00NC
-energy_cons~118 int     %9.0g                 energy_consumption, LA_CODE == 00NE
-energy_cons~119 int     %9.0g                 energy_consumption, LA_CODE == 00NG
-energy_cons~120 int     %9.0g                 energy_consumption, LA_CODE == 00NJ
-energy_cons~121 int     %9.0g                 energy_consumption, LA_CODE == 00NL
-energy_cons~122 int     %9.0g                 energy_consumption, LA_CODE == 00NN
-energy_cons~123 int     %9.0g                 energy_consumption, LA_CODE == 00NQ
-energy_cons~124 int     %9.0g                 energy_consumption, LA_CODE == 00NS
-energy_cons~125 int     %9.0g                 energy_consumption, LA_CODE == 00NU
-energy_cons~126 int     %9.0g                 energy_consumption, LA_CODE == 00NX
-energy_cons~127 int     %9.0g                 energy_consumption, LA_CODE == 00NZ
-energy_cons~128 int     %9.0g                 energy_consumption, LA_CODE == 00PB
-energy_cons~129 int     %9.0g                 energy_consumption, LA_CODE == 00PD
-energy_cons~130 int     %9.0g                 energy_consumption, LA_CODE == 00PF
-energy_cons~131 int     %9.0g                 energy_consumption, LA_CODE == 00PH
-energy_cons~132 int     %9.0g                 energy_consumption, LA_CODE == 00PK
-energy_cons~133 int     %9.0g                 energy_consumption, LA_CODE == 00PL
-energy_cons~134 int     %9.0g                 energy_consumption, LA_CODE == 00PM
-energy_cons~135 int     %9.0g                 energy_consumption, LA_CODE == 00PP
-energy_cons~136 int     %9.0g                 energy_consumption, LA_CODE == 00PR
-energy_cons~137 int     %9.0g                 energy_consumption, LA_CODE == 00PT
-energy_cons~138 int     %9.0g                 energy_consumption, LA_CODE == 09UC
-energy_cons~139 int     %9.0g                 energy_consumption, LA_CODE == 09UD
-energy_cons~140 int     %9.0g                 energy_consumption, LA_CODE == 09UE
-energy_cons~141 long    %9.0g                 energy_consumption, LA_CODE == 11UB
-energy_cons~142 long    %9.0g                 energy_consumption, LA_CODE == 11UC
-energy_cons~143 long    %9.0g                 energy_consumption, LA_CODE == 11UE
-energy_cons~144 long    %9.0g                 energy_consumption, LA_CODE == 11UF
-energy_cons~145 int     %9.0g                 energy_consumption, LA_CODE == 12UB
-energy_cons~146 int     %9.0g                 energy_consumption, LA_CODE == 12UC
-energy_cons~147 int     %9.0g                 energy_consumption, LA_CODE == 12UD
-energy_cons~148 int     %9.0g                 energy_consumption, LA_CODE == 12UE
-energy_cons~149 int     %9.0g                 energy_consumption, LA_CODE == 12UG
-energy_cons~150 int     %9.0g                 energy_consumption, LA_CODE == 13UB
-energy_cons~151 int     %9.0g                 energy_consumption, LA_CODE == 13UC
-energy_cons~152 int     %9.0g                 energy_consumption, LA_CODE == 13UD
-energy_cons~153 int     %9.0g                 energy_consumption, LA_CODE == 13UE
-energy_cons~154 long    %9.0g                 energy_consumption, LA_CODE == 13UG
-energy_cons~155 int     %9.0g                 energy_consumption, LA_CODE == 13UH
-energy_cons~156 long    %9.0g                 energy_consumption, LA_CODE == 15UB
-energy_cons~157 long    %9.0g                 energy_consumption, LA_CODE == 15UC
-energy_cons~158 int     %9.0g                 energy_consumption, LA_CODE == 15UD
-energy_cons~159 int     %9.0g                 energy_consumption, LA_CODE == 15UE
-energy_cons~160 int     %9.0g                 energy_consumption, LA_CODE == 15UF
-energy_cons~161 int     %9.0g                 energy_consumption, LA_CODE == 15UG
-energy_cons~162 int     %9.0g                 energy_consumption, LA_CODE == 15UH
-energy_cons~163 int     %9.0g                 energy_consumption, LA_CODE == 16UB
-energy_cons~164 int     %9.0g                 energy_consumption, LA_CODE == 16UC
-energy_cons~165 int     %9.0g                 energy_consumption, LA_CODE == 16UD
-energy_cons~166 int     %9.0g                 energy_consumption, LA_CODE == 16UE
-energy_cons~167 int     %9.0g                 energy_consumption, LA_CODE == 16UF
-energy_cons~168 int     %9.0g                 energy_consumption, LA_CODE == 16UG
-energy_cons~169 int     %9.0g                 energy_consumption, LA_CODE == 17UB
-energy_cons~170 int     %9.0g                 energy_consumption, LA_CODE == 17UC
-energy_cons~171 int     %9.0g                 energy_consumption, LA_CODE == 17UD
-energy_cons~172 int     %9.0g                 energy_consumption, LA_CODE == 17UF
-energy_cons~173 int     %9.0g                 energy_consumption, LA_CODE == 17UG
-energy_cons~174 int     %9.0g                 energy_consumption, LA_CODE == 17UH
-energy_cons~175 int     %9.0g                 energy_consumption, LA_CODE == 17UJ
-energy_cons~176 int     %9.0g                 energy_consumption, LA_CODE == 17UK
-energy_cons~177 int     %9.0g                 energy_consumption, LA_CODE == 18UB
-energy_cons~178 int     %9.0g                 energy_consumption, LA_CODE == 18UC
-energy_cons~179 int     %9.0g                 energy_consumption, LA_CODE == 18UD
-energy_cons~180 int     %9.0g                 energy_consumption, LA_CODE == 18UE
-energy_cons~181 int     %9.0g                 energy_consumption, LA_CODE == 18UG
-energy_cons~182 int     %9.0g                 energy_consumption, LA_CODE == 18UH
-energy_cons~183 int     %9.0g                 energy_consumption, LA_CODE == 18UK
-energy_cons~184 int     %9.0g                 energy_consumption, LA_CODE == 18UL
-energy_cons~185 int     %9.0g                 energy_consumption, LA_CODE == 19UC
-energy_cons~186 int     %9.0g                 energy_consumption, LA_CODE == 19UD
-energy_cons~187 int     %9.0g                 energy_consumption, LA_CODE == 19UE
-energy_cons~188 int     %9.0g                 energy_consumption, LA_CODE == 19UG
-energy_cons~189 int     %9.0g                 energy_consumption, LA_CODE == 19UH
-energy_cons~190 int     %9.0g                 energy_consumption, LA_CODE == 19UJ
-energy_cons~191 int     %9.0g                 energy_consumption, LA_CODE == 20UB
-energy_cons~192 int     %9.0g                 energy_consumption, LA_CODE == 20UD
-energy_cons~193 int     %9.0g                 energy_consumption, LA_CODE == 20UE
-energy_cons~194 int     %9.0g                 energy_consumption, LA_CODE == 20UF
-energy_cons~195 int     %9.0g                 energy_consumption, LA_CODE == 20UG
-energy_cons~196 int     %9.0g                 energy_consumption, LA_CODE == 20UH
-energy_cons~197 int     %9.0g                 energy_consumption, LA_CODE == 20UJ
-energy_cons~198 int     %9.0g                 energy_consumption, LA_CODE == 21UC
-energy_cons~199 int     %9.0g                 energy_consumption, LA_CODE == 21UD
-energy_cons~200 int     %9.0g                 energy_consumption, LA_CODE == 21UF
-energy_cons~201 int     %9.0g                 energy_consumption, LA_CODE == 21UG
-energy_cons~202 int     %9.0g                 energy_consumption, LA_CODE == 21UH
-energy_cons~203 int     %9.0g                 energy_consumption, LA_CODE == 22UB
-energy_cons~204 int     %9.0g                 energy_consumption, LA_CODE == 22UC
-energy_cons~205 long    %9.0g                 energy_consumption, LA_CODE == 22UD
-energy_cons~206 int     %9.0g                 energy_consumption, LA_CODE == 22UE
-energy_cons~207 long    %9.0g                 energy_consumption, LA_CODE == 22UF
-energy_cons~208 int     %9.0g                 energy_consumption, LA_CODE == 22UG
-energy_cons~209 long    %9.0g                 energy_consumption, LA_CODE == 22UH
-energy_cons~210 int     %9.0g                 energy_consumption, LA_CODE == 22UJ
-energy_cons~211 int     %9.0g                 energy_consumption, LA_CODE == 22UK
-energy_cons~212 int     %9.0g                 energy_consumption, LA_CODE == 22UL
-energy_cons~213 int     %9.0g                 energy_consumption, LA_CODE == 22UN
-energy_cons~214 int     %9.0g                 energy_consumption, LA_CODE == 22UQ
-energy_cons~215 int     %9.0g                 energy_consumption, LA_CODE == 23UB
-energy_cons~216 long    %9.0g                 energy_consumption, LA_CODE == 23UC
-energy_cons~217 long    %9.0g                 energy_consumption, LA_CODE == 23UD
-energy_cons~218 int     %9.0g                 energy_consumption, LA_CODE == 23UE
-energy_cons~219 int     %9.0g                 energy_consumption, LA_CODE == 23UF
-energy_cons~220 int     %9.0g                 energy_consumption, LA_CODE == 23UG
-energy_cons~221 int     %9.0g                 energy_consumption, LA_CODE == 24UB
-energy_cons~222 long    %9.0g                 energy_consumption, LA_CODE == 24UC
-energy_cons~223 int     %9.0g                 energy_consumption, LA_CODE == 24UD
-energy_cons~224 int     %9.0g                 energy_consumption, LA_CODE == 24UE
-energy_cons~225 int     %9.0g                 energy_consumption, LA_CODE == 24UF
-energy_cons~226 int     %9.0g                 energy_consumption, LA_CODE == 24UG
-energy_cons~227 int     %9.0g                 energy_consumption, LA_CODE == 24UH
-energy_cons~228 int     %9.0g                 energy_consumption, LA_CODE == 24UJ
-energy_cons~229 int     %9.0g                 energy_consumption, LA_CODE == 24UL
-energy_cons~230 int     %9.0g                 energy_consumption, LA_CODE == 24UN
-energy_cons~231 int     %9.0g                 energy_consumption, LA_CODE == 24UP
-energy_cons~232 int     %9.0g                 energy_consumption, LA_CODE == 26UB
-energy_cons~233 int     %9.0g                 energy_consumption, LA_CODE == 26UC
-energy_cons~234 int     %9.0g                 energy_consumption, LA_CODE == 26UD
-energy_cons~235 long    %9.0g                 energy_consumption, LA_CODE == 26UE
-energy_cons~236 int     %9.0g                 energy_consumption, LA_CODE == 26UF
-energy_cons~237 int     %9.0g                 energy_consumption, LA_CODE == 26UG
-energy_cons~238 int     %9.0g                 energy_consumption, LA_CODE == 26UH
-energy_cons~239 long    %9.0g                 energy_consumption, LA_CODE == 26UJ
-energy_cons~240 int     %9.0g                 energy_consumption, LA_CODE == 26UK
-energy_cons~241 long    %9.0g                 energy_consumption, LA_CODE == 26UL
-energy_cons~242 int     %9.0g                 energy_consumption, LA_CODE == 29UB
-energy_cons~243 int     %9.0g                 energy_consumption, LA_CODE == 29UC
-energy_cons~244 int     %9.0g                 energy_consumption, LA_CODE == 29UD
-energy_cons~245 int     %9.0g                 energy_consumption, LA_CODE == 29UE
-energy_cons~246 int     %9.0g                 energy_consumption, LA_CODE == 29UG
-energy_cons~247 int     %9.0g                 energy_consumption, LA_CODE == 29UH
-energy_cons~248 long    %9.0g                 energy_consumption, LA_CODE == 29UK
-energy_cons~249 int     %9.0g                 energy_consumption, LA_CODE == 29UL
-energy_cons~250 int     %9.0g                 energy_consumption, LA_CODE == 29UM
-energy_cons~251 int     %9.0g                 energy_consumption, LA_CODE == 29UN
-energy_cons~252 int     %9.0g                 energy_consumption, LA_CODE == 29UP
-energy_cons~253 int     %9.0g                 energy_consumption, LA_CODE == 29UQ
-energy_cons~254 int     %9.0g                 energy_consumption, LA_CODE == 30UD
-energy_cons~255 int     %9.0g                 energy_consumption, LA_CODE == 30UE
-energy_cons~256 int     %9.0g                 energy_consumption, LA_CODE == 30UF
-energy_cons~257 int     %9.0g                 energy_consumption, LA_CODE == 30UG
-energy_cons~258 int     %9.0g                 energy_consumption, LA_CODE == 30UH
-energy_cons~259 int     %9.0g                 energy_consumption, LA_CODE == 30UJ
-energy_cons~260 int     %9.0g                 energy_consumption, LA_CODE == 30UK
-energy_cons~261 long    %9.0g                 energy_consumption, LA_CODE == 30UL
-energy_cons~262 int     %9.0g                 energy_consumption, LA_CODE == 30UM
-energy_cons~263 int     %9.0g                 energy_consumption, LA_CODE == 30UN
-energy_cons~264 int     %9.0g                 energy_consumption, LA_CODE == 30UP
-energy_cons~265 int     %9.0g                 energy_consumption, LA_CODE == 30UQ
-energy_cons~266 int     %9.0g                 energy_consumption, LA_CODE == 31UB
-energy_cons~267 int     %9.0g                 energy_consumption, LA_CODE == 31UC
-energy_cons~268 int     %9.0g                 energy_consumption, LA_CODE == 31UD
-energy_cons~269 int     %9.0g                 energy_consumption, LA_CODE == 31UE
-energy_cons~270 int     %9.0g                 energy_consumption, LA_CODE == 31UG
-energy_cons~271 int     %9.0g                 energy_consumption, LA_CODE == 31UH
-energy_cons~272 long    %9.0g                 energy_consumption, LA_CODE == 31UJ
-energy_cons~273 int     %9.0g                 energy_consumption, LA_CODE == 32UB
-energy_cons~274 long    %9.0g                 energy_consumption, LA_CODE == 32UC
-energy_cons~275 int     %9.0g                 energy_consumption, LA_CODE == 32UD
-energy_cons~276 int     %9.0g                 energy_consumption, LA_CODE == 32UE
-energy_cons~277 int     %9.0g                 energy_consumption, LA_CODE == 32UF
-energy_cons~278 int     %9.0g                 energy_consumption, LA_CODE == 32UG
-energy_cons~279 int     %9.0g                 energy_consumption, LA_CODE == 32UH
-energy_cons~280 int     %9.0g                 energy_consumption, LA_CODE == 33UB
-energy_cons~281 int     %9.0g                 energy_consumption, LA_CODE == 33UC
-energy_cons~282 int     %9.0g                 energy_consumption, LA_CODE == 33UD
-energy_cons~283 int     %9.0g                 energy_consumption, LA_CODE == 33UE
-energy_cons~284 int     %9.0g                 energy_consumption, LA_CODE == 33UF
-energy_cons~285 int     %9.0g                 energy_consumption, LA_CODE == 33UG
-energy_cons~286 int     %9.0g                 energy_consumption, LA_CODE == 33UH
-energy_cons~287 int     %9.0g                 energy_consumption, LA_CODE == 34UB
-energy_cons~288 int     %9.0g                 energy_consumption, LA_CODE == 34UC
-energy_cons~289 int     %9.0g                 energy_consumption, LA_CODE == 34UD
-energy_cons~290 int     %9.0g                 energy_consumption, LA_CODE == 34UE
-energy_cons~291 int     %9.0g                 energy_consumption, LA_CODE == 34UF
-energy_cons~292 int     %9.0g                 energy_consumption, LA_CODE == 34UG
-energy_cons~293 int     %9.0g                 energy_consumption, LA_CODE == 34UH
-energy_cons~294 int     %9.0g                 energy_consumption, LA_CODE == 35UB
-energy_cons~295 int     %9.0g                 energy_consumption, LA_CODE == 35UC
-energy_cons~296 int     %9.0g                 energy_consumption, LA_CODE == 35UD
-energy_cons~297 long    %9.0g                 energy_consumption, LA_CODE == 35UE
-energy_cons~298 long    %9.0g                 energy_consumption, LA_CODE == 35UF
-energy_cons~299 int     %9.0g                 energy_consumption, LA_CODE == 35UG
-energy_cons~300 int     %9.0g                 energy_consumption, LA_CODE == 36UB
-energy_cons~301 int     %9.0g                 energy_consumption, LA_CODE == 36UC
-energy_cons~302 long    %9.0g                 energy_consumption, LA_CODE == 36UD
-energy_cons~303 int     %9.0g                 energy_consumption, LA_CODE == 36UE
-energy_cons~304 int     %9.0g                 energy_consumption, LA_CODE == 36UF
-energy_cons~305 int     %9.0g                 energy_consumption, LA_CODE == 36UG
-energy_cons~306 int     %9.0g                 energy_consumption, LA_CODE == 36UH
-energy_cons~307 int     %9.0g                 energy_consumption, LA_CODE == 37UB
-energy_cons~308 long    %9.0g                 energy_consumption, LA_CODE == 37UC
-energy_cons~309 int     %9.0g                 energy_consumption, LA_CODE == 37UD
-energy_cons~310 int     %9.0g                 energy_consumption, LA_CODE == 37UE
-energy_cons~311 int     %9.0g                 energy_consumption, LA_CODE == 37UF
-energy_cons~312 int     %9.0g                 energy_consumption, LA_CODE == 37UG
-energy_cons~313 int     %9.0g                 energy_consumption, LA_CODE == 37UJ
-energy_cons~314 int     %9.0g                 energy_consumption, LA_CODE == 38UB
-energy_cons~315 int     %9.0g                 energy_consumption, LA_CODE == 38UC
-energy_cons~316 long    %9.0g                 energy_consumption, LA_CODE == 38UD
-energy_cons~317 int     %9.0g                 energy_consumption, LA_CODE == 38UE
-energy_cons~318 int     %9.0g                 energy_consumption, LA_CODE == 38UF
-energy_cons~319 int     %9.0g                 energy_consumption, LA_CODE == 39UB
-energy_cons~320 int     %9.0g                 energy_consumption, LA_CODE == 39UC
-energy_cons~321 long    %9.0g                 energy_consumption, LA_CODE == 39UD
-energy_cons~322 int     %9.0g                 energy_consumption, LA_CODE == 39UE
-energy_cons~323 int     %9.0g                 energy_consumption, LA_CODE == 39UF
-energy_cons~324 int     %9.0g                 energy_consumption, LA_CODE == 40UB
-energy_cons~325 int     %9.0g                 energy_consumption, LA_CODE == 40UC
-energy_cons~326 int     %9.0g                 energy_consumption, LA_CODE == 40UD
-energy_cons~327 int     %9.0g                 energy_consumption, LA_CODE == 40UE
-energy_cons~328 int     %9.0g                 energy_consumption, LA_CODE == 40UF
-energy_cons~329 int     %9.0g                 energy_consumption, LA_CODE == 41UB
-energy_cons~330 int     %9.0g                 energy_consumption, LA_CODE == 41UC
-energy_cons~331 long    %9.0g                 energy_consumption, LA_CODE == 41UD
-energy_cons~332 long    %9.0g                 energy_consumption, LA_CODE == 41UE
-energy_cons~333 int     %9.0g                 energy_consumption, LA_CODE == 41UF
-energy_cons~334 int     %9.0g                 energy_consumption, LA_CODE == 41UG
-energy_cons~335 int     %9.0g                 energy_consumption, LA_CODE == 41UH
-energy_cons~336 int     %9.0g                 energy_consumption, LA_CODE == 41UK
-energy_cons~337 int     %9.0g                 energy_consumption, LA_CODE == 42UB
-energy_cons~338 int     %9.0g                 energy_consumption, LA_CODE == 42UC
-energy_cons~339 int     %9.0g                 energy_consumption, LA_CODE == 42UD
-energy_cons~340 int     %9.0g                 energy_consumption, LA_CODE == 42UE
-energy_cons~341 int     %9.0g                 energy_consumption, LA_CODE == 42UF
-energy_cons~342 int     %9.0g                 energy_consumption, LA_CODE == 42UG
-energy_cons~343 int     %9.0g                 energy_consumption, LA_CODE == 42UH
-energy_cons~344 long    %9.0g                 energy_consumption, LA_CODE == 43UB
-energy_cons~345 long    %9.0g                 energy_consumption, LA_CODE == 43UC
-energy_cons~346 long    %9.0g                 energy_consumption, LA_CODE == 43UD
-energy_cons~347 int     %9.0g                 energy_consumption, LA_CODE == 43UE
-energy_cons~348 long    %9.0g                 energy_consumption, LA_CODE == 43UF
-energy_cons~349 long    %9.0g                 energy_consumption, LA_CODE == 43UG
-energy_cons~350 int     %9.0g                 energy_consumption, LA_CODE == 43UH
-energy_cons~351 long    %9.0g                 energy_consumption, LA_CODE == 43UJ
-energy_cons~352 int     %9.0g                 energy_consumption, LA_CODE == 43UK
-energy_cons~353 long    %9.0g                 energy_consumption, LA_CODE == 43UL
-energy_cons~354 long    %9.0g                 energy_consumption, LA_CODE == 43UM
-energy_cons~355 int     %9.0g                 energy_consumption, LA_CODE == 44UB
-energy_cons~356 int     %9.0g                 energy_consumption, LA_CODE == 44UC
-energy_cons~357 int     %9.0g                 energy_consumption, LA_CODE == 44UD
-energy_cons~358 long    %9.0g                 energy_consumption, LA_CODE == 44UE
-energy_cons~359 int     %9.0g                 energy_consumption, LA_CODE == 44UF
-energy_cons~360 int     %9.0g                 energy_consumption, LA_CODE == 45UB
-energy_cons~361 int     %9.0g                 energy_consumption, LA_CODE == 45UC
-energy_cons~362 int     %9.0g                 energy_consumption, LA_CODE == 45UD
-energy_cons~363 int     %9.0g                 energy_consumption, LA_CODE == 45UE
-energy_cons~364 long    %9.0g                 energy_consumption, LA_CODE == 45UF
-energy_cons~365 int     %9.0g                 energy_consumption, LA_CODE == 45UG
-energy_cons~366 int     %9.0g                 energy_consumption, LA_CODE == 45UH
-energy_cons~367 int     %9.0g                 energy_consumption, LA_CODE == 46UB
-energy_cons~368 int     %9.0g                 energy_consumption, LA_CODE == 46UC
-energy_cons~369 int     %9.0g                 energy_consumption, LA_CODE == 46UD
-energy_cons~370 long    %9.0g                 energy_consumption, LA_CODE == 46UF
-energy_cons~371 long    %9.0g                 energy_consumption, LA_CODE == 47UB
-energy_cons~372 int     %9.0g                 energy_consumption, LA_CODE == 47UC
-energy_cons~373 int     %9.0g                 energy_consumption, LA_CODE == 47UD
-energy_cons~374 int     %9.0g                 energy_consumption, LA_CODE == 47UE
-energy_cons~375 int     %9.0g                 energy_consumption, LA_CODE == 47UF
-energy_cons~376 int     %9.0g                 energy_consumption, LA_CODE == 47UG
+--------------------------------------------------------------------------------
+energy_consu~n1 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AA
+energy_consu~n2 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AB
+energy_consu~n3 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AC
+energy_consu~n4 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AD
+energy_consu~n5 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AE
+energy_consu~n6 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AF
+energy_consu~n7 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AG
+energy_consu~n8 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AH
+energy_consu~n9 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AJ
+energy_cons~n10 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AK
+energy_cons~n11 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AL
+energy_cons~n12 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AM
+energy_cons~n13 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AN
+energy_cons~n14 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AP
+energy_cons~n15 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AQ
+energy_cons~n16 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AR
+energy_cons~n17 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AS
+energy_cons~n18 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AT
+energy_cons~n19 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AU
+energy_cons~n20 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AW
+energy_cons~n21 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00AX
+energy_cons~n22 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AY
+energy_cons~n23 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00AZ
+energy_cons~n24 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BA
+energy_cons~n25 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BB
+energy_cons~n26 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BC
+energy_cons~n27 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BD
+energy_cons~n28 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BE
+energy_cons~n29 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BF
+energy_cons~n30 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BG
+energy_cons~n31 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BH
+energy_cons~n32 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BJ
+energy_cons~n33 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BK
+energy_cons~n34 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BL
+energy_cons~n35 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BM
+energy_cons~n36 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BN
+energy_cons~n37 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BP
+energy_cons~n38 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BQ
+energy_cons~n39 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BR
+energy_cons~n40 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BS
+energy_cons~n41 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BT
+energy_cons~n42 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BU
+energy_cons~n43 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BW
+energy_cons~n44 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BX
+energy_cons~n45 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00BY
+energy_cons~n46 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00BZ
+energy_cons~n47 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CA
+energy_cons~n48 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00CB
+energy_cons~n49 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CC
+energy_cons~n50 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CE
+energy_cons~n51 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CF
+energy_cons~n52 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00CG
+energy_cons~n53 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CH
+energy_cons~n54 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CJ
+energy_cons~n55 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00CK
+energy_cons~n56 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CL
+energy_cons~n57 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CM
+energy_cons~n58 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00CN
+energy_cons~n59 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CQ
+energy_cons~n60 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CR
+energy_cons~n61 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CS
+energy_cons~n62 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00CT
+energy_cons~n63 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00CU
+energy_cons~n64 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CW
+energy_cons~n65 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CX
+energy_cons~n66 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CY
+energy_cons~n67 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00CZ
+energy_cons~n68 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00DA
+energy_cons~n69 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00DB
+energy_cons~n70 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EB
+energy_cons~n71 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EC
+energy_cons~n72 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EE
+energy_cons~n73 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EF
+energy_cons~n74 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EH
+energy_cons~n75 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00ET
+energy_cons~n76 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00EU
+energy_cons~n77 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EX
+energy_cons~n78 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00EY
+energy_cons~n79 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FA
+energy_cons~n80 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FB
+energy_cons~n81 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FC
+energy_cons~n82 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FD
+energy_cons~n83 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FF
+energy_cons~n84 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FK
+energy_cons~n85 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FN
+energy_cons~n86 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FP
+energy_cons~n87 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00FY
+energy_cons~n88 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00GA
+energy_cons~n89 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00GF
+energy_cons~n90 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00GL
+energy_cons~n91 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HA
+energy_cons~n92 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HB
+energy_cons~n93 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HC
+energy_cons~n94 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HD
+energy_cons~n95 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HG
+energy_cons~n96 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HH
+energy_cons~n97 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HN
+energy_cons~n98 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HP
+energy_cons~n99 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00HX
+energy_cons~100 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00JA
+energy_cons~101 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00KA
+energy_cons~102 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00KF
+energy_cons~103 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00KG
+energy_cons~104 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00LC
+energy_cons~105 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MA
+energy_cons~106 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00MB
+energy_cons~107 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MC
+energy_cons~108 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MD
+energy_cons~109 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                00ME
+energy_cons~110 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MF
+energy_cons~111 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MG
+energy_cons~112 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00ML
+energy_cons~113 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MR
+energy_cons~114 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MS
+energy_cons~115 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00MW
+energy_cons~116 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NA
+energy_cons~117 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NC
+energy_cons~118 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NE
+energy_cons~119 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NG
+energy_cons~120 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NJ
+energy_cons~121 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NL
+energy_cons~122 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NN
+energy_cons~123 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NQ
+energy_cons~124 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NS
+energy_cons~125 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NU
+energy_cons~126 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NX
+energy_cons~127 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00NZ
+energy_cons~128 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PB
+energy_cons~129 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PD
+energy_cons~130 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PF
+energy_cons~131 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PH
+energy_cons~132 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PK
+energy_cons~133 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PL
+energy_cons~134 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PM
+energy_cons~135 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PP
+energy_cons~136 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PR
+energy_cons~137 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                00PT
+energy_cons~138 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                09UC
+energy_cons~139 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                09UD
+energy_cons~140 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                09UE
+energy_cons~141 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                11UB
+energy_cons~142 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                11UC
+energy_cons~143 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                11UE
+energy_cons~144 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                11UF
+energy_cons~145 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                12UB
+energy_cons~146 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                12UC
+energy_cons~147 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                12UD
+energy_cons~148 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                12UE
+energy_cons~149 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                12UG
+energy_cons~150 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                13UB
+energy_cons~151 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                13UC
+energy_cons~152 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                13UD
+energy_cons~153 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                13UE
+energy_cons~154 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                13UG
+energy_cons~155 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                13UH
+energy_cons~156 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                15UB
+energy_cons~157 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                15UC
+energy_cons~158 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                15UD
+energy_cons~159 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                15UE
+energy_cons~160 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                15UF
+energy_cons~161 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                15UG
+energy_cons~162 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                15UH
+energy_cons~163 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                16UB
+energy_cons~164 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                16UC
+energy_cons~165 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                16UD
+energy_cons~166 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                16UE
+energy_cons~167 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                16UF
+energy_cons~168 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                16UG
+energy_cons~169 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UB
+energy_cons~170 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UC
+energy_cons~171 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UD
+energy_cons~172 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UF
+energy_cons~173 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UG
+energy_cons~174 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UH
+energy_cons~175 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UJ
+energy_cons~176 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                17UK
+energy_cons~177 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UB
+energy_cons~178 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UC
+energy_cons~179 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UD
+energy_cons~180 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UE
+energy_cons~181 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UG
+energy_cons~182 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UH
+energy_cons~183 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UK
+energy_cons~184 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                18UL
+energy_cons~185 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                19UC
+energy_cons~186 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                19UD
+energy_cons~187 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                19UE
+energy_cons~188 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                19UG
+energy_cons~189 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                19UH
+energy_cons~190 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                19UJ
+energy_cons~191 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UB
+energy_cons~192 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UD
+energy_cons~193 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UE
+energy_cons~194 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UF
+energy_cons~195 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UG
+energy_cons~196 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UH
+energy_cons~197 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                20UJ
+energy_cons~198 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                21UC
+energy_cons~199 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                21UD
+energy_cons~200 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                21UF
+energy_cons~201 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                21UG
+energy_cons~202 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                21UH
+energy_cons~203 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UB
+energy_cons~204 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UC
+energy_cons~205 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                22UD
+energy_cons~206 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UE
+energy_cons~207 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                22UF
+energy_cons~208 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UG
+energy_cons~209 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                22UH
+energy_cons~210 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UJ
+energy_cons~211 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UK
+energy_cons~212 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UL
+energy_cons~213 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UN
+energy_cons~214 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                22UQ
+energy_cons~215 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                23UB
+energy_cons~216 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                23UC
+energy_cons~217 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                23UD
+energy_cons~218 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                23UE
+energy_cons~219 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                23UF
+energy_cons~220 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                23UG
+energy_cons~221 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UB
+energy_cons~222 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                24UC
+energy_cons~223 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UD
+energy_cons~224 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UE
+energy_cons~225 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UF
+energy_cons~226 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UG
+energy_cons~227 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UH
+energy_cons~228 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UJ
+energy_cons~229 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UL
+energy_cons~230 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UN
+energy_cons~231 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                24UP
+energy_cons~232 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UB
+energy_cons~233 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UC
+energy_cons~234 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UD
+energy_cons~235 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                26UE
+energy_cons~236 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UF
+energy_cons~237 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UG
+energy_cons~238 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UH
+energy_cons~239 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                26UJ
+energy_cons~240 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                26UK
+energy_cons~241 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                26UL
+energy_cons~242 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UB
+energy_cons~243 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UC
+energy_cons~244 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UD
+energy_cons~245 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UE
+energy_cons~246 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UG
+energy_cons~247 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UH
+energy_cons~248 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                29UK
+energy_cons~249 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UL
+energy_cons~250 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UM
+energy_cons~251 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UN
+energy_cons~252 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UP
+energy_cons~253 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                29UQ
+energy_cons~254 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UD
+energy_cons~255 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UE
+energy_cons~256 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UF
+energy_cons~257 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UG
+energy_cons~258 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UH
+energy_cons~259 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UJ
+energy_cons~260 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UK
+energy_cons~261 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                30UL
+energy_cons~262 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UM
+energy_cons~263 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UN
+energy_cons~264 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UP
+energy_cons~265 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                30UQ
+energy_cons~266 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                31UB
+energy_cons~267 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                31UC
+energy_cons~268 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                31UD
+energy_cons~269 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                31UE
+energy_cons~270 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                31UG
+energy_cons~271 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                31UH
+energy_cons~272 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                31UJ
+energy_cons~273 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                32UB
+energy_cons~274 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                32UC
+energy_cons~275 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                32UD
+energy_cons~276 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                32UE
+energy_cons~277 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                32UF
+energy_cons~278 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                32UG
+energy_cons~279 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                32UH
+energy_cons~280 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UB
+energy_cons~281 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UC
+energy_cons~282 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UD
+energy_cons~283 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UE
+energy_cons~284 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UF
+energy_cons~285 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UG
+energy_cons~286 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                33UH
+energy_cons~287 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UB
+energy_cons~288 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UC
+energy_cons~289 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UD
+energy_cons~290 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UE
+energy_cons~291 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UF
+energy_cons~292 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UG
+energy_cons~293 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                34UH
+energy_cons~294 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                35UB
+energy_cons~295 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                35UC
+energy_cons~296 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                35UD
+energy_cons~297 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                35UE
+energy_cons~298 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                35UF
+energy_cons~299 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                35UG
+energy_cons~300 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                36UB
+energy_cons~301 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                36UC
+energy_cons~302 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                36UD
+energy_cons~303 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                36UE
+energy_cons~304 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                36UF
+energy_cons~305 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                36UG
+energy_cons~306 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                36UH
+energy_cons~307 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                37UB
+energy_cons~308 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                37UC
+energy_cons~309 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                37UD
+energy_cons~310 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                37UE
+energy_cons~311 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                37UF
+energy_cons~312 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                37UG
+energy_cons~313 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                37UJ
+energy_cons~314 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                38UB
+energy_cons~315 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                38UC
+energy_cons~316 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                38UD
+energy_cons~317 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                38UE
+energy_cons~318 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                38UF
+energy_cons~319 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                39UB
+energy_cons~320 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                39UC
+energy_cons~321 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                39UD
+energy_cons~322 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                39UE
+energy_cons~323 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                39UF
+energy_cons~324 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                40UB
+energy_cons~325 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                40UC
+energy_cons~326 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                40UD
+energy_cons~327 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                40UE
+energy_cons~328 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                40UF
+energy_cons~329 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                41UB
+energy_cons~330 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                41UC
+energy_cons~331 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                41UD
+energy_cons~332 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                41UE
+energy_cons~333 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                41UF
+energy_cons~334 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                41UG
+energy_cons~335 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                41UH
+energy_cons~336 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                41UK
+energy_cons~337 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UB
+energy_cons~338 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UC
+energy_cons~339 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UD
+energy_cons~340 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UE
+energy_cons~341 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UF
+energy_cons~342 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UG
+energy_cons~343 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                42UH
+energy_cons~344 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UB
+energy_cons~345 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UC
+energy_cons~346 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UD
+energy_cons~347 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                43UE
+energy_cons~348 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UF
+energy_cons~349 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UG
+energy_cons~350 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                43UH
+energy_cons~351 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UJ
+energy_cons~352 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                43UK
+energy_cons~353 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UL
+energy_cons~354 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                43UM
+energy_cons~355 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                44UB
+energy_cons~356 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                44UC
+energy_cons~357 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                44UD
+energy_cons~358 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                44UE
+energy_cons~359 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                44UF
+energy_cons~360 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                45UB
+energy_cons~361 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                45UC
+energy_cons~362 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                45UD
+energy_cons~363 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                45UE
+energy_cons~364 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                45UF
+energy_cons~365 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                45UG
+energy_cons~366 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                45UH
+energy_cons~367 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                46UB
+energy_cons~368 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                46UC
+energy_cons~369 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                46UD
+energy_cons~370 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                46UF
+energy_cons~371 long    %9.0g                 energy_consumption, LA_CODE ==
+                                                47UB
+energy_cons~372 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                47UC
+energy_cons~373 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                47UD
+energy_cons~374 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                47UE
+energy_cons~375 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                47UF
+energy_cons~376 int     %9.0g                 energy_consumption, LA_CODE ==
+                                                47UG
 
 . separate energy_consumption_fitted, by(LA_CODE)
 
               storage   display    value
 variable name   type    format     label      variable label
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-energy_consu~d1 int     %9.0g                 energy_consumption_fitted, LA_CODE == 00AA
-energy_consu~d2 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AB
-energy_consu~d3 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AC
-energy_consu~d4 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AD
-energy_consu~d5 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AE
-energy_consu~d6 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AF
-energy_consu~d7 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AG
-energy_consu~d8 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AH
-energy_consu~d9 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AJ
-energy_cons~d10 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AK
-energy_cons~d11 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AL
-energy_cons~d12 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AM
-energy_cons~d13 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AN
-energy_cons~d14 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AP
-energy_cons~d15 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AQ
-energy_cons~d16 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AR
-energy_cons~d17 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AS
-energy_cons~d18 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AT
-energy_cons~d19 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AU
-energy_cons~d20 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AW
-energy_cons~d21 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AX
-energy_cons~d22 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AY
-energy_cons~d23 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00AZ
-energy_cons~d24 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BA
-energy_cons~d25 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BB
-energy_cons~d26 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BC
-energy_cons~d27 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BD
-energy_cons~d28 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BE
-energy_cons~d29 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BF
-energy_cons~d30 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BG
-energy_cons~d31 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BH
-energy_cons~d32 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BJ
-energy_cons~d33 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BK
-energy_cons~d34 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BL
-energy_cons~d35 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BM
-energy_cons~d36 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BN
-energy_cons~d37 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BP
-energy_cons~d38 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BQ
-energy_cons~d39 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BR
-energy_cons~d40 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BS
-energy_cons~d41 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BT
-energy_cons~d42 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BU
-energy_cons~d43 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BW
-energy_cons~d44 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BX
-energy_cons~d45 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BY
-energy_cons~d46 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00BZ
-energy_cons~d47 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CA
-energy_cons~d48 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CB
-energy_cons~d49 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CC
-energy_cons~d50 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CE
-energy_cons~d51 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CF
-energy_cons~d52 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CG
-energy_cons~d53 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CH
-energy_cons~d54 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CJ
-energy_cons~d55 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CK
-energy_cons~d56 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CL
-energy_cons~d57 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CM
-energy_cons~d58 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CN
-energy_cons~d59 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CQ
-energy_cons~d60 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CR
-energy_cons~d61 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CS
-energy_cons~d62 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CT
-energy_cons~d63 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CU
-energy_cons~d64 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CW
-energy_cons~d65 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CX
-energy_cons~d66 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CY
-energy_cons~d67 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00CZ
-energy_cons~d68 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00DA
-energy_cons~d69 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00DB
-energy_cons~d70 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EB
-energy_cons~d71 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EC
-energy_cons~d72 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EE
-energy_cons~d73 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EF
-energy_cons~d74 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EH
-energy_cons~d75 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00ET
-energy_cons~d76 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EU
-energy_cons~d77 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EX
-energy_cons~d78 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00EY
-energy_cons~d79 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FA
-energy_cons~d80 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FB
-energy_cons~d81 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FC
-energy_cons~d82 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FD
-energy_cons~d83 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FF
-energy_cons~d84 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FK
-energy_cons~d85 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FN
-energy_cons~d86 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FP
-energy_cons~d87 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00FY
-energy_cons~d88 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00GA
-energy_cons~d89 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00GF
-energy_cons~d90 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00GL
-energy_cons~d91 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HA
-energy_cons~d92 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HB
-energy_cons~d93 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HC
-energy_cons~d94 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HD
-energy_cons~d95 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HG
-energy_cons~d96 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HH
-energy_cons~d97 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HN
-energy_cons~d98 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HP
-energy_cons~d99 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00HX
-energy_con~d100 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00JA
-energy_con~d101 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00KA
-energy_con~d102 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00KF
-energy_con~d103 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00KG
-energy_con~d104 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00LC
-energy_con~d105 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MA
-energy_con~d106 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MB
-energy_con~d107 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MC
-energy_con~d108 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MD
-energy_con~d109 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00ME
-energy_con~d110 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MF
-energy_con~d111 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MG
-energy_con~d112 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00ML
-energy_con~d113 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MR
-energy_con~d114 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MS
-energy_con~d115 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00MW
-energy_con~d116 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NA
-energy_con~d117 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NC
-energy_con~d118 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NE
-energy_con~d119 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NG
-energy_con~d120 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NJ
-energy_con~d121 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NL
-energy_con~d122 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NN
-energy_con~d123 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NQ
-energy_con~d124 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NS
-energy_con~d125 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NU
-energy_con~d126 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NX
-energy_con~d127 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00NZ
-energy_con~d128 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PB
-energy_con~d129 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PD
-energy_con~d130 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PF
-energy_con~d131 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PH
-energy_con~d132 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PK
-energy_con~d133 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PL
-energy_con~d134 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PM
-energy_con~d135 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PP
-energy_con~d136 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PR
-energy_con~d137 float   %9.0g                 energy_consumption_fitted, LA_CODE == 00PT
-energy_con~d138 float   %9.0g                 energy_consumption_fitted, LA_CODE == 09UC
-energy_con~d139 float   %9.0g                 energy_consumption_fitted, LA_CODE == 09UD
-energy_con~d140 float   %9.0g                 energy_consumption_fitted, LA_CODE == 09UE
-energy_con~d141 float   %9.0g                 energy_consumption_fitted, LA_CODE == 11UB
-energy_con~d142 float   %9.0g                 energy_consumption_fitted, LA_CODE == 11UC
-energy_con~d143 float   %9.0g                 energy_consumption_fitted, LA_CODE == 11UE
-energy_con~d144 float   %9.0g                 energy_consumption_fitted, LA_CODE == 11UF
-energy_con~d145 float   %9.0g                 energy_consumption_fitted, LA_CODE == 12UB
-energy_con~d146 float   %9.0g                 energy_consumption_fitted, LA_CODE == 12UC
-energy_con~d147 float   %9.0g                 energy_consumption_fitted, LA_CODE == 12UD
-energy_con~d148 float   %9.0g                 energy_consumption_fitted, LA_CODE == 12UE
-energy_con~d149 float   %9.0g                 energy_consumption_fitted, LA_CODE == 12UG
-energy_con~d150 float   %9.0g                 energy_consumption_fitted, LA_CODE == 13UB
-energy_con~d151 float   %9.0g                 energy_consumption_fitted, LA_CODE == 13UC
-energy_con~d152 float   %9.0g                 energy_consumption_fitted, LA_CODE == 13UD
-energy_con~d153 float   %9.0g                 energy_consumption_fitted, LA_CODE == 13UE
-energy_con~d154 float   %9.0g                 energy_consumption_fitted, LA_CODE == 13UG
-energy_con~d155 float   %9.0g                 energy_consumption_fitted, LA_CODE == 13UH
-energy_con~d156 float   %9.0g                 energy_consumption_fitted, LA_CODE == 15UB
-energy_con~d157 float   %9.0g                 energy_consumption_fitted, LA_CODE == 15UC
-energy_con~d158 float   %9.0g                 energy_consumption_fitted, LA_CODE == 15UD
-energy_con~d159 float   %9.0g                 energy_consumption_fitted, LA_CODE == 15UE
-energy_con~d160 float   %9.0g                 energy_consumption_fitted, LA_CODE == 15UF
-energy_con~d161 float   %9.0g                 energy_consumption_fitted, LA_CODE == 15UG
-energy_con~d162 int     %9.0g                 energy_consumption_fitted, LA_CODE == 15UH
-energy_con~d163 float   %9.0g                 energy_consumption_fitted, LA_CODE == 16UB
-energy_con~d164 float   %9.0g                 energy_consumption_fitted, LA_CODE == 16UC
-energy_con~d165 float   %9.0g                 energy_consumption_fitted, LA_CODE == 16UD
-energy_con~d166 float   %9.0g                 energy_consumption_fitted, LA_CODE == 16UE
-energy_con~d167 float   %9.0g                 energy_consumption_fitted, LA_CODE == 16UF
-energy_con~d168 float   %9.0g                 energy_consumption_fitted, LA_CODE == 16UG
-energy_con~d169 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UB
-energy_con~d170 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UC
-energy_con~d171 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UD
-energy_con~d172 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UF
-energy_con~d173 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UG
-energy_con~d174 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UH
-energy_con~d175 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UJ
-energy_con~d176 float   %9.0g                 energy_consumption_fitted, LA_CODE == 17UK
-energy_con~d177 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UB
-energy_con~d178 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UC
-energy_con~d179 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UD
-energy_con~d180 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UE
-energy_con~d181 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UG
-energy_con~d182 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UH
-energy_con~d183 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UK
-energy_con~d184 float   %9.0g                 energy_consumption_fitted, LA_CODE == 18UL
-energy_con~d185 float   %9.0g                 energy_consumption_fitted, LA_CODE == 19UC
-energy_con~d186 float   %9.0g                 energy_consumption_fitted, LA_CODE == 19UD
-energy_con~d187 float   %9.0g                 energy_consumption_fitted, LA_CODE == 19UE
-energy_con~d188 float   %9.0g                 energy_consumption_fitted, LA_CODE == 19UG
-energy_con~d189 float   %9.0g                 energy_consumption_fitted, LA_CODE == 19UH
-energy_con~d190 float   %9.0g                 energy_consumption_fitted, LA_CODE == 19UJ
-energy_con~d191 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UB
-energy_con~d192 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UD
-energy_con~d193 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UE
-energy_con~d194 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UF
-energy_con~d195 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UG
-energy_con~d196 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UH
-energy_con~d197 float   %9.0g                 energy_consumption_fitted, LA_CODE == 20UJ
-energy_con~d198 float   %9.0g                 energy_consumption_fitted, LA_CODE == 21UC
-energy_con~d199 float   %9.0g                 energy_consumption_fitted, LA_CODE == 21UD
-energy_con~d200 float   %9.0g                 energy_consumption_fitted, LA_CODE == 21UF
-energy_con~d201 float   %9.0g                 energy_consumption_fitted, LA_CODE == 21UG
-energy_con~d202 float   %9.0g                 energy_consumption_fitted, LA_CODE == 21UH
-energy_con~d203 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UB
-energy_con~d204 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UC
-energy_con~d205 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UD
-energy_con~d206 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UE
-energy_con~d207 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UF
-energy_con~d208 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UG
-energy_con~d209 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UH
-energy_con~d210 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UJ
-energy_con~d211 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UK
-energy_con~d212 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UL
-energy_con~d213 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UN
-energy_con~d214 float   %9.0g                 energy_consumption_fitted, LA_CODE == 22UQ
-energy_con~d215 float   %9.0g                 energy_consumption_fitted, LA_CODE == 23UB
-energy_con~d216 float   %9.0g                 energy_consumption_fitted, LA_CODE == 23UC
-energy_con~d217 float   %9.0g                 energy_consumption_fitted, LA_CODE == 23UD
-energy_con~d218 float   %9.0g                 energy_consumption_fitted, LA_CODE == 23UE
-energy_con~d219 float   %9.0g                 energy_consumption_fitted, LA_CODE == 23UF
-energy_con~d220 float   %9.0g                 energy_consumption_fitted, LA_CODE == 23UG
-energy_con~d221 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UB
-energy_con~d222 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UC
-energy_con~d223 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UD
-energy_con~d224 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UE
-energy_con~d225 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UF
-energy_con~d226 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UG
-energy_con~d227 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UH
-energy_con~d228 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UJ
-energy_con~d229 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UL
-energy_con~d230 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UN
-energy_con~d231 float   %9.0g                 energy_consumption_fitted, LA_CODE == 24UP
-energy_con~d232 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UB
-energy_con~d233 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UC
-energy_con~d234 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UD
-energy_con~d235 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UE
-energy_con~d236 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UF
-energy_con~d237 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UG
-energy_con~d238 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UH
-energy_con~d239 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UJ
-energy_con~d240 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UK
-energy_con~d241 float   %9.0g                 energy_consumption_fitted, LA_CODE == 26UL
-energy_con~d242 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UB
-energy_con~d243 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UC
-energy_con~d244 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UD
-energy_con~d245 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UE
-energy_con~d246 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UG
-energy_con~d247 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UH
-energy_con~d248 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UK
-energy_con~d249 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UL
-energy_con~d250 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UM
-energy_con~d251 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UN
-energy_con~d252 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UP
-energy_con~d253 float   %9.0g                 energy_consumption_fitted, LA_CODE == 29UQ
-energy_con~d254 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UD
-energy_con~d255 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UE
-energy_con~d256 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UF
-energy_con~d257 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UG
-energy_con~d258 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UH
-energy_con~d259 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UJ
-energy_con~d260 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UK
-energy_con~d261 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UL
-energy_con~d262 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UM
-energy_con~d263 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UN
-energy_con~d264 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UP
-energy_con~d265 float   %9.0g                 energy_consumption_fitted, LA_CODE == 30UQ
-energy_con~d266 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UB
-energy_con~d267 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UC
-energy_con~d268 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UD
-energy_con~d269 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UE
-energy_con~d270 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UG
-energy_con~d271 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UH
-energy_con~d272 float   %9.0g                 energy_consumption_fitted, LA_CODE == 31UJ
-energy_con~d273 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UB
-energy_con~d274 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UC
-energy_con~d275 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UD
-energy_con~d276 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UE
-energy_con~d277 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UF
-energy_con~d278 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UG
-energy_con~d279 float   %9.0g                 energy_consumption_fitted, LA_CODE == 32UH
-energy_con~d280 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UB
-energy_con~d281 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UC
-energy_con~d282 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UD
-energy_con~d283 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UE
-energy_con~d284 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UF
-energy_con~d285 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UG
-energy_con~d286 float   %9.0g                 energy_consumption_fitted, LA_CODE == 33UH
-energy_con~d287 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UB
-energy_con~d288 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UC
-energy_con~d289 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UD
-energy_con~d290 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UE
-energy_con~d291 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UF
-energy_con~d292 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UG
-energy_con~d293 float   %9.0g                 energy_consumption_fitted, LA_CODE == 34UH
-energy_con~d294 float   %9.0g                 energy_consumption_fitted, LA_CODE == 35UB
-energy_con~d295 float   %9.0g                 energy_consumption_fitted, LA_CODE == 35UC
-energy_con~d296 float   %9.0g                 energy_consumption_fitted, LA_CODE == 35UD
-energy_con~d297 float   %9.0g                 energy_consumption_fitted, LA_CODE == 35UE
-energy_con~d298 float   %9.0g                 energy_consumption_fitted, LA_CODE == 35UF
-energy_con~d299 float   %9.0g                 energy_consumption_fitted, LA_CODE == 35UG
-energy_con~d300 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UB
-energy_con~d301 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UC
-energy_con~d302 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UD
-energy_con~d303 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UE
-energy_con~d304 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UF
-energy_con~d305 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UG
-energy_con~d306 float   %9.0g                 energy_consumption_fitted, LA_CODE == 36UH
-energy_con~d307 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UB
-energy_con~d308 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UC
-energy_con~d309 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UD
-energy_con~d310 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UE
-energy_con~d311 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UF
-energy_con~d312 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UG
-energy_con~d313 float   %9.0g                 energy_consumption_fitted, LA_CODE == 37UJ
-energy_con~d314 float   %9.0g                 energy_consumption_fitted, LA_CODE == 38UB
-energy_con~d315 float   %9.0g                 energy_consumption_fitted, LA_CODE == 38UC
-energy_con~d316 float   %9.0g                 energy_consumption_fitted, LA_CODE == 38UD
-energy_con~d317 float   %9.0g                 energy_consumption_fitted, LA_CODE == 38UE
-energy_con~d318 float   %9.0g                 energy_consumption_fitted, LA_CODE == 38UF
-energy_con~d319 float   %9.0g                 energy_consumption_fitted, LA_CODE == 39UB
-energy_con~d320 float   %9.0g                 energy_consumption_fitted, LA_CODE == 39UC
-energy_con~d321 float   %9.0g                 energy_consumption_fitted, LA_CODE == 39UD
-energy_con~d322 float   %9.0g                 energy_consumption_fitted, LA_CODE == 39UE
-energy_con~d323 float   %9.0g                 energy_consumption_fitted, LA_CODE == 39UF
-energy_con~d324 float   %9.0g                 energy_consumption_fitted, LA_CODE == 40UB
-energy_con~d325 float   %9.0g                 energy_consumption_fitted, LA_CODE == 40UC
-energy_con~d326 float   %9.0g                 energy_consumption_fitted, LA_CODE == 40UD
-energy_con~d327 float   %9.0g                 energy_consumption_fitted, LA_CODE == 40UE
-energy_con~d328 float   %9.0g                 energy_consumption_fitted, LA_CODE == 40UF
-energy_con~d329 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UB
-energy_con~d330 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UC
-energy_con~d331 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UD
-energy_con~d332 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UE
-energy_con~d333 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UF
-energy_con~d334 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UG
-energy_con~d335 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UH
-energy_con~d336 float   %9.0g                 energy_consumption_fitted, LA_CODE == 41UK
-energy_con~d337 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UB
-energy_con~d338 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UC
-energy_con~d339 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UD
-energy_con~d340 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UE
-energy_con~d341 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UF
-energy_con~d342 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UG
-energy_con~d343 float   %9.0g                 energy_consumption_fitted, LA_CODE == 42UH
-energy_con~d344 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UB
-energy_con~d345 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UC
-energy_con~d346 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UD
-energy_con~d347 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UE
-energy_con~d348 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UF
-energy_con~d349 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UG
-energy_con~d350 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UH
-energy_con~d351 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UJ
-energy_con~d352 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UK
-energy_con~d353 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UL
-energy_con~d354 float   %9.0g                 energy_consumption_fitted, LA_CODE == 43UM
-energy_con~d355 float   %9.0g                 energy_consumption_fitted, LA_CODE == 44UB
-energy_con~d356 float   %9.0g                 energy_consumption_fitted, LA_CODE == 44UC
-energy_con~d357 float   %9.0g                 energy_consumption_fitted, LA_CODE == 44UD
-energy_con~d358 float   %9.0g                 energy_consumption_fitted, LA_CODE == 44UE
-energy_con~d359 float   %9.0g                 energy_consumption_fitted, LA_CODE == 44UF
-energy_con~d360 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UB
-energy_con~d361 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UC
-energy_con~d362 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UD
-energy_con~d363 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UE
-energy_con~d364 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UF
-energy_con~d365 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UG
-energy_con~d366 float   %9.0g                 energy_consumption_fitted, LA_CODE == 45UH
-energy_con~d367 float   %9.0g                 energy_consumption_fitted, LA_CODE == 46UB
-energy_con~d368 float   %9.0g                 energy_consumption_fitted, LA_CODE == 46UC
-energy_con~d369 float   %9.0g                 energy_consumption_fitted, LA_CODE == 46UD
-energy_con~d370 float   %9.0g                 energy_consumption_fitted, LA_CODE == 46UF
-energy_con~d371 float   %9.0g                 energy_consumption_fitted, LA_CODE == 47UB
-energy_con~d372 float   %9.0g                 energy_consumption_fitted, LA_CODE == 47UC
-energy_con~d373 float   %9.0g                 energy_consumption_fitted, LA_CODE == 47UD
-energy_con~d374 float   %9.0g                 energy_consumption_fitted, LA_CODE == 47UE
-energy_con~d375 float   %9.0g                 energy_consumption_fitted, LA_CODE == 47UF
-energy_con~d376 float   %9.0g                 energy_consumption_fitted, LA_CODE == 47UG
+--------------------------------------------------------------------------------
+energy_consu~d1 int     %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AA
+energy_consu~d2 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AB
+energy_consu~d3 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AC
+energy_consu~d4 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AD
+energy_consu~d5 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AE
+energy_consu~d6 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AF
+energy_consu~d7 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AG
+energy_consu~d8 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AH
+energy_consu~d9 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AJ
+energy_cons~d10 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AK
+energy_cons~d11 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AL
+energy_cons~d12 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AM
+energy_cons~d13 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AN
+energy_cons~d14 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AP
+energy_cons~d15 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AQ
+energy_cons~d16 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AR
+energy_cons~d17 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AS
+energy_cons~d18 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AT
+energy_cons~d19 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AU
+energy_cons~d20 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AW
+energy_cons~d21 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AX
+energy_cons~d22 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AY
+energy_cons~d23 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00AZ
+energy_cons~d24 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BA
+energy_cons~d25 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BB
+energy_cons~d26 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BC
+energy_cons~d27 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BD
+energy_cons~d28 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BE
+energy_cons~d29 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BF
+energy_cons~d30 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BG
+energy_cons~d31 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BH
+energy_cons~d32 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BJ
+energy_cons~d33 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BK
+energy_cons~d34 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BL
+energy_cons~d35 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BM
+energy_cons~d36 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BN
+energy_cons~d37 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BP
+energy_cons~d38 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BQ
+energy_cons~d39 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BR
+energy_cons~d40 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BS
+energy_cons~d41 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BT
+energy_cons~d42 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BU
+energy_cons~d43 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BW
+energy_cons~d44 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BX
+energy_cons~d45 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BY
+energy_cons~d46 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00BZ
+energy_cons~d47 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CA
+energy_cons~d48 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CB
+energy_cons~d49 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CC
+energy_cons~d50 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CE
+energy_cons~d51 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CF
+energy_cons~d52 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CG
+energy_cons~d53 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CH
+energy_cons~d54 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CJ
+energy_cons~d55 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CK
+energy_cons~d56 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CL
+energy_cons~d57 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CM
+energy_cons~d58 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CN
+energy_cons~d59 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CQ
+energy_cons~d60 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CR
+energy_cons~d61 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CS
+energy_cons~d62 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CT
+energy_cons~d63 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CU
+energy_cons~d64 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CW
+energy_cons~d65 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CX
+energy_cons~d66 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CY
+energy_cons~d67 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00CZ
+energy_cons~d68 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00DA
+energy_cons~d69 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00DB
+energy_cons~d70 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EB
+energy_cons~d71 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EC
+energy_cons~d72 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EE
+energy_cons~d73 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EF
+energy_cons~d74 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EH
+energy_cons~d75 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00ET
+energy_cons~d76 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EU
+energy_cons~d77 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EX
+energy_cons~d78 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00EY
+energy_cons~d79 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FA
+energy_cons~d80 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FB
+energy_cons~d81 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FC
+energy_cons~d82 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FD
+energy_cons~d83 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FF
+energy_cons~d84 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FK
+energy_cons~d85 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FN
+energy_cons~d86 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FP
+energy_cons~d87 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00FY
+energy_cons~d88 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00GA
+energy_cons~d89 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00GF
+energy_cons~d90 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00GL
+energy_cons~d91 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HA
+energy_cons~d92 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HB
+energy_cons~d93 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HC
+energy_cons~d94 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HD
+energy_cons~d95 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HG
+energy_cons~d96 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HH
+energy_cons~d97 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HN
+energy_cons~d98 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HP
+energy_cons~d99 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00HX
+energy_con~d100 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00JA
+energy_con~d101 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00KA
+energy_con~d102 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00KF
+energy_con~d103 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00KG
+energy_con~d104 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00LC
+energy_con~d105 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MA
+energy_con~d106 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MB
+energy_con~d107 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MC
+energy_con~d108 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MD
+energy_con~d109 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00ME
+energy_con~d110 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MF
+energy_con~d111 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MG
+energy_con~d112 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00ML
+energy_con~d113 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MR
+energy_con~d114 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MS
+energy_con~d115 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00MW
+energy_con~d116 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NA
+energy_con~d117 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NC
+energy_con~d118 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NE
+energy_con~d119 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NG
+energy_con~d120 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NJ
+energy_con~d121 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NL
+energy_con~d122 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NN
+energy_con~d123 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NQ
+energy_con~d124 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NS
+energy_con~d125 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NU
+energy_con~d126 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NX
+energy_con~d127 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00NZ
+energy_con~d128 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PB
+energy_con~d129 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PD
+energy_con~d130 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PF
+energy_con~d131 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PH
+energy_con~d132 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PK
+energy_con~d133 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PL
+energy_con~d134 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PM
+energy_con~d135 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PP
+energy_con~d136 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PR
+energy_con~d137 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 00PT
+energy_con~d138 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 09UC
+energy_con~d139 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 09UD
+energy_con~d140 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 09UE
+energy_con~d141 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 11UB
+energy_con~d142 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 11UC
+energy_con~d143 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 11UE
+energy_con~d144 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 11UF
+energy_con~d145 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 12UB
+energy_con~d146 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 12UC
+energy_con~d147 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 12UD
+energy_con~d148 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 12UE
+energy_con~d149 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 12UG
+energy_con~d150 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 13UB
+energy_con~d151 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 13UC
+energy_con~d152 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 13UD
+energy_con~d153 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 13UE
+energy_con~d154 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 13UG
+energy_con~d155 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 13UH
+energy_con~d156 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UB
+energy_con~d157 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UC
+energy_con~d158 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UD
+energy_con~d159 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UE
+energy_con~d160 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UF
+energy_con~d161 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UG
+energy_con~d162 int     %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 15UH
+energy_con~d163 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 16UB
+energy_con~d164 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 16UC
+energy_con~d165 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 16UD
+energy_con~d166 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 16UE
+energy_con~d167 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 16UF
+energy_con~d168 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 16UG
+energy_con~d169 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UB
+energy_con~d170 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UC
+energy_con~d171 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UD
+energy_con~d172 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UF
+energy_con~d173 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UG
+energy_con~d174 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UH
+energy_con~d175 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UJ
+energy_con~d176 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 17UK
+energy_con~d177 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UB
+energy_con~d178 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UC
+energy_con~d179 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UD
+energy_con~d180 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UE
+energy_con~d181 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UG
+energy_con~d182 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UH
+energy_con~d183 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UK
+energy_con~d184 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 18UL
+energy_con~d185 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 19UC
+energy_con~d186 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 19UD
+energy_con~d187 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 19UE
+energy_con~d188 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 19UG
+energy_con~d189 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 19UH
+energy_con~d190 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 19UJ
+energy_con~d191 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UB
+energy_con~d192 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UD
+energy_con~d193 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UE
+energy_con~d194 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UF
+energy_con~d195 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UG
+energy_con~d196 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UH
+energy_con~d197 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 20UJ
+energy_con~d198 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 21UC
+energy_con~d199 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 21UD
+energy_con~d200 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 21UF
+energy_con~d201 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 21UG
+energy_con~d202 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 21UH
+energy_con~d203 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UB
+energy_con~d204 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UC
+energy_con~d205 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UD
+energy_con~d206 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UE
+energy_con~d207 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UF
+energy_con~d208 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UG
+energy_con~d209 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UH
+energy_con~d210 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UJ
+energy_con~d211 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UK
+energy_con~d212 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UL
+energy_con~d213 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UN
+energy_con~d214 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 22UQ
+energy_con~d215 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 23UB
+energy_con~d216 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 23UC
+energy_con~d217 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 23UD
+energy_con~d218 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 23UE
+energy_con~d219 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 23UF
+energy_con~d220 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 23UG
+energy_con~d221 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UB
+energy_con~d222 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UC
+energy_con~d223 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UD
+energy_con~d224 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UE
+energy_con~d225 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UF
+energy_con~d226 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UG
+energy_con~d227 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UH
+energy_con~d228 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UJ
+energy_con~d229 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UL
+energy_con~d230 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UN
+energy_con~d231 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 24UP
+energy_con~d232 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UB
+energy_con~d233 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UC
+energy_con~d234 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UD
+energy_con~d235 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UE
+energy_con~d236 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UF
+energy_con~d237 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UG
+energy_con~d238 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UH
+energy_con~d239 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UJ
+energy_con~d240 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UK
+energy_con~d241 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 26UL
+energy_con~d242 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UB
+energy_con~d243 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UC
+energy_con~d244 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UD
+energy_con~d245 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UE
+energy_con~d246 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UG
+energy_con~d247 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UH
+energy_con~d248 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UK
+energy_con~d249 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UL
+energy_con~d250 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UM
+energy_con~d251 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UN
+energy_con~d252 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UP
+energy_con~d253 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 29UQ
+energy_con~d254 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UD
+energy_con~d255 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UE
+energy_con~d256 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UF
+energy_con~d257 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UG
+energy_con~d258 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UH
+energy_con~d259 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UJ
+energy_con~d260 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UK
+energy_con~d261 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UL
+energy_con~d262 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UM
+energy_con~d263 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UN
+energy_con~d264 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UP
+energy_con~d265 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 30UQ
+energy_con~d266 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UB
+energy_con~d267 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UC
+energy_con~d268 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UD
+energy_con~d269 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UE
+energy_con~d270 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UG
+energy_con~d271 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UH
+energy_con~d272 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 31UJ
+energy_con~d273 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UB
+energy_con~d274 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UC
+energy_con~d275 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UD
+energy_con~d276 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UE
+energy_con~d277 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UF
+energy_con~d278 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UG
+energy_con~d279 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 32UH
+energy_con~d280 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UB
+energy_con~d281 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UC
+energy_con~d282 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UD
+energy_con~d283 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UE
+energy_con~d284 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UF
+energy_con~d285 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UG
+energy_con~d286 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 33UH
+energy_con~d287 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UB
+energy_con~d288 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UC
+energy_con~d289 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UD
+energy_con~d290 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UE
+energy_con~d291 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UF
+energy_con~d292 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UG
+energy_con~d293 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 34UH
+energy_con~d294 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 35UB
+energy_con~d295 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 35UC
+energy_con~d296 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 35UD
+energy_con~d297 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 35UE
+energy_con~d298 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 35UF
+energy_con~d299 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 35UG
+energy_con~d300 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UB
+energy_con~d301 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UC
+energy_con~d302 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UD
+energy_con~d303 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UE
+energy_con~d304 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UF
+energy_con~d305 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UG
+energy_con~d306 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 36UH
+energy_con~d307 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UB
+energy_con~d308 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UC
+energy_con~d309 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UD
+energy_con~d310 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UE
+energy_con~d311 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UF
+energy_con~d312 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UG
+energy_con~d313 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 37UJ
+energy_con~d314 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 38UB
+energy_con~d315 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 38UC
+energy_con~d316 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 38UD
+energy_con~d317 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 38UE
+energy_con~d318 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 38UF
+energy_con~d319 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 39UB
+energy_con~d320 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 39UC
+energy_con~d321 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 39UD
+energy_con~d322 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 39UE
+energy_con~d323 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 39UF
+energy_con~d324 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 40UB
+energy_con~d325 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 40UC
+energy_con~d326 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 40UD
+energy_con~d327 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 40UE
+energy_con~d328 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 40UF
+energy_con~d329 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UB
+energy_con~d330 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UC
+energy_con~d331 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UD
+energy_con~d332 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UE
+energy_con~d333 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UF
+energy_con~d334 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UG
+energy_con~d335 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UH
+energy_con~d336 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 41UK
+energy_con~d337 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UB
+energy_con~d338 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UC
+energy_con~d339 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UD
+energy_con~d340 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UE
+energy_con~d341 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UF
+energy_con~d342 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UG
+energy_con~d343 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 42UH
+energy_con~d344 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UB
+energy_con~d345 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UC
+energy_con~d346 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UD
+energy_con~d347 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UE
+energy_con~d348 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UF
+energy_con~d349 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UG
+energy_con~d350 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UH
+energy_con~d351 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UJ
+energy_con~d352 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UK
+energy_con~d353 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UL
+energy_con~d354 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 43UM
+energy_con~d355 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 44UB
+energy_con~d356 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 44UC
+energy_con~d357 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 44UD
+energy_con~d358 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 44UE
+energy_con~d359 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 44UF
+energy_con~d360 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UB
+energy_con~d361 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UC
+energy_con~d362 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UD
+energy_con~d363 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UE
+energy_con~d364 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UF
+energy_con~d365 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UG
+energy_con~d366 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 45UH
+energy_con~d367 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 46UB
+energy_con~d368 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 46UC
+energy_con~d369 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 46UD
+energy_con~d370 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 46UF
+energy_con~d371 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 47UB
+energy_con~d372 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 47UC
+energy_con~d373 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 47UD
+energy_con~d374 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 47UE
+energy_con~d375 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 47UF
+energy_con~d376 float   %9.0g                 energy_consumption_fitted, LA_CODE
+                                                == 47UG
 
 . 
 . graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
->         (line energy_consumption_fitted1-energy_consumption_fitted80 income_est), legend(off) 
+>         (line energy_consumption_fitted1-energy_consumption_fitted80 income_es
+> t) ///
+>         (lfit energy_consumption income_est, ///
+>         color(black) lwidth(thick) lpattern(dash)), legend(off) 
 
 .         
+. graph export fe.png, replace
+(file fe.png written in PNG format)
+
 . 
 . esttab ols fe using table1.tex, replace
 (output written to table1.tex)
