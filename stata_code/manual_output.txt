@@ -1,0 +1,72 @@
+
+. reg energy_consumption income_est
+
+      Source |       SS           df       MS      Number of obs   =     7,133
+-------------+----------------------------------   F(1, 7131)      =   2766.55
+       Model |  2.6921e+10         1  2.6921e+10   Prob > F        =    0.0000
+    Residual |  6.9391e+10     7,131  9730852.07   R-squared       =    0.2795
+-------------+----------------------------------   Adj R-squared   =    0.2794
+       Total |  9.6312e+10     7,132  13504151.6   Root MSE        =    3119.4
+
+------------------------------------------------------------------------------
+energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+  income_est |   11.68066   .2220741    52.60   0.000     11.24533    12.11599
+       _cons |   16142.07    139.382   115.81   0.000     15868.84     16415.3
+------------------------------------------------------------------------------
+
+
+. graph twoway (scatter energy_consumption income_est) (lfit energy_consumption income_est)
+
+. 
+. 
+. 
+. 
+. xtset LA_CODE MSOA_CODE
+       panel variable:  LA_CODE (unbalanced)
+        time variable:  MSOA_CODE, 1 to 7194
+                delta:  1 unit
+
+. xtreg energy_consumption income_est, fe
+
+Fixed-effects (within) regression               Number of obs     =      7,133
+Group variable: LA_CODE                         Number of groups  =        376
+
+R-sq:                                           Obs per group:
+     within  = 0.5160                                         min =          1
+     between = 0.1057                                         avg =       19.0
+     overall = 0.2795                                         max =        131
+
+                                                F(1,6756)         =    7201.69
+corr(u_i, Xb)  = -0.5247                        Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+  income_est |   20.11081   .2369803    84.86   0.000     19.64625    20.57536
+       _cons |   11040.14   145.7513    75.75   0.000     10754.42    11325.86
+-------------+----------------------------------------------------------------
+     sigma_u |  2773.6255
+     sigma_e |  2192.6781
+         rho |  .61539872   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(375, 6756) = 20.47                  Prob > F = 0.0000
+
+
+. xi: regress energy_consumption income_est i.LA_CODE
+
+
+
+. predict energy_consumption_fitted
+(option xb assumed; fitted values)
+
+. 
+. separate energy_consumption, by(LA_CODE)
+
+. separate energy_consumption_fitted, by(LA_CODE)
+
+
+. graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
+>         (line energy_consumption_fitted1-energy_consumption_fitted80 income_est) ///
+>         (lfit energy_consumption income_est, ///
+>         color(black) lwidth(thick) lpattern(dash)), legend(off) 
