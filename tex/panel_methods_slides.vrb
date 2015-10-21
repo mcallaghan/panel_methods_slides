@@ -1,0 +1,22 @@
+\frametitle{Applying Panel Data Methods to Other Data Structures}
+    \framesubtitle{Comparing OLS with Fixed Effects Models}
+    \tiny
+    \begin{CVerbatim}[fontsize=\tiny]
+. esttab ols fe
+
+--------------------------------------------
+                      (1)             (2)
+             energy_con~n    energy_con~n
+--------------------------------------------
+income_est          11.68***        20.11***
+                  (52.60)         (84.86)
+
+_cons             16142.1***      11040.1***
+                 (115.81)         (75.75)
+--------------------------------------------
+N                    7133            7133
+--------------------------------------------
+t statistics in parentheses
+* p<0.05, ** p<0.01, *** p<0.001
+    \end{CVerbatim}
+

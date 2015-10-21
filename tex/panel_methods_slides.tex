@@ -1,21 +1,45 @@
 \documentclass{beamer}
 
-\usepackage{listings}
 \usepackage{color}
 \usepackage{alltt}
 \usepackage{graphicx}
 
+\usepackage{verbatim}
+\usepackage{environ}
+\usepackage{bm}
+\usepackage{beamerthemedefault}
+
+\usepackage{fvrb-ex}
+
+\fvset{gobble=0,numbersep=3pt}
+\fvset{numbers=left,frame=single}
+%\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{commandchars=§µ¶}
+\DefineVerbatimEnvironment%
+{CVerbatim}{Verbatim}
+{fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl,formatcom=\color{blue}}
+
+\usetheme{Boadilla}
+
+%\usecolortheme{orchid}
+%\usecolortheme{beaver}
+%\setbeamercolor{item projected}{fg=black,bg=white}
+\usecolortheme{beaver}
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamercolor{item projected}{fg=darkred, bg=lightgray}
+\setbeamercolor{subitem projected}{fg=darkred}
+\setbeamercolor{local structure}{fg=darkred}
 
 
+\usefonttheme{professionalfonts}
 
-\title 
-{Applying Panel Data Methods to Other Data Structures}
-\author
-{Professor Jan Minx}
-\institute
-{Hertie School of Governance}
-\date
-{Stats II, Lecture ?, ? 2015}
+
+\title{MPP-C6: Statistics II}
+\subtitle{Session ?}
+\author{Prof. Jan C. Minx}
+\institute[HSoG]{Hertie School of Governance}
+\titlegraphic{\includegraphics[width=2cm]{HSOG_logo.png}}
+\date{15 October 2015}
 
 \begin{document}
 
@@ -67,94 +91,126 @@
     
   \end{frame}
   
-  \begin{frame}
+\begin{frame}[fragile]
     \frametitle{Applying Panel Data Methods to Other Data Structures}
     \framesubtitle{Pooled OLS}
     When we use a pooled OLS regression on our dataset to estimate the effect of income on household energy consumption, we get the following results
-    \tiny
-    \begin{alltt}
-    reg energy\_consumption income\_est
-    
-    outtex, file(ols.tex) labels level detail legend key(stab) replace
-    est store ols
-    \end{alltt}
+    \begin{CVerbatim}[fontsize=\tiny]
+. reg energy_consumption income_est
 
-    \input{../stata_code/ols.tex}
-  \end{frame}
+      Source |       SS           df       MS      Number of obs   =     7,133
+-------------+----------------------------------   F(1, 7131)      =   2766.55
+       Model |  2.6921e+10         1  2.6921e+10   Prob > F        =    0.0000
+    Residual |  6.9391e+10     7,131  9730852.07   R-squared       =    0.2795
+-------------+----------------------------------   Adj R-squared   =    0.2794
+       Total |  9.6312e+10     7,132  13504151.6   Root MSE        =    3119.4
+
+------------------------------------------------------------------------------
+energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+  income_est |   11.68066   .2220741    52.60   0.000     11.24533    12.11599
+       _cons |   16142.07    139.382   115.81   0.000     15868.84     16415.3
+------------------------------------------------------------------------------
+
+    \end{CVerbatim}
+    
+\end{frame}
   
-  \begin{frame}
+\begin{frame}[fragile]
     \frametitle{Applying Panel Data Methods to Other Data Structures}
     \framesubtitle{Pooled OLS}
     \tiny
-    \begin{alltt}
-    graph twoway (scatter energy\_consumption income\_est) ///
-    
-    (lfit energy\_consumption income\_est)
-    \end{alltt}
+    \begin{CVerbatim}[fontsize=\tiny]
+graph twoway (scatter energy_consumption income_est) ///
+(lfit energy_consumption income_est)
+    \end{CVerbatim}
     
     \begin{figure}
     \includegraphics[width=8cm]{../stata_code/ols.png}
     \centering
     \end{figure}
-  \end{frame}
+\end{frame}
   
-  \begin{frame}
+\begin{frame}[fragile]
     \frametitle{Applying Panel Data Methods to Other Data Structures}
     \framesubtitle{Fixed Effects}
     When we use a fixed effects model to estimate the effect of income on household energy consumption \textit{within} local authorities, the size of the effect changes.
     \tiny
-    \begin{alltt}
-    xtset LA\_CODE MSOA\_CODE
+    \begin{CVerbatim}[fontsize=\tiny]
+. xtreg energy_consumption income_est, fe
+
+Fixed-effects (within) regression               Number of obs     =      7,133
+Group variable: LA_CODE                         Number of groups  =        376
+
+R-sq:                                           Obs per group:
+     within  = 0.5160                                         min =          1
+     between = 0.1057                                         avg =       19.0
+     overall = 0.2795                                         max =        131
+
+                                                F(1,6756)         =    7201.69
+corr(u_i, Xb)  = -0.5247                        Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+energy_con~n |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+  income_est |   20.11081   .2369803    84.86   0.000     19.64625    20.57536
+       _cons |   11040.14   145.7513    75.75   0.000     10754.42    11325.86
+-------------+----------------------------------------------------------------
+     sigma_u |  2773.6255
+     sigma_e |  2192.6781
+         rho |  .61539872   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(375, 6756) = 20.47                  Prob > F = 0.0000
     
-    xtreg energy\_consumption income\_est, fe
-    
-    outtex, file(fe.tex) labels level detail legend key(stab) replace
-    
-    est store fe
-    \end{alltt}
-    
-    
+    \end{CVerbatim}
     \input{../stata_code/fe.tex}
-  \end{frame}
+\end{frame}
   
-  \begin{frame}
+\begin{frame}[fragile]
     \frametitle{Applying Panel Data Methods to Other Data Structures}
     \framesubtitle{Fixed Effects}
     \tiny
-    \begin{alltt}
-xi: regress energy\_consumption income\_est i.LA\_CODE
-
-predict energy\_consumption\_fitted
-
-separate energy\_consumption, by(LA\_CODE)
-
-separate energy\_consumption\_fitted, by(LA\_CODE)
-
-graph twoway (scatter energy\_consumption1-energy\_consumption80 income\_est) ///
-	
-	(line energy\_consumption\_fitted1-energy\_consumption\_fitted80 income\_est) ///
-	
-	(lfit energy\_consumption income\_est, ///
-	
-	color(black) lwidth(thick) lpattern(dash)), legend(off) , legend(off) 
-    \end{alltt}
+    \begin{CVerbatim}[fontsize=\tiny]
+. xi: regress energy_consumption income_est i.LA_CODE
+. predict energy_consumption_fitted
+(option xb assumed; fitted values)
+. separate energy_consumption, by(LA_CODE)
+. separate energy_consumption_fitted, by(LA_CODE)
+. graph twoway (scatter energy_consumption1-energy_consumption80 income_est) ///
+>         (line energy_consumption_fitted1-energy_consumption_fitted80 income_est) ///
+>         (lfit energy_consumption income_est, ///
+>         color(black) lwidth(thick) lpattern(dash)), legend(off) 
+    \end{CVerbatim}
     
     \begin{figure}
-    \includegraphics[width=8cm]{../stata_code/fe.png}
+    \includegraphics[width=7cm]{../stata_code/fe.png}
     \centering
     \end{figure}
-  \end{frame}
+\end{frame}
   
-  \begin{frame}
+\begin{frame}[fragile]
     \frametitle{Applying Panel Data Methods to Other Data Structures}
     \framesubtitle{Comparing OLS with Fixed Effects Models}
     \tiny
-    \begin{alltt}
-      esttab ols fe using table1.tex, replace
-    \end{alltt}
-    \small
-    \input{../stata_code/table1.tex}
-    
-  \end{frame}
+    \begin{CVerbatim}[fontsize=\tiny]
+. esttab ols fe
+
+--------------------------------------------
+                      (1)             (2)   
+             energy_con~n    energy_con~n   
+--------------------------------------------
+income_est          11.68***        20.11***
+                  (52.60)         (84.86)   
+
+_cons             16142.1***      11040.1***
+                 (115.81)         (75.75)   
+--------------------------------------------
+N                    7133            7133   
+--------------------------------------------
+t statistics in parentheses
+* p<0.05, ** p<0.01, *** p<0.001
+    \end{CVerbatim}
+
+\end{frame}
 
 \end{document}
