@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{environ}
+\usepackage{mathtools}
+
+\usepackage{fvrb-ex}
+
+
+
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+
+
+\fvset{gobble=0,numbersep=3pt}
+\fvset{numbers=left,frame=single}
+%\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{commandchars=§µ¶}
+\DefineVerbatimEnvironment%
+{CVerbatim}{Verbatim}
+{fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl,formatcom=\color{blue}}
+
+\begin{document}
+
+\title{MPP-C6: Statistics II}
+\author{Prof. Jan C. Minx}
+%\institute[HSoG]{Hertie School of Governance}
+%\titlegraphic{\includegraphics[width=2cm]{HSOG_logo.png}}
+\date{15 October 2015}
+\maketitle
+
+\end{document}
