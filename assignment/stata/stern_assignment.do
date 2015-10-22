@@ -1,5 +1,71 @@
 clear all
 set more off
-capture log close
 
+*set directory
 cd "C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata"
+
+*set up log file (close any existing logs first)
+capture log close
+log using stern_assignment.log, replace text
+
+/*load the data (delimiters can be either tab or space or a combination,
+collapse tells stata to treat a combination of delimiters as one delimiter 
+*/
+import delimited ../data/stern2.dat, delimiters("\t ",collapse)
+
+*summarise the data
+sum
+
+*histogram gdp and sopc (do we need to transform them
+hist gdpppp
+hist sopc
+
+*create new transformed variables and squared term
+cap gen lgdp = log(gdpppp)
+cap gen lsopc = log(sopc)
+cap gen lgdpsq = lgdp*lgdp
+
+*inspect the distribution of the new variables
+hist lgdp
+hist gdpppp
+
+*plot lgdp and lsopc
+twoway (scatter lsopc lgdp)
+
+*regress using pooled ols
+reg lsopc lgdp lgdpsq
+est store pooled
+*graphical inspection for heteroscedasticity
+rvfplot
+*labeling countries might show if country effects are driving het
+rvfplot, yline(0) mlabel(country)
+*do a Breusch-Pagan test for heteroscedasticity
+estat hettest
+
+*set up panel
+xtset country year
+
+*fixed effects regression
+xtreg lsopc lgdp lgdpsq, fe
+est store fix
+cap predict fitted, xb
+cap predict residual_e, e
+
+scatter residual_e fitted, yline(0) mlabel(country)
+
+*random effects regression
+xtreg lsopc lgdp lgdpsq, re
+est store ran
+predict r_fitted, xb
+predict r_residual_e, e
+
+scatter r_residual_e r_fitted, yline(0) mlabel(country)
+
+
+*conduct a hausman test
+hausman fix ran
+
+esttab pooled fix ran
+
+
+capture log close
