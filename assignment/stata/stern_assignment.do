@@ -24,6 +24,8 @@ hist sopc
 cap gen lgdp = log(gdpppp)
 cap gen lsopc = log(sopc)
 cap gen lgdpsq = lgdp*lgdp
+cap gen country_year = string(country) + "_" + string(year)
+* year
 
 *inspect the distribution of the new variables
 hist lgdp
@@ -37,8 +39,8 @@ reg lsopc lgdp lgdpsq
 est store pooled
 *graphical inspection for heteroscedasticity
 rvfplot
-*labeling countries might show if country effects are driving het
-rvfplot, yline(0) mlabel(country)
+*labeling countries might show if country effects are driving heteroscedasticity
+rvfplot, yline(0) mlabel(country_year)
 *do a Breusch-Pagan test for heteroscedasticity
 estat hettest
 
@@ -51,7 +53,7 @@ est store fix
 cap predict fitted, xb
 cap predict residual_e, e
 
-scatter residual_e fitted, yline(0) mlabel(country)
+scatter residual_e fitted, yline(0) mlabel(country_year)
 
 *random effects regression
 xtreg lsopc lgdp lgdpsq, re
@@ -59,7 +61,7 @@ est store ran
 predict r_fitted, xb
 predict r_residual_e, e
 
-scatter r_residual_e r_fitted, yline(0) mlabel(country)
+scatter r_residual_e r_fitted, yline(0) mlabel(country_year)
 
 
 *conduct a hausman test
