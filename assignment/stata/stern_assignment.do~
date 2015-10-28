@@ -34,7 +34,6 @@ hist gdpppp
 *plot lgdp and lsopc
 twoway (scatter lsopc lgdp)
 
-
 *regress using pooled ols
 reg lsopc lgdp lgdpsq
 est store pooled
