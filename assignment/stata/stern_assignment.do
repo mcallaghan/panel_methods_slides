@@ -42,6 +42,7 @@ est store pooled
 rvfplot
 *labeling countries might show if country effects are driving heteroscedasticity
 rvfplot, yline(0) mlabel(country_year)
+graph export pooled.png, replace
 *do a Breusch-Pagan test for heteroscedasticity
 estat hettest
 
@@ -55,6 +56,7 @@ cap predict fitted, xb
 cap predict residual_e, e
 
 scatter residual_e fitted, yline(0) mlabel(country_year)
+graph export fe.png, replace
 
 *random effects regression
 xtreg lsopc lgdp lgdpsq, re
@@ -63,6 +65,7 @@ predict r_fitted, xb
 predict r_residual_e, e
 
 scatter r_residual_e r_fitted, yline(0) mlabel(country_year)
+graph export re.png, replace
 
 
 *conduct a hausman test
