@@ -1,8 +1,9 @@
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment.log
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment.log
   log type:  text
- opened on:  22 Oct 2015, 12:53:12
+ opened on:  28 Oct 2015, 12:42:46
 
 . 
 . /*load the data (delimiters can be either tab or space or a combination,
@@ -59,6 +60,7 @@
 . twoway (scatter lsopc lgdp)
 
 . 
+. 
 . *regress using pooled ols
 . reg lsopc lgdp lgdpsq
 
@@ -82,11 +84,11 @@
 . *graphical inspection for heteroscedasticity
 . rvfplot
 
-. *labeling countries might show if country effects are driving heteroscedasticity
+. *labeling countries might show if country effects are driving heteroscedastici
+> ty
 . rvfplot, yline(0) mlabel(country_year)
 
 . graph export pooled.png, replace
-(note: file pooled.png not found)
 (file pooled.png written in PNG format)
 
 . *do a Breusch-Pagan test for heteroscedasticity
@@ -144,7 +146,6 @@ F test that all u_i=0: F(73, 2218) = 174.06                  Prob > F = 0.0000
 . scatter residual_e fitted, yline(0) mlabel(country_year)
 
 . graph export fe.png, replace
-(note: file fe.png not found)
 (file fe.png written in PNG format)
 
 . 
@@ -184,7 +185,6 @@ corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
 . scatter r_residual_e r_fitted, yline(0) mlabel(country_year)
 
 . graph export re.png, replace
-(note: file re.png not found)
 (file re.png written in PNG format)
 
 . 
@@ -209,23 +209,53 @@ corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
                 Prob>chi2 =      0.0435
 
 . 
-. esttab pooled fix ran
+. *First difference
+. reg D.lsopc D.lgdp D.lgdpsq, noconstant
 
-------------------------------------------------------------
-                      (1)             (2)             (3)   
-                    lsopc           lsopc           lsopc   
-------------------------------------------------------------
-lgdp                1.821***        3.253***        3.266***
-                   (4.16)          (9.21)          (9.34)   
+      Source |       SS           df       MS      Number of obs   =     2,220
+-------------+----------------------------------   F(2, 2218)      =     23.67
+       Model |  3.52188216         2  1.76094108   Prob > F        =    0.0000
+    Residual |  165.031008     2,218  .074405324   R-squared       =    0.0209
+-------------+----------------------------------   Adj R-squared   =    0.0200
+       Total |   168.55289     2,220  .075924725   Root MSE        =    .27277
 
-lgdpsq            -0.0418          -0.153***       -0.152***
-                  (-1.54)         (-7.16)         (-7.20)   
+------------------------------------------------------------------------------
+     D.lsopc |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |
+         D1. |   2.081773   .7397481     2.81   0.005      .631102    3.532445
+             |
+      lgdpsq |
+         D1. |  -.0917739   .0461154    -1.99   0.047    -.1822078     -.00134
+------------------------------------------------------------------------------
 
-_cons              -17.03***       -21.24***       -21.38***
-                  (-9.72)        (-14.53)        (-14.71)   
-------------------------------------------------------------
-N                    2294            2294            2294   
-------------------------------------------------------------
+. est store FD
+
+. 
+. 
+. esttab pooled fix ran FD
+
+----------------------------------------------------------------------------
+                      (1)             (2)             (3)             (4)   
+                    lsopc           lsopc           lsopc         D.lsopc   
+----------------------------------------------------------------------------
+lgdp                1.821***        3.253***        3.266***                
+                   (4.16)          (9.21)          (9.34)                   
+
+lgdpsq            -0.0418          -0.153***       -0.152***                
+                  (-1.54)         (-7.16)         (-7.20)                   
+
+D.lgdp                                                              2.082** 
+                                                                   (2.81)   
+
+D.lgdpsq                                                          -0.0918*  
+                                                                  (-1.99)   
+
+_cons              -17.03***       -21.24***       -21.38***                
+                  (-9.72)        (-14.53)        (-14.71)                   
+----------------------------------------------------------------------------
+N                    2294            2294            2294            2220   
+----------------------------------------------------------------------------
 t statistics in parentheses
 * p<0.05, ** p<0.01, *** p<0.001
 

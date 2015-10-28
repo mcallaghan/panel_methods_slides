@@ -71,7 +71,12 @@ graph export re.png, replace
 *conduct a hausman test
 hausman fix ran
 
-esttab pooled fix ran
+*First difference
+reg D.lsopc D.lgdp D.lgdpsq, noconstant
+est store FD
+
+
+esttab pooled fix ran FD
 
 
 capture log close
