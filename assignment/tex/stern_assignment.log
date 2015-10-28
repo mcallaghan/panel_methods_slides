@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.10)  28 OCT 2015 11:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.10)  28 OCT 2015 12:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -327,23 +327,26 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./stern_assignment.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-(./stern_assignment.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(./stern_assignment.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
+ [2] [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
+ (./stern_assignment.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
 Package rerunfilecheck Info: File `stern_assignment.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
  ) 
 Here is how much of TeX's memory you used:
- 6468 strings out of 495028
- 97644 string characters out of 6181497
- 220627 words of memory out of 5000000
- 9633 multiletter control sequences out of 15000+600000
+ 6474 strings out of 495028
+ 97690 string characters out of 6181497
+ 231661 words of memory out of 5000000
+ 9636 multiletter control sequences out of 15000+600000
  10413 words of font info for 38 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  36i,8n,38p,377b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -355,10 +358,10 @@ dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmtt12.pfb>
-Output written on stern_assignment.pdf (2 pages, 90730 bytes).
+Output written on stern_assignment.pdf (3 pages, 96115 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 19 named destinations out of 1000 (max. 500000)
+ 77 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
+ 22 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

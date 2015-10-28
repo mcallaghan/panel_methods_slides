@@ -19,12 +19,12 @@
 	You aim to reproduce the results of Stern and Common (2001) which sought to investigate the presence of an environmental Kuznets curve (EKC) for sulfur emissions. The EKC hypothesis ``proposes that there is an inverted U-shape relation between various indicators of environmental degradation and income per capita"\cite{stern2001there}.
 	
 	\subsection*{Dataset}
-	The dataset ....dat contains country data from 1960-1990. The dataset contains the following variables
+	The dataset stern2.dat contains country data from 1960-1990. The dataset contains the following variables
 	\begin{itemize}
 	\item \textit{year} is the year in which the country was observed 
-	\item \textit{country} gives a numerical code that uniquely identifies each country (see table ..)
+	\item \textit{country} gives a numerical code that uniquely identifies each country (see table 1)
 	\item \textit{pop} gives the population of the country in the given year
-	\item \textit{so} describes \(SO_2\) emissions (unit???)
+	\item \textit{so} describes \(SO_2\) emissions
 	\item \textit{gdpppp} describes the GDP per capita (purchasing power parity) in real 1990 interantional dollars
 	\item \textit{sopc} describes \(SO_2\) per capita
 	\item \textit{oe} is a dummy variable describing oecd membership where 1000 represents membership and 2000 represents non-membership
@@ -37,15 +37,15 @@
 	
 	\item Start by examining your data. What sort of distribution do our variables of interest display? What transformations could we apply to the data? If necessary, create new variables that are appropriately transformed.
 	
-	\item Plot GDP per capita against sulphur emissions per capita (transformed if necessary). Describe the relationship you can see.
+	\item Plot GDP per capita against sulfur emissions per capita (transformed if necessary). Describe the relationship you can see.
 	
-	\item Write the equation for a model that could estimate an EKC for sulphur emissions. Create any extra variables that would be necessary to run this.
+	\item Write the equation for a model that could estimate an EKC for sulfur emissions. Create any extra variables that would be necessary to run this.
 	
 	\item Carry out a pooled regression using the equation described in question 3. Interpret the coefficients.
 	
-	\item Use stata's rvfplot command to visually inspect the results of your pooled OLS model for evidence of heteroskedasticity. Report your impression.
+	\item Use stata's -rvfplot- command to visually inspect the results of your pooled OLS model for evidence of heteroskedasticity. Report your impression.
 	
-	\item Run fixed-effects and random-effects models and interpret the results
+	\item Run fixed-effects and random-effects models and interpret the results.
 	
 	\item Discuss which of the three models run would be preferable.
 	
@@ -55,7 +55,58 @@
 	
 	\item Comment on any differences between the models you have run.
 	
+	\item Discuss whether we can observe an EKC for sulfur emissions with reference to your results.
+	
 	\end{enumerate}
+	
+	\begin{table}[h!]\caption{Country Codes}\label{tab:imp}
+	\begin{center}
+	
+\begin{tabular}{|l|c|l|c|}
+
+\hline
+
+1 & ALGERIA     &       95  &JAPAN       \\
+14& EGYPT       &       97  &KOREA,      \\
+18& GHANA       &       98  &KUWAIT      \\
+22& KENYA       &       100 &MALAYSIA    \\
+25& MADAGASCAR  &       102 &MYANMAR    \\
+30& MOROCCO     &       106 &PHILIPPINES     \\
+31& MOZAMBIQUE  &       108 &SAUDI ARABIA    \\
+32& NAMIBIA     &       109 &SINGAPORE   \\
+34& NIGERIA     &       110 &SRI LANKA   \\
+41& SAFRICA     &       111 &SYRIA       \\
+44& TANZANIA    &       112 &TAIWAN      \\
+46& TUNISIA     &       113 &THAILAND    \\
+48& ZAIRE       &       116 &AUSTRIA     \\
+49& ZAMBIA      &       117 &BELGIUM    \\
+50& ZIMBABWE    &       119 &CYPRUS      \\
+52& BARBADOS    &       120 &CZECHOSLOVAKIA  \\
+54& CANADA      &       121 &DENMARK     \\
+60& GUATEMALA   &       122 &FINLAND    \\
+62& HONDURAS    &       123 &FRANCE      \\
+64& MEXICO      &       125 &WGERMANY    \\
+65& NICARAGUA   &       126 &GREECE      \\
+71& TRINIDAD\&TOBAGO&       129 &IRELAND    \\
+72& U.S.A.      &       130 &ITALY       \\
+73& ARGENTINA   &       131 &LUXEMBOURG  \\
+74& BOLIVIA     &       133 &NETHERLANDS     \\
+75& BRAZIL      &       134 &NORWAY      \\
+76& CHILE       &       136 &PORTUGAL    \\
+77& COLOMBIA    &       137 &ROMANIA    \\
+81& PERU        &       138 &SPAIN       \\
+83& URUGUAY     &       139 &SWEDEN      \\
+84& VENEZUELA   &       140 &SWITZERLAND     \\
+88& CHINA       &       141 &TURKEY      \\
+89& HONG KONG   &       142 &U.K.        \\
+90& INDIA       &       143 &USSR        \\
+91& INDONESIA   &       144 &YUGOSLAVIA  \\
+92& IRAN        &       145 &AUSTRALIA   \\
+94& ISRAEL      &       147 &NZ      \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 
 \bibliography{lit_h6}
 \bibliographystyle{plain}
