@@ -3,9 +3,9 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- opened on:   4 Nov 2015, 19:05:41
+ opened on:   4 Nov 2015, 19:15:24
 
-. 
+. ***lstart
 . /*load the data (delimiters can be either tab or space or a combination,
 > collapse tells stata to treat a combination of delimiters as one delimiter 
 > */
@@ -13,7 +13,8 @@
 (8 vars, 2294 obs)
 
 . 
-. * uncomment to remove kuwait drop if country==98
+. * uncomment to remove kuwait 
+. * drop if country==98
 . 
 . *set up panel
 . xtset country year
@@ -22,7 +23,7 @@
                 delta:  1 unit
 
 . 
-. xtdescribe
+. xtdescribe 
 
  country:  1, 14, ..., 147                                   n =         74
     year:  1960, 1961, ..., 1990                             T =         31
@@ -39,41 +40,17 @@ Distribution of T_i:   min      5%     25%       50%       75%     95%     max
  ---------------------------+---------------------------------
        74    100.00         |  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-. xtsum 
+. xtsum sopc gdpppp
 
 Variable         |      Mean   Std. Dev.       Min        Max |    Observations
 -----------------+--------------------------------------------+----------------
-year     overall |      1975   8.946222       1960       1990 |     N =    2294
-         between |                    0       1975       1975 |     n =      74
-         within  |             8.946222       1960       1990 |     T =      31
-                 |                                            |
-country  overall |  90.68919   38.53706          1        147 |     N =    2294
-         between |             38.79165          1        147 |     n =      74
-         within  |                    0   90.68919   90.68919 |     T =      31
-                 |                                            |
-pop      overall |  47466.11   130444.3        231    1133683 |     N =    2294
-         between |             129170.9   244.3226   895756.4 |     n =      74
-         within  |             23428.43  -187957.3   285392.7 |     T =      31
-                 |                                            |
-so       overall |  703.0267   1991.168        .01   14213.89 |     N =    2294
-         between |             1940.638        .79   11709.27 |     n =      74
-         within  |             497.9448  -3639.502   7868.907 |     T =      31
-                 |                                            |
-gdpppp   overall |  5359.908   6244.168        303   80830.76 |     N =    2294
-         between |             5443.544   449.3548    38849.2 |     n =      74
-         within  |             3121.721  -27160.64   47341.46 |     T =      31
-                 |                                            |
 sopc     overall |  .0215023   .0366821   8.90e-07   .4655517 |     N =    2294
          between |             .0337633   .0000997   .2302244 |     n =      74
          within  |             .0148502  -.0996998   .2568297 |     T =      31
                  |                                            |
-oe       overall |  1689.189   462.9264       1000       2000 |     N =    2294
-         between |             465.9848       1000       2000 |     n =      74
-         within  |                    0   1689.189   1689.189 |     T =      31
-                 |                                            |
-v8       overall |         .          .          .          . |     N =       0
-         between |                    .          .          . |     n =       0
-         within  |                    .          .          . |     T =       .
+gdpppp   overall |  5359.908   6244.168        303   80830.76 |     N =    2294
+         between |             5443.544   449.3548    38849.2 |     n =      74
+         within  |             3121.721  -27160.64   47341.46 |     T =      31
 
 . 
 . *histogram gdp and sopc (do we need to transform them
@@ -96,11 +73,11 @@ v8       overall |         .          .          .          . |     N =       0
 
 . cap gen lsopc = log(sopc)
 
-. 
+. ***lend
 . log close
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- closed on:   4 Nov 2015, 19:05:42
+ closed on:   4 Nov 2015, 19:15:25
 --------------------------------------------------------------------------------

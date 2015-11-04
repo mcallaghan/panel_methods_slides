@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q9.log
   log type:  text
- opened on:   4 Nov 2015, 19:05:43
+ opened on:   4 Nov 2015, 19:15:26
 
 . ***lstart
 . 
@@ -126,5 +126,5 @@ corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q9.log
   log type:  text
- closed on:   4 Nov 2015, 19:05:43
+ closed on:   4 Nov 2015, 19:15:27
 --------------------------------------------------------------------------------

@@ -34,7 +34,7 @@ graph export hist_sopc.png, replace
 *create new transformed variables and squared term
 cap gen lgdp = log(gdpppp)
 cap gen lsopc = log(sopc)
-
+***lend
 log close
 
 log using stern_assignment_q3.log, replace text
