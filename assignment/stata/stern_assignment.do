@@ -46,22 +46,10 @@ graph export lsopc_lgdp.png, replace
 *@*lend
 log close
 
-*create squared term
-cap gen lgdpsq = lgdp*lgdp
-
-* create country year var
-cap gen country_year = string(country) + "_" + string(year)
-
-
-*inspect the distribution of the new variables
-hist lgdp
-hist gdpppp
-
-
-
-
 log using stern_assignment_q5.log, replace text
 *@*lstart
+*create squared term
+cap gen lgdpsq = lgdp*lgdp
 *regress using pooled ols
 reg lsopc lgdp lgdpsq
 est store pooled
@@ -93,27 +81,20 @@ log close
 log using stern_assignment_q9.log, replace text
 *@*lstart
 
-xtreg lsopc lgdp lgdpsq, re
-est store ran_world
-mat w = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
-	(-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+eststo ran_world: quietly xtreg lsopc lgdp lgdpsq, re
+estadd scalar tp = _b[lgdp]/(-2*_b[lgdpsq])
+estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
-xtreg lsopc lgdp lgdpsq if oe==1000, re
-est store ran_oecd
-mat o = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
-	(-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+eststo ran_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==1000, re
+estadd scalar tp = _b[lgdp]/(-2*_b[lgdpsq])
+estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
-xtreg lsopc lgdp lgdpsq if oe==2000, re
-est store ran_nonoecd
-mat no = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
-	(-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+eststo ran_non_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==2000, re
+estadd scalar tp = _b[lgdp]/(-2*_b[lgdpsq])
+estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
-mat all = w,o,no
-matrix colnames all = world oecd nonoecd
-matrix rownames all = lgdp lgdpsq tp e_tp
 
-frmttable, statmat(all)
-
+esttab ran_world ran_oecd ran_non_oecd, stats(tp e_tp)
 *@*lend
 log close
 
@@ -125,9 +106,6 @@ est store FD
 
 *@*lend
 log close
-
-
-esttab pooled fix ran FD
 
 
 capture log close
