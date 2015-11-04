@@ -3,11 +3,21 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q3.log
   log type:  text
- opened on:   4 Nov 2015, 14:52:29
+ opened on:   4 Nov 2015, 16:41:18
 
 . 
 . *plot lgdp and lsopc
 . twoway (scatter lsopc lgdp)
 
+. graph export lsopc_lgdp.png, replace
+(note: file lsopc_lgdp.png not found)
+(file lsopc_lgdp.png written in PNG format)
+
 . 
-. cap log close
+. log close
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q3.log
+  log type:  text
+ closed on:   4 Nov 2015, 16:41:19
+--------------------------------------------------------------------------------

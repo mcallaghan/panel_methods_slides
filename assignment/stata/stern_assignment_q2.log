@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- opened on:   4 Nov 2015, 14:52:28
+ opened on:   4 Nov 2015, 16:41:17
 
 . 
 . /*load the data (delimiters can be either tab or space or a combination,
@@ -95,4 +95,10 @@ v8       overall |         .          .          .          . |     N =       0
 . cap gen lsopc = log(sopc)
 
 . 
-. capture log close
+. log close
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q2.log
+  log type:  text
+ closed on:   4 Nov 2015, 16:41:18
+--------------------------------------------------------------------------------
