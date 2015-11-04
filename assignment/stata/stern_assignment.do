@@ -82,15 +82,12 @@ log using stern_assignment_q9.log, replace text
 *@*lstart
 
 eststo ran_world: quietly xtreg lsopc lgdp lgdpsq, re
-estadd scalar tp = _b[lgdp]/(-2*_b[lgdpsq])
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 eststo ran_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==1000, re
-estadd scalar tp = _b[lgdp]/(-2*_b[lgdpsq])
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 eststo ran_non_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==2000, re
-estadd scalar tp = _b[lgdp]/(-2*_b[lgdpsq])
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 
