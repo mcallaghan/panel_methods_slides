@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- opened on:   4 Nov 2015, 16:41:17
+ opened on:   4 Nov 2015, 19:05:41
 
 . 
 . /*load the data (delimiters can be either tab or space or a combination,
@@ -12,6 +12,8 @@
 . import delimited ../data/stern2.dat, delimiters("\t ",collapse)
 (8 vars, 2294 obs)
 
+. 
+. * uncomment to remove kuwait drop if country==98
 . 
 . *set up panel
 . xtset country year
@@ -100,5 +102,5 @@ v8       overall |         .          .          .          . |     N =       0
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- closed on:   4 Nov 2015, 16:41:18
+ closed on:   4 Nov 2015, 19:05:42
 --------------------------------------------------------------------------------

@@ -8,10 +8,15 @@ cd "C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata"
 capture log close
 log using stern_assignment.log, replace text
 
+capture log close
+log using stern_assignment_q2.log, replace text
+
 /*load the data (delimiters can be either tab or space or a combination,
 collapse tells stata to treat a combination of delimiters as one delimiter 
 */
 import delimited ../data/stern2.dat, delimiters("\t ",collapse)
+
+* uncomment to remove kuwait drop if country==98
 
 *set up panel
 xtset country year
@@ -30,8 +35,15 @@ graph export hist_sopc.png, replace
 cap gen lgdp = log(gdpppp)
 cap gen lsopc = log(sopc)
 
+log close
+
+log using stern_assignment_q3.log, replace text
+
 *plot lgdp and lsopc
 twoway (scatter lsopc lgdp)
+graph export lsopc_lgdp.png, replace
+
+log close
 
 *create squared term
 cap gen lgdpsq = lgdp*lgdp
@@ -46,50 +58,72 @@ hist gdpppp
 
 
 
-capture log close
+
 log using stern_assignment_q5.log, replace text
+***lstart
 *regress using pooled ols
 reg lsopc lgdp lgdpsq
 est store pooled
-cap log close
-
-*graphical inspection for heteroscedasticity
-rvfplot
-*labeling countries might show if country effects are driving heteroscedasticity
-rvfplot, yline(0) mlabel(country_year)
-graph export pooled.png, replace
-*do a Breusch-Pagan test for heteroscedasticity
-estat hettest
-
-
-
-xtline
-
-*fixed effects regression
-xtreg lsopc lgdp lgdpsq, fe
-est store fix
-cap predict fitted, xb
-cap predict residual_e, e
-
-scatter residual_e fitted, yline(0) mlabel(country_year)
-graph export fe.png, replace
 
 *random effects regression
 xtreg lsopc lgdp lgdpsq, re
 est store ran
-predict r_fitted, xb
-predict r_residual_e, e
 
-scatter r_residual_e r_fitted, yline(0) mlabel(country_year)
-graph export re.png, replace
+*fixed effects regression
+xtreg lsopc lgdp lgdpsq, fe
+est store fix
 
+***lend
+log close
+
+
+log using stern_assignment_q6.log, replace text
+***lstart
+*conduct a Breusch-Pagan test for heteroscedasticity
+quietly reg lsopc lgdp lgdpsq
+estat hettest
 
 *conduct a hausman test
 hausman fix ran
 
+***lend
+log close
+
+log using stern_assignment_q9.log, replace text
+***lstart
+
+xtreg lsopc lgdp lgdpsq, re
+est store ran_world
+mat w = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
+	(-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+
+xtreg lsopc lgdp lgdpsq if oe==1000, re
+est store ran_oecd
+mat o = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
+	(-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+
+xtreg lsopc lgdp lgdpsq if oe==2000, re
+est store ran_nonoecd
+mat no = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
+	(-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+
+mat all = w,o,no
+matrix colnames all = world oecd nonoecd
+matrix rownames all = lgdp lgdpsq tp e_tp
+
+frmttable, statmat(all)
+
+***lend
+log close
+
+log using stern_assignment_q11.log, replace text
+***lstart
 *First difference
 reg D.lsopc D.lgdp D.lgdpsq, noconstant
 est store FD
+
+***lend
+log close
 
 
 esttab pooled fix ran FD

@@ -1,0 +1,130 @@
+--------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q9.log
+  log type:  text
+ opened on:   4 Nov 2015, 19:05:43
+
+. ***lstart
+. 
+. xtreg lsopc lgdp lgdpsq, re
+
+Random-effects GLS regression                   Number of obs     =      2,294
+Group variable: country                         Number of groups  =         74
+
+R-sq:                                           Obs per group:
+     within  = 0.1481                                         min =         31
+     between = 0.3912                                         avg =       31.0
+     overall = 0.3618                                         max =         31
+
+                                                Wald chi2(2)      =     427.81
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       lsopc |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |   3.266315   .3497687     9.34   0.000     2.580781    3.951849
+      lgdpsq |  -.1520899    .021113    -7.20   0.000    -.1934705   -.1107092
+       _cons |  -21.37886   1.453844   -14.71   0.000    -24.22834   -18.52938
+-------------+----------------------------------------------------------------
+     sigma_u |  1.3905606
+     sigma_e |  .58383059
+         rho |  .85014041   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+. est store ran_world
+
+. mat w = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
+>         (-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+
+. 
+. xtreg lsopc lgdp lgdpsq if oe==1000, re
+
+Random-effects GLS regression                   Number of obs     =        713
+Group variable: country                         Number of groups  =         23
+
+R-sq:                                           Obs per group:
+     within  = 0.3470                                         min =         31
+     between = 0.1076                                         avg =       31.0
+     overall = 0.1479                                         max =         31
+
+                                                Wald chi2(2)      =     368.63
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       lsopc |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |   12.21955   .7285045    16.77   0.000     10.79171     13.6474
+      lgdpsq |  -.6697365   .0411332   -16.28   0.000    -.7503561   -.5891168
+       _cons |  -59.59001   3.226829   -18.47   0.000    -65.91448   -53.26554
+-------------+----------------------------------------------------------------
+     sigma_u |  .68765819
+     sigma_e |  .25802593
+         rho |  .87658312   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+. est store ran_oecd
+
+. mat o = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
+>         (-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+
+. 
+. xtreg lsopc lgdp lgdpsq if oe==2000, re
+
+Random-effects GLS regression                   Number of obs     =      1,581
+Group variable: country                         Number of groups  =         51
+
+R-sq:                                           Obs per group:
+     within  = 0.1490                                         min =         31
+     between = 0.3072                                         avg =       31.0
+     overall = 0.2847                                         max =         31
+
+                                                Wald chi2(2)      =     287.25
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       lsopc |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |   2.399114   .4360389     5.50   0.000     1.544494    3.253735
+      lgdpsq |  -.0950999   .0268871    -3.54   0.000    -.1477977    -.042402
+       _cons |  -18.26462   1.779192   -10.27   0.000    -21.75177   -14.77747
+-------------+----------------------------------------------------------------
+     sigma_u |  1.6195348
+     sigma_e |   .6747042
+         rho |   .8521091   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+. est store ran_nonoecd
+
+. mat no = _b[lgdp]\_b[lgdpsq]\_b[lgdp]/ ///
+>         (-2*_b[lgdpsq])\exp(-_b[lgdp]/(2*_b[lgdpsq]))
+
+. 
+. mat all = w,o,no
+
+. matrix colnames all = world oecd nonoecd
+
+. matrix rownames all = lgdp lgdpsq tp e_tp
+
+. 
+. frmttable, statmat(all)
+
+                  -------------------------------------------
+                              world      oecd     nonoecd   
+                  -------------------------------------------
+                   lgdp       3.27      12.22       2.40    
+                   lgdpsq     -0.15     -0.67      -0.10    
+                   tp         10.74      9.12      12.61    
+                   e_tp     46,078.82  9,160.52  300,636.60 
+                  -------------------------------------------
+
+
+. 
+. ***lend
+. log close
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q9.log
+  log type:  text
+ closed on:   4 Nov 2015, 19:05:43
+--------------------------------------------------------------------------------
