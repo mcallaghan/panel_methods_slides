@@ -1,0 +1,49 @@
+--------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q6.log
+  log type:  text
+ opened on:   4 Nov 2015, 19:05:43
+
+. ***lstart
+. *conduct a Breusch-Pagan test for heteroscedasticity
+. quietly reg lsopc lgdp lgdpsq
+
+. estat hettest
+
+Breusch-Pagan / Cook-Weisberg test for heteroskedasticity 
+         Ho: Constant variance
+         Variables: fitted values of lsopc
+
+         chi2(1)      =   303.50
+         Prob > chi2  =   0.0000
+
+. 
+. *conduct a hausman test
+. hausman fix ran
+
+                 ---- Coefficients ----
+             |      (b)          (B)            (b-B)     sqrt(diag(V_b-V_B))
+             |      fix          ran         Difference          S.E.
+-------------+----------------------------------------------------------------
+        lgdp |    3.252834     3.266315       -.0134814         .050081
+      lgdpsq |   -.1525319    -.1520899        -.000442         .002789
+------------------------------------------------------------------------------
+                           b = consistent under Ho and Ha; obtained from xtreg
+            B = inconsistent under Ha, efficient under Ho; obtained from xtreg
+
+    Test:  Ho:  difference in coefficients not systematic
+
+                  chi2(2) = (b-B)'[(V_b-V_B)^(-1)](b-B)
+                          =        6.27
+                Prob>chi2 =      0.0435
+
+. 
+. ***lend
+. log close
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q6.log
+  log type:  text
+ closed on:   4 Nov 2015, 19:05:43
+--------------------------------------------------------------------------------

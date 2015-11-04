@@ -1,0 +1,39 @@
+--------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q11.log
+  log type:  text
+ opened on:   4 Nov 2015, 19:05:44
+
+. ***lstart
+. *First difference
+. reg D.lsopc D.lgdp D.lgdpsq, noconstant
+
+      Source |       SS           df       MS      Number of obs   =     2,220
+-------------+----------------------------------   F(2, 2218)      =     23.67
+       Model |  3.52188216         2  1.76094108   Prob > F        =    0.0000
+    Residual |  165.031008     2,218  .074405324   R-squared       =    0.0209
+-------------+----------------------------------   Adj R-squared   =    0.0200
+       Total |   168.55289     2,220  .075924725   Root MSE        =    .27277
+
+------------------------------------------------------------------------------
+     D.lsopc |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |
+         D1. |   2.081773   .7397481     2.81   0.005      .631102    3.532445
+             |
+      lgdpsq |
+         D1. |  -.0917739   .0461154    -1.99   0.047    -.1822078     -.00134
+------------------------------------------------------------------------------
+
+. est store FD
+
+. 
+. ***lend
+. log close
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q11.log
+  log type:  text
+ closed on:   4 Nov 2015, 19:05:44
+--------------------------------------------------------------------------------

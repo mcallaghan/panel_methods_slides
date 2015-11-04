@@ -3,8 +3,9 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q5.log
   log type:  text
- opened on:   4 Nov 2015, 13:52:45
+ opened on:   4 Nov 2015, 19:05:43
 
+. ***lstart
 . *regress using pooled ols
 . reg lsopc lgdp lgdpsq
 
@@ -25,10 +26,71 @@
 
 . est store pooled
 
+. 
+. *random effects regression
+. xtreg lsopc lgdp lgdpsq, re
+
+Random-effects GLS regression                   Number of obs     =      2,294
+Group variable: country                         Number of groups  =         74
+
+R-sq:                                           Obs per group:
+     within  = 0.1481                                         min =         31
+     between = 0.3912                                         avg =       31.0
+     overall = 0.3618                                         max =         31
+
+                                                Wald chi2(2)      =     427.81
+corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
+
+------------------------------------------------------------------------------
+       lsopc |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |   3.266315   .3497687     9.34   0.000     2.580781    3.951849
+      lgdpsq |  -.1520899    .021113    -7.20   0.000    -.1934705   -.1107092
+       _cons |  -21.37886   1.453844   -14.71   0.000    -24.22834   -18.52938
+-------------+----------------------------------------------------------------
+     sigma_u |  1.3905606
+     sigma_e |  .58383059
+         rho |  .85014041   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+
+. est store ran
+
+. 
+. *fixed effects regression
+. xtreg lsopc lgdp lgdpsq, fe
+
+Fixed-effects (within) regression               Number of obs     =      2,294
+Group variable: country                         Number of groups  =         74
+
+R-sq:                                           Obs per group:
+     within  = 0.1481                                         min =         31
+     between = 0.3903                                         avg =       31.0
+     overall = 0.3611                                         max =         31
+
+                                                F(2,2218)         =     192.87
+corr(u_i, Xb)  = 0.2231                         Prob > F          =     0.0000
+
+------------------------------------------------------------------------------
+       lsopc |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        lgdp |   3.252834   .3533359     9.21   0.000      2.55993    3.945737
+      lgdpsq |  -.1525319   .0212964    -7.16   0.000    -.1942948   -.1107689
+       _cons |  -21.23976   1.462225   -14.53   0.000    -24.10723   -18.37228
+-------------+----------------------------------------------------------------
+     sigma_u |  1.4342211
+     sigma_e |  .58383059
+         rho |  .85784832   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(73, 2218) = 174.06                  Prob > F = 0.0000
+
+. est store fix
+
+. 
+. ***lend
 . log close
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q5.log
   log type:  text
- closed on:   4 Nov 2015, 13:52:45
+ closed on:   4 Nov 2015, 19:05:43
 --------------------------------------------------------------------------------
