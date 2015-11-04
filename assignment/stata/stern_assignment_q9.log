@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q9.log
   log type:  text
- opened on:   4 Nov 2015, 20:08:32
+ opened on:   4 Nov 2015, 20:10:23
 
 . *@*lstart
 . 
@@ -32,7 +32,7 @@ added scalar:
 
 . 
 . 
-. esttab ran_world ran_oecd ran_non_oecd, stats(tp e_tp)
+. esttab ran_world ran_oecd ran_non_oecd, stats(e_tp)
 
 ------------------------------------------------------------
                       (1)             (2)             (3)   
@@ -47,7 +47,6 @@ lgdpsq             -0.152***       -0.670***      -0.0951***
 _cons              -21.38***       -59.59***       -18.26***
                  (-14.71)        (-18.47)        (-10.27)   
 ------------------------------------------------------------
-tp                                                          
 e_tp              46078.8          9160.5        300636.6   
 ------------------------------------------------------------
 t statistics in parentheses
@@ -59,5 +58,5 @@ t statistics in parentheses
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q9.log
   log type:  text
- closed on:   4 Nov 2015, 20:08:32
+ closed on:   4 Nov 2015, 20:10:24
 --------------------------------------------------------------------------------

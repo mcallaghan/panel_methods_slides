@@ -91,7 +91,7 @@ eststo ran_non_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==2000, re
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 
-esttab ran_world ran_oecd ran_non_oecd, stats(tp e_tp)
+esttab ran_world ran_oecd ran_non_oecd, stats(e_tp)
 *@*lend
 log close
 
