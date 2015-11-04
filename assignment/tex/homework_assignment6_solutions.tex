@@ -25,7 +25,7 @@
   includerangemarker = false, %
   title = \footnotesize\ttfamily\color{blue}\emph{Interactive Stata Example}, %
   captionpos = t, %
-  linerange = opened-log\ close, %
+  rangeprefix=***, %
   %belowcaptionskip = -0.08in, %
   label={bla}
 }
@@ -67,11 +67,11 @@
 		
 	\item \textbf{Start by examining your data. Try out some descriptive statistics of the xt command family and report relevant ones. What sort of distribution do our variables of interest display? What transformations could we apply to the data? If necessary, create new variables that are appropriately transformed.}
 	
-	\lstinputlisting[linerange={opened-log\ close}]{../stata/stern_assignment_q2.log}
+	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q2.log}
 	
 	\item \textbf{Plot GDP per capita against sulfur emissions per capita (transformed if necessary). Describe the relationship you can see.}
 	
-	\lstinputlisting[linerange={opened-log\ close}]{../stata/stern_assignment_q3.log}
+	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q3.log}
 	
 	 \begin{figure}
       \includegraphics[width=12cm]{../stata/lsopc_lgdp.png}
@@ -85,19 +85,25 @@
 	
 	\item \textbf{Carry out a pooled regression using the equation described in question 3. Interpret the coefficients. Run fixed-effects and random-effects models and interpret the results.}
 	
-		\lstinputlisting[linerange={opened-log\ close}]{../stata/stern_assignment_q5.log}
+		\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q5.log}
 	
 	\item Test which of the three models is preferable. Perform other relevant diagnostics for the model of choice. Is it appropriate to include time-fixed effects in the model?
+	
+	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q6.log}
 	
 	\item What is heterogeneity bias and is it relevant according to your results? [conceptual question]
 	
 	\item A high Hausman statistic implies that there is correlation between country effects and income variables. What could be the most likely cause of this problem? [conceptual question]
 		
 	\item Compute the relevant turning points of the estimated curves for the world, OECD and non-OECD regressions. Summarize your results in a table.
+	
+	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q9.log}
 		
 	\item Discuss why first-differencing may be a more appropriate method for the data.
 	
 	\item Estimate the model for the ``world'' using first-differences and interpret the results.
+	
+	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q11.log}
 	
 	\item Comment on any differences between the models you have run.
 	
