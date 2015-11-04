@@ -3,9 +3,9 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q6.log
   log type:  text
- opened on:   4 Nov 2015, 19:15:26
+ opened on:   4 Nov 2015, 19:17:25
 
-. ***lstart
+. *@*lstart
 . *conduct a Breusch-Pagan test for heteroscedasticity
 . quietly reg lsopc lgdp lgdpsq
 
@@ -39,11 +39,11 @@ Breusch-Pagan / Cook-Weisberg test for heteroskedasticity
                 Prob>chi2 =      0.0435
 
 . 
-. ***lend
+. *@*lend
 . log close
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q6.log
   log type:  text
- closed on:   4 Nov 2015, 19:15:26
+ closed on:   4 Nov 2015, 19:17:25
 --------------------------------------------------------------------------------

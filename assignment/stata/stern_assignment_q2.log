@@ -3,9 +3,9 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- opened on:   4 Nov 2015, 19:15:24
+ opened on:   4 Nov 2015, 19:17:22
 
-. ***lstart
+. *@*lstart
 . /*load the data (delimiters can be either tab or space or a combination,
 > collapse tells stata to treat a combination of delimiters as one delimiter 
 > */
@@ -73,11 +73,11 @@ gdpppp   overall |  5359.908   6244.168        303   80830.76 |     N =    2294
 
 . cap gen lsopc = log(sopc)
 
-. ***lend
+. *@*lend
 . log close
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q2.log
   log type:  text
- closed on:   4 Nov 2015, 19:15:25
+ closed on:   4 Nov 2015, 19:17:24
 --------------------------------------------------------------------------------

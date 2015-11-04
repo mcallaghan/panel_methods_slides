@@ -3,9 +3,9 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q11.log
   log type:  text
- opened on:   4 Nov 2015, 19:15:27
+ opened on:   4 Nov 2015, 19:17:25
 
-. ***lstart
+. *@*lstart
 . *First difference
 . reg D.lsopc D.lgdp D.lgdpsq, noconstant
 
@@ -29,11 +29,11 @@
 . est store FD
 
 . 
-. ***lend
+. *@*lend
 . log close
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q11.log
   log type:  text
- closed on:   4 Nov 2015, 19:15:27
+ closed on:   4 Nov 2015, 19:17:25
 --------------------------------------------------------------------------------

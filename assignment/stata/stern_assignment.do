@@ -10,19 +10,20 @@ log using stern_assignment.log, replace text
 
 capture log close
 log using stern_assignment_q2.log, replace text
-
+*@*lstart
 /*load the data (delimiters can be either tab or space or a combination,
 collapse tells stata to treat a combination of delimiters as one delimiter 
 */
 import delimited ../data/stern2.dat, delimiters("\t ",collapse)
 
-* uncomment to remove kuwait drop if country==98
+* uncomment to remove kuwait 
+* drop if country==98
 
 *set up panel
 xtset country year
 
-xtdescribe
-xtsum 
+xtdescribe 
+xtsum sopc gdpppp
 
 *histogram gdp and sopc (do we need to transform them
 hist gdpppp, normal kdensity
@@ -34,15 +35,15 @@ graph export hist_sopc.png, replace
 *create new transformed variables and squared term
 cap gen lgdp = log(gdpppp)
 cap gen lsopc = log(sopc)
-***lend
+*@*lend
 log close
 
 log using stern_assignment_q3.log, replace text
-
+*@*lstart
 *plot lgdp and lsopc
 twoway (scatter lsopc lgdp)
 graph export lsopc_lgdp.png, replace
-
+*@*lend
 log close
 
 *create squared term
@@ -60,7 +61,7 @@ hist gdpppp
 
 
 log using stern_assignment_q5.log, replace text
-***lstart
+*@*lstart
 *regress using pooled ols
 reg lsopc lgdp lgdpsq
 est store pooled
@@ -73,12 +74,12 @@ est store ran
 xtreg lsopc lgdp lgdpsq, fe
 est store fix
 
-***lend
+*@*lend
 log close
 
 
 log using stern_assignment_q6.log, replace text
-***lstart
+*@*lstart
 *conduct a Breusch-Pagan test for heteroscedasticity
 quietly reg lsopc lgdp lgdpsq
 estat hettest
@@ -86,11 +87,11 @@ estat hettest
 *conduct a hausman test
 hausman fix ran
 
-***lend
+*@*lend
 log close
 
 log using stern_assignment_q9.log, replace text
-***lstart
+*@*lstart
 
 xtreg lsopc lgdp lgdpsq, re
 est store ran_world
@@ -113,16 +114,16 @@ matrix rownames all = lgdp lgdpsq tp e_tp
 
 frmttable, statmat(all)
 
-***lend
+*@*lend
 log close
 
 log using stern_assignment_q11.log, replace text
-***lstart
+*@*lstart
 *First difference
 reg D.lsopc D.lgdp D.lgdpsq, noconstant
 est store FD
 
-***lend
+*@*lend
 log close
 
 
