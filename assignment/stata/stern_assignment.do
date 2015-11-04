@@ -4,9 +4,6 @@ set more off
 *set directory
 cd "C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata"
 
-*set up log file (close any existing logs first)
-capture log close
-log using stern_assignment.log, replace text
 
 capture log close
 log using stern_assignment_q2.log, replace text
@@ -61,7 +58,6 @@ est store ran
 *fixed effects regression
 xtreg lsopc lgdp lgdpsq, fe
 est store fix
-
 *@*lend
 log close
 
@@ -80,7 +76,6 @@ log close
 
 log using stern_assignment_q9.log, replace text
 *@*lstart
-
 eststo ran_world: quietly xtreg lsopc lgdp lgdpsq, re
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
@@ -89,7 +84,6 @@ estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 eststo ran_non_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==2000, re
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
-
 
 esttab ran_world ran_oecd ran_non_oecd, stats(e_tp)
 *@*lend
@@ -100,7 +94,6 @@ log using stern_assignment_q11.log, replace text
 *First difference
 reg D.lsopc D.lgdp D.lgdpsq, noconstant
 est store FD
-
 *@*lend
 log close
 
