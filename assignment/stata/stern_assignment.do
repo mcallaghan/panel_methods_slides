@@ -13,31 +13,46 @@ collapse tells stata to treat a combination of delimiters as one delimiter
 */
 import delimited ../data/stern2.dat, delimiters("\t ",collapse)
 
-*summarise the data
-sum
+*set up panel
+xtset country year
+
+xtdescribe
+xtsum 
 
 *histogram gdp and sopc (do we need to transform them
-hist gdpppp
-hist sopc
+hist gdpppp, normal kdensity
+graph export hist_gdp.png, replace
+hist sopc, normal kdensity
+graph export hist_sopc.png, replace
+
 
 *create new transformed variables and squared term
 cap gen lgdp = log(gdpppp)
 cap gen lsopc = log(sopc)
+
+*plot lgdp and lsopc
+twoway (scatter lsopc lgdp)
+
+*create squared term
 cap gen lgdpsq = lgdp*lgdp
+
+* create country year var
 cap gen country_year = string(country) + "_" + string(year)
-* year
+
 
 *inspect the distribution of the new variables
 hist lgdp
 hist gdpppp
 
-*plot lgdp and lsopc
-twoway (scatter lsopc lgdp)
 
 
+capture log close
+log using stern_assignment_q5.log, replace text
 *regress using pooled ols
 reg lsopc lgdp lgdpsq
 est store pooled
+cap log close
+
 *graphical inspection for heteroscedasticity
 rvfplot
 *labeling countries might show if country effects are driving heteroscedasticity
@@ -46,8 +61,9 @@ graph export pooled.png, replace
 *do a Breusch-Pagan test for heteroscedasticity
 estat hettest
 
-*set up panel
-xtset country year
+
+
+xtline
 
 *fixed effects regression
 xtreg lsopc lgdp lgdpsq, fe

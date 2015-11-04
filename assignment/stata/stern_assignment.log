@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment.log
   log type:  text
- opened on:  28 Oct 2015, 12:42:46
+ opened on:   4 Nov 2015, 13:14:53
 
 . 
 . /*load the data (delimiters can be either tab or space or a combination,
@@ -13,40 +13,100 @@
 (8 vars, 2294 obs)
 
 . 
-. *summarise the data
-. sum
+. *set up panel
+. xtset country year
+       panel variable:  country (strongly balanced)
+        time variable:  year, 1960 to 1990
+                delta:  1 unit
 
-    Variable |        Obs        Mean    Std. Dev.       Min        Max
--------------+---------------------------------------------------------
-        year |      2,294        1975    8.946222       1960       1990
-     country |      2,294    90.68919    38.53706          1        147
-         pop |      2,294    47466.11    130444.3        231    1133683
-          so |      2,294    703.0267    1991.168        .01   14213.89
-      gdpppp |      2,294    5359.908    6244.168        303   80830.76
--------------+---------------------------------------------------------
-        sopc |      2,294    .0215023    .0366821   8.90e-07   .4655517
-          oe |      2,294    1689.189    462.9264       1000       2000
-          v8 |          0
+. 
+. xtdescribe
+
+ country:  1, 14, ..., 147                                   n =         74
+    year:  1960, 1961, ..., 1990                             T =         31
+           Delta(year) = 1 unit
+           Span(year)  = 31 periods
+           (country*year uniquely identifies each observation)
+
+Distribution of T_i:   min      5%     25%       50%       75%     95%     max
+                        31      31      31        31        31      31      31
+
+     Freq.  Percent    Cum. |  Pattern
+ ---------------------------+---------------------------------
+       74    100.00  100.00 |  1111111111111111111111111111111
+ ---------------------------+---------------------------------
+       74    100.00         |  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+. xtsum 
+
+Variable         |      Mean   Std. Dev.       Min        Max |    Observations
+-----------------+--------------------------------------------+----------------
+year     overall |      1975   8.946222       1960       1990 |     N =    2294
+         between |                    0       1975       1975 |     n =      74
+         within  |             8.946222       1960       1990 |     T =      31
+                 |                                            |
+country  overall |  90.68919   38.53706          1        147 |     N =    2294
+         between |             38.79165          1        147 |     n =      74
+         within  |                    0   90.68919   90.68919 |     T =      31
+                 |                                            |
+pop      overall |  47466.11   130444.3        231    1133683 |     N =    2294
+         between |             129170.9   244.3226   895756.4 |     n =      74
+         within  |             23428.43  -187957.3   285392.7 |     T =      31
+                 |                                            |
+so       overall |  703.0267   1991.168        .01   14213.89 |     N =    2294
+         between |             1940.638        .79   11709.27 |     n =      74
+         within  |             497.9448  -3639.502   7868.907 |     T =      31
+                 |                                            |
+gdpppp   overall |  5359.908   6244.168        303   80830.76 |     N =    2294
+         between |             5443.544   449.3548    38849.2 |     n =      74
+         within  |             3121.721  -27160.64   47341.46 |     T =      31
+                 |                                            |
+sopc     overall |  .0215023   .0366821   8.90e-07   .4655517 |     N =    2294
+         between |             .0337633   .0000997   .2302244 |     n =      74
+         within  |             .0148502  -.0996998   .2568297 |     T =      31
+                 |                                            |
+oe       overall |  1689.189   462.9264       1000       2000 |     N =    2294
+         between |             465.9848       1000       2000 |     n =      74
+         within  |                    0   1689.189   1689.189 |     T =      31
+                 |                                            |
+v8       overall |         .          .          .          . |     N =       0
+         between |                    .          .          . |     n =       0
+         within  |                    .          .          . |     T =       .
 
 . 
 . *histogram gdp and sopc (do we need to transform them
-. hist gdpppp
+. hist gdpppp, normal kdensity
 (bin=33, start=303, width=2440.2351)
 
-. hist sopc
+. graph export hist_gdp.png, replace
+(file hist_gdp.png written in PNG format)
+
+. hist sopc, normal kdensity
 (bin=33, start=8.900e-07, width=.0141076)
 
+. graph export hist_sopc.png, replace
+(file hist_sopc.png written in PNG format)
+
+. 
 . 
 . *create new transformed variables and squared term
 . cap gen lgdp = log(gdpppp)
 
 . cap gen lsopc = log(sopc)
 
+. 
+. *plot lgdp and lsopc
+. twoway (scatter lsopc lgdp)
+
+. 
+. *create squared term
 . cap gen lgdpsq = lgdp*lgdp
 
+. 
+. * create country year var
 . cap gen country_year = string(country) + "_" + string(year)
 
-. * year
+. 
 . 
 . *inspect the distribution of the new variables
 . hist lgdp
@@ -56,209 +116,6 @@
 (bin=33, start=303, width=2440.2351)
 
 . 
-. *plot lgdp and lsopc
-. twoway (scatter lsopc lgdp)
-
-. 
-. 
-. *regress using pooled ols
-. reg lsopc lgdp lgdpsq
-
-      Source |       SS           df       MS      Number of obs   =     2,294
--------------+----------------------------------   F(2, 2291)      =    679.91
-       Model |  3019.46587         2  1509.73294   Prob > F        =    0.0000
-    Residual |  5087.10815     2,291  2.22047497   R-squared       =    0.3725
--------------+----------------------------------   Adj R-squared   =    0.3719
-       Total |  8106.57402     2,293  3.53535718   Root MSE        =    1.4901
-
-------------------------------------------------------------------------------
-       lsopc |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        lgdp |    1.82093   .4380234     4.16   0.000     .9619664    2.679894
-      lgdpsq |  -.0417549   .0271007    -1.54   0.124    -.0948993    .0113895
-       _cons |  -17.02817   1.752482    -9.72   0.000    -20.46478   -13.59155
-------------------------------------------------------------------------------
-
-. est store pooled
-
-. *graphical inspection for heteroscedasticity
-. rvfplot
-
-. *labeling countries might show if country effects are driving heteroscedastici
-> ty
-. rvfplot, yline(0) mlabel(country_year)
-
-. graph export pooled.png, replace
-(file pooled.png written in PNG format)
-
-. *do a Breusch-Pagan test for heteroscedasticity
-. estat hettest
-
-Breusch-Pagan / Cook-Weisberg test for heteroskedasticity 
-         Ho: Constant variance
-         Variables: fitted values of lsopc
-
-         chi2(1)      =   303.50
-         Prob > chi2  =   0.0000
-
-. 
-. *set up panel
-. xtset country year
-       panel variable:  country (strongly balanced)
-        time variable:  year, 1960 to 1990
-                delta:  1 unit
-
-. 
-. *fixed effects regression
-. xtreg lsopc lgdp lgdpsq, fe
-
-Fixed-effects (within) regression               Number of obs     =      2,294
-Group variable: country                         Number of groups  =         74
-
-R-sq:                                           Obs per group:
-     within  = 0.1481                                         min =         31
-     between = 0.3903                                         avg =       31.0
-     overall = 0.3611                                         max =         31
-
-                                                F(2,2218)         =     192.87
-corr(u_i, Xb)  = 0.2231                         Prob > F          =     0.0000
-
-------------------------------------------------------------------------------
-       lsopc |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        lgdp |   3.252834   .3533359     9.21   0.000      2.55993    3.945737
-      lgdpsq |  -.1525319   .0212964    -7.16   0.000    -.1942948   -.1107689
-       _cons |  -21.23976   1.462225   -14.53   0.000    -24.10723   -18.37228
--------------+----------------------------------------------------------------
-     sigma_u |  1.4342211
-     sigma_e |  .58383059
-         rho |  .85784832   (fraction of variance due to u_i)
-------------------------------------------------------------------------------
-F test that all u_i=0: F(73, 2218) = 174.06                  Prob > F = 0.0000
-
-. est store fix
-
-. cap predict fitted, xb
-
-. cap predict residual_e, e
-
-. 
-. scatter residual_e fitted, yline(0) mlabel(country_year)
-
-. graph export fe.png, replace
-(file fe.png written in PNG format)
-
-. 
-. *random effects regression
-. xtreg lsopc lgdp lgdpsq, re
-
-Random-effects GLS regression                   Number of obs     =      2,294
-Group variable: country                         Number of groups  =         74
-
-R-sq:                                           Obs per group:
-     within  = 0.1481                                         min =         31
-     between = 0.3912                                         avg =       31.0
-     overall = 0.3618                                         max =         31
-
-                                                Wald chi2(2)      =     427.81
-corr(u_i, X)   = 0 (assumed)                    Prob > chi2       =     0.0000
-
-------------------------------------------------------------------------------
-       lsopc |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        lgdp |   3.266315   .3497687     9.34   0.000     2.580781    3.951849
-      lgdpsq |  -.1520899    .021113    -7.20   0.000    -.1934705   -.1107092
-       _cons |  -21.37886   1.453844   -14.71   0.000    -24.22834   -18.52938
--------------+----------------------------------------------------------------
-     sigma_u |  1.3905606
-     sigma_e |  .58383059
-         rho |  .85014041   (fraction of variance due to u_i)
-------------------------------------------------------------------------------
-
-. est store ran
-
-. predict r_fitted, xb
-
-. predict r_residual_e, e
-
-. 
-. scatter r_residual_e r_fitted, yline(0) mlabel(country_year)
-
-. graph export re.png, replace
-(file re.png written in PNG format)
-
-. 
-. 
-. *conduct a hausman test
-. hausman fix ran
-
-                 ---- Coefficients ----
-             |      (b)          (B)            (b-B)     sqrt(diag(V_b-V_B))
-             |      fix          ran         Difference          S.E.
--------------+----------------------------------------------------------------
-        lgdp |    3.252834     3.266315       -.0134814         .050081
-      lgdpsq |   -.1525319    -.1520899        -.000442         .002789
-------------------------------------------------------------------------------
-                           b = consistent under Ho and Ha; obtained from xtreg
-            B = inconsistent under Ha, efficient under Ho; obtained from xtreg
-
-    Test:  Ho:  difference in coefficients not systematic
-
-                  chi2(2) = (b-B)'[(V_b-V_B)^(-1)](b-B)
-                          =        6.27
-                Prob>chi2 =      0.0435
-
-. 
-. *First difference
-. reg D.lsopc D.lgdp D.lgdpsq, noconstant
-
-      Source |       SS           df       MS      Number of obs   =     2,220
--------------+----------------------------------   F(2, 2218)      =     23.67
-       Model |  3.52188216         2  1.76094108   Prob > F        =    0.0000
-    Residual |  165.031008     2,218  .074405324   R-squared       =    0.0209
--------------+----------------------------------   Adj R-squared   =    0.0200
-       Total |   168.55289     2,220  .075924725   Root MSE        =    .27277
-
-------------------------------------------------------------------------------
-     D.lsopc |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-        lgdp |
-         D1. |   2.081773   .7397481     2.81   0.005      .631102    3.532445
-             |
-      lgdpsq |
-         D1. |  -.0917739   .0461154    -1.99   0.047    -.1822078     -.00134
-------------------------------------------------------------------------------
-
-. est store FD
-
-. 
-. 
-. esttab pooled fix ran FD
-
-----------------------------------------------------------------------------
-                      (1)             (2)             (3)             (4)   
-                    lsopc           lsopc           lsopc         D.lsopc   
-----------------------------------------------------------------------------
-lgdp                1.821***        3.253***        3.266***                
-                   (4.16)          (9.21)          (9.34)                   
-
-lgdpsq            -0.0418          -0.153***       -0.152***                
-                  (-1.54)         (-7.16)         (-7.20)                   
-
-D.lgdp                                                              2.082** 
-                                                                   (2.81)   
-
-D.lgdpsq                                                          -0.0918*  
-                                                                  (-1.99)   
-
-_cons              -17.03***       -21.24***       -21.38***                
-                  (-9.72)        (-14.53)        (-14.71)                   
-----------------------------------------------------------------------------
-N                    2294            2294            2294            2220   
-----------------------------------------------------------------------------
-t statistics in parentheses
-* p<0.05, ** p<0.01, *** p<0.001
-
 . 
 . 
 . capture log close
