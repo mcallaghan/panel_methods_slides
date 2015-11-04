@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q5.log
   log type:  text
- opened on:   4 Nov 2015, 13:14:55
+ opened on:   4 Nov 2015, 13:52:45
 
 . *regress using pooled ols
 . reg lsopc lgdp lgdpsq
@@ -25,4 +25,10 @@
 
 . est store pooled
 
-. cap log close
+. log close
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
+> nt\stata\stern_assignment_q5.log
+  log type:  text
+ closed on:   4 Nov 2015, 13:52:45
+--------------------------------------------------------------------------------
