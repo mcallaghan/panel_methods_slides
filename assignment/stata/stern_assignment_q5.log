@@ -3,7 +3,7 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q5.log
   log type:  text
- opened on:   4 Nov 2015, 20:10:23
+ opened on:   4 Nov 2015, 20:12:10
 
 . *@*lstart
 . *create squared term
@@ -88,12 +88,11 @@ F test that all u_i=0: F(73, 2218) = 174.06                  Prob > F = 0.0000
 
 . est store fix
 
-. 
 . *@*lend
 . log close
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q5.log
   log type:  text
- closed on:   4 Nov 2015, 20:10:23
+ closed on:   4 Nov 2015, 20:12:11
 --------------------------------------------------------------------------------

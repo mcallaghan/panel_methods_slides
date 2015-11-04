@@ -3,10 +3,9 @@
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q9.log
   log type:  text
- opened on:   4 Nov 2015, 20:10:23
+ opened on:   4 Nov 2015, 20:12:11
 
 . *@*lstart
-. 
 . eststo ran_world: quietly xtreg lsopc lgdp lgdpsq, re
 
 . estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
@@ -30,7 +29,6 @@ added scalar:
 added scalar:
                e(e_tp) =  300636.6
 
-. 
 . 
 . esttab ran_world ran_oecd ran_non_oecd, stats(e_tp)
 
@@ -58,5 +56,5 @@ t statistics in parentheses
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
 > nt\stata\stern_assignment_q9.log
   log type:  text
- closed on:   4 Nov 2015, 20:10:24
+ closed on:   4 Nov 2015, 20:12:11
 --------------------------------------------------------------------------------
