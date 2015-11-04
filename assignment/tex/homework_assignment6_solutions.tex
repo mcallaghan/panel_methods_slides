@@ -6,6 +6,7 @@
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{graphicx}
 
 
 \usepackage{fvrb-ex}
@@ -17,9 +18,20 @@
 {fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example}}
 \DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl,formatcom=\color{blue}}
 
+
 \lstset{ %
-  basicstyle=\footnotesize\ttfamily\color{blue}
+  basicstyle=\tiny\ttfamily\color{blue}, %
+  frame=single, %
+  includerangemarker = false, %
+  title = \footnotesize\ttfamily\color{blue}\emph{Interactive Stata Example}, %
+  captionpos = t, %
+  linerange = opened-log\ close, %
+  %belowcaptionskip = -0.08in, %
+  label={bla}
 }
+
+\lstnewenvironment{stata}
+  {label=blabla}{}
 
 \begin{document}
 
@@ -51,13 +63,24 @@
 	\subsection*{Questions}
 	
 	\begin{enumerate}
-	\item Read the paper by Stern and Common. Explain the EKC hypothesis in your own words. What is the difference between sulfur and carbon emissions in the empirical discussion and why? What is the authors' perceived contribution to the discussion? What is the role of panel data therein? [conceptual question]
+	\item \textbf{Read the paper by Stern and Common. Explain the EKC hypothesis in your own words. What is the difference between sulfur and carbon emissions in the empirical discussion and why? What is the authors' perceived contribution to the discussion? What is the role of panel data therein? [conceptual question]}
 		
-	\item Start by examining your data. Try out some descriptive statistics of the xt command family and report relevant ones. What sort of distribution do our variables of interest display? What transformations could we apply to the data? If necessary, create new variables that are appropriately transformed.
+	\item \textbf{Start by examining your data. Try out some descriptive statistics of the xt command family and report relevant ones. What sort of distribution do our variables of interest display? What transformations could we apply to the data? If necessary, create new variables that are appropriately transformed.}
 	
-	\item Plot GDP per capita against sulfur emissions per capita (transformed if necessary). Describe the relationship you can see.
+	\lstinputlisting[linerange={opened-log\ close}]{../stata/stern_assignment_q2.log}
+	
+	\item \textbf{Plot GDP per capita against sulfur emissions per capita (transformed if necessary). Describe the relationship you can see.}
+	
+	\lstinputlisting[linerange={opened-log\ close}]{../stata/stern_assignment_q3.log}
+	
+	 \begin{figure}
+      %\includegraphics[width=12cm]{../stata/graph_scan-1.png}
+      \caption{Intercept = -3.93, Slope = 0.34}
+    \end{figure}
 	
 	\item Write the equation for a model that could estimate an EKC for sulfur emissions. Create any extra variables that would be necessary to run this.
+	
+	
 	
 	\item Carry out a pooled regression using the equation described in question 3. Interpret the coefficients. Run fixed-effects and random-effects models and interpret the results.
 	
@@ -79,7 +102,19 @@
 	
 	\end{enumerate}
 	
-	\lstinputlisting[linerange={8-26}]{../stata/stern_assignment_q5.log}
+
+	\lstinputlisting[linerange={opened-log\ close}]{../stata/stern_assignment_q5.log}
+	
+\fvset{fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example}}
+\verbatiminput{../stata/stern_assignment_q5.log}
+
+\begin{CVerbatim}
+\input{../stata/stern_assignment_q5.log}
+\end{CVerbatim}
+
+
+	
+	%\stata[linerange={8-26}]{../stata/stern_assignment_q5.log}
 	
 	\begin{table}[h!]\caption{Country Codes}\label{tab:imp}
 	\begin{center}

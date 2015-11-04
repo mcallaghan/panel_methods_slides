@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.10)  4 NOV 2015 14:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.10)  4 NOV 2015 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,6 +312,23 @@ Package color Info: Driver file: pdftex.def on input line 130.
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 \Gread@gobject=\count119
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fvrb-ex.sty
 Package: fvrb-ex 2010/05/16
 
@@ -329,27 +346,33 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \FV@OutFile=\write3
 )
 \ttyin=\read3
-) (./homework_assignment6_solutions.aux)
+) (./homework_assignment6_solutions.aux
+
+LaTeX Warning: Label `bla' multiply defined.
+
+
+LaTeX Warning: Label `bla' multiply defined.
+
+)
 \openout1 = `homework_assignment6_solutions.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 \AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring OFF on input line 24.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package hyperref Info: Link coloring OFF on input line 36.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -357,9 +380,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
 
 (./homework_assignment6_solutions.out) (./homework_assignment6_solutions.out)
 \@outlinefile=\write4
@@ -370,140 +393,196 @@ LaTeX Info: Redefining \nameref on input line 24.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count125
-\scratchdimen=\dimen120
+\scratchdimen=\dimen122
 \scratchbox=\box33
 \nofMPsegments=\count126
 \nofMParguments=\count127
 \everyMPshowfont=\toks23
 \MPscratchCnt=\count128
-\MPscratchDim=\dimen121
+\MPscratchDim=\dimen123
 \MPnumerator=\count129
 \makeMPintoPDFobject=\count130
 \everyMPtoPDFconversion=\toks24
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
-Overfull \hbox (1.79381pt too wide) in paragraph at lines 33--33
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Overfull \hbox (1.79381pt too wide) in paragraph at lines 45--45
  [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 54.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
  [1
 
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 82.
- (../stata/stern_assignment_q5.log [2]
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 11--12
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (../stata/stern_assignment
+_q2.log [2])
+(../stata/stern_assignment_q3.log) [3] (../stata/stern_assignment_q5.log)
+File: ../stata/stern_assignment_q5.log  (verbatim)
+
+Overfull \hbox (41.63947pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
+-----------------------[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 12--13
-[][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (41.63947pt too wide) in paragraph at lines 109--109
+[]       \OT1/cmtt/m/n/10.95 log:  C:\Users\m.callaghan\Documents\GitHub\panel_
+methods_slides\assignme[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 13--14
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]      \OT1/cmtt/m/n/10.95 Source |       SS           df       MS      Number
+ of obs   =     2,294[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 14--15
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 -------------+----------------------------------   F(2, 2
+291)      =    679.91[] 
+ []
+
+[4]
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]       \OT1/cmtt/m/n/10.95 Model |  3019.46587         2  1509.73294   Prob >
+ F        =    0.0000[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 15--16
-[][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]    \OT1/cmtt/m/n/10.95 Residual |  5087.10815     2,291  2.22047497   R-squa
+red       =    0.3725[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 16--18
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 -------------+----------------------------------   Adj R-
+squared   =    0.3719[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 18--19
-[][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]       \OT1/cmtt/m/n/10.95 Total |  8106.57402     2,293  3.53535718   Root M
+SE        =    1.4901[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 19--20
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
+---------------------[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 20--21
-[][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]       \OT1/cmtt/m/n/10.95 lsopc |      Coef.   Std. Err.      t    P>|t|    
+ [95% Conf. Interval][] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 21--22
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 -------------+-------------------------------------------
+---------------------[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 22--23
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]        \OT1/cmtt/m/n/10.95 lgdp |    1.82093   .4380234     4.16   0.000    
+ .9619664    2.679894[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 23--24
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]      \OT1/cmtt/m/n/10.95 lgdpsq |  -.0417549   .0271007    -1.54   0.124    
+-.0948993    .0113895[] 
  []
 
 
-Overfull \hbox (24.00311pt too wide) in paragraph at lines 24--26
-[][][][] 
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]       \OT1/cmtt/m/n/10.95 _cons |  -17.02817   1.752482    -9.72   0.000    
+-20.46478   -13.59155[] 
  []
 
-)
+
+Overfull \hbox (30.14209pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
+---------------------[] 
+ []
+
+
+Overfull \hbox (41.63947pt too wide) in paragraph at lines 109--109
+[]       \OT1/cmtt/m/n/10.95 log:  C:\Users\m.callaghan\Documents\GitHub\panel_
+methods_slides\assignme[] 
+ []
+
+
+Overfull \hbox (41.63947pt too wide) in paragraph at lines 109--109
+[]\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
+-----------------------[] 
+ []
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (./homework_assignment6_solutions.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
- [3] [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
+ [5] [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
 
 (./homework_assignment6_solutions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 171.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
 Package rerunfilecheck Info: File `homework_assignment6_solutions.out' has not 
 changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 136.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
  ) 
 Here is how much of TeX's memory you used:
- 8708 strings out of 495028
- 130570 string characters out of 6181497
- 295435 words of memory out of 5000000
- 11809 multiletter control sequences out of 15000+600000
- 11187 words of font info for 41 fonts, out of 8000000 for 9000
+ 9142 strings out of 495028
+ 137633 string characters out of 6181497
+ 335324 words of memory out of 5000000
+ 12106 multiletter control sequences out of 15000+600000
+ 12027 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,8n,38p,737b,1656s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,8n,38p,737b,1779s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt9.pfb>
-Output written on homework_assignment6_solutions.pdf (4 pages, 129141 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on homework_assignment6_solutions.pdf (6 pages, 171560 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
- 44 named destinations out of 1000 (max. 500000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
+ 151 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
