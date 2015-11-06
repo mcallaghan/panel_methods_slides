@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.10)  6 NOV 2015 10:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.6.10)  6 NOV 2015 12:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -444,26 +444,26 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (../stata/stern_assignment
 _q2.log [2])
-<../stata/hist_gdp.png, id=78, 479.7925pt x 348.30125pt>
+<../stata/hist_gdp.png, id=78, 1004.75375pt x 730.73pt>
 File: ../stata/hist_gdp.png Graphic file (type png)
 
 <use ../stata/hist_gdp.png>
 Package pdftex.def Info: ../stata/hist_gdp.png used on input line 73.
-(pdftex.def)             Requested size: 284.52756pt x 206.55357pt.
+(pdftex.def)             Requested size: 284.52756pt x 206.92221pt.
 
-<../stata/hist_sopc.png, id=79, 479.7925pt x 348.30125pt>
+<../stata/hist_sopc.png, id=79, 1004.75375pt x 730.73pt>
 File: ../stata/hist_sopc.png Graphic file (type png)
 
 <use ../stata/hist_sopc.png>
 Package pdftex.def Info: ../stata/hist_sopc.png used on input line 78.
-(pdftex.def)             Requested size: 284.52756pt x 206.55357pt.
+(pdftex.def)             Requested size: 284.52756pt x 206.92221pt.
  (../stata/stern_assignment_q3.log) [3 <../stata/hist_gdp.png (PNG copy)>]
-<../stata/lsopc_lgdp.png, id=116, 479.7925pt x 348.30125pt>
+<../stata/lsopc_lgdp.png, id=116, 1004.75375pt x 730.73pt>
 File: ../stata/lsopc_lgdp.png Graphic file (type png)
 
 <use ../stata/lsopc_lgdp.png>
 Package pdftex.def Info: ../stata/lsopc_lgdp.png used on input line 91.
-(pdftex.def)             Requested size: 341.43306pt x 247.86429pt.
+(pdftex.def)             Requested size: 341.43306pt x 248.31111pt.
  (../stata/stern_assignment_q5.log [4 <../stata/hist_sopc.png (PNG copy)>] [5 <
 ../stata/lsopc_lgdp.png (PNG copy)>])
 (../stata/stern_assignment_q6.log) [6] (../stata/stern_assignment_q9.log
@@ -472,13 +472,13 @@ Package pdftex.def Info: ../stata/lsopc_lgdp.png used on input line 91.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (./homework_assignment6_solutions.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
  [9] [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
 
 (./homework_assignment6_solutions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
 Package rerunfilecheck Info: File `homework_assignment6_solutions.out' has not 
 changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -486,11 +486,11 @@ changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
  9320 strings out of 495028
- 140703 string characters out of 6181497
+ 140697 string characters out of 6181497
  322312 words of memory out of 5000000
  12124 multiletter control sequences out of 15000+600000
  11523 words of font info for 43 fonts, out of 8000000 for 9000
@@ -509,7 +509,7 @@ onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
 
-Output written on homework_assignment6_solutions.pdf (10 pages, 215919 bytes).
+Output written on homework_assignment6_solutions.pdf (10 pages, 286432 bytes).
 PDF statistics:
  461 PDF objects out of 1000 (max. 8388607)
  428 compressed objects within 5 object streams
