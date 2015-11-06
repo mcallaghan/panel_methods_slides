@@ -99,57 +99,33 @@
 	
 	\item \textbf{Carry out a pooled regression using the equation described in question 3. Interpret the coefficients. Run fixed-effects and random-effects models and interpret the results.}
 
-	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q5.log}
-	
-	A Pooled regression finds a positive, significant coefficient for the linear GDP term. The squared GDP term is negative but insignificant. We would estimate the turning point of the EKC as \[ \tau = \exp\left(\frac{-\beta_1}{2\cdot\beta_2}\right) = 2949748538 \] This is far outside our sample and an unreasonable value for GDP per capita.
+	A Pooled regression finds a positive, significant coefficient for the linear GDP term. If GDP per capita increases by 1\% we expect to see a 1.82\% increase in sulphur emissions per capita. The squared GDP term is negative but insignificant.
 
-	Both fixed effects models and random effects models find larger effects for both the linear term and the squared term, and the squared term is significant in each. In the case of the fixed effects model the turning point is estimated as 42736.09, the turning point in the random effects model is estimated as 46078.71.
+	Both fixed effects models and random effects models find larger effects for both the linear term and the squared term, and the squared term is significant in each. We can compute the turning point as \(\frac{\beta_1}{2\cdot\beta_2} \)
 	
-	\item \textbf{Test which of the three models is preferable. Perform other relevant diagnostics for the model of choice. Is it appropriate to include time-fixed effects in the model?}
+		\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q5.log}
+	
+	\item Test which of the three models is preferable. Perform other relevant diagnostics for the model of choice. Is it appropriate to include time-fixed effects in the model?
 	
 	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q6.log}
 	
-	A Breusch-Pagan test conducted on the pooled OLS model informs us that we should reject the null hypothesis that the model does not suffer from heteroskedasticity. This means that we should consider fixed effects and random effects models.
+	\item What is heterogeneity bias and is it relevant according to your results? [conceptual question]
 	
-	A Hausman test compares the coefficients of the fixed and random effects models. It finds that the difference between them is significant. A significant difference indicates that the random effects model is esti-
-mated inconsistently, due to correlation between the explanatory variables and the
-error components.	We should therefore prefer a fixed-effects model.
-	
-	\item \textbf{What is heterogeneity bias and is it relevant according to your results? [conceptual question]}
-	
-	Heterogeneity bias comes from ignoring the individual or time-specific effects that exist among cross-sectional or time-series units but are not captured by the included explanatory variables. If the characteristics of individual countries in our dataset that are not captured by our explanatory variables have an effect on sulphur emissions, then a pooled OLS reression will be biased.
-	
-	\item \textbf{A high Hausman statistic implies that there is correlation between country effects and income variables. What could be the most likely cause of this problem? [conceptual question]}
-	
-	This could be caused by country attributes that both make countries richer and affect their sulphur emissions.
+	\item A high Hausman statistic implies that there is correlation between country effects and income variables. What could be the most likely cause of this problem? [conceptual question]
 		
-	\item \textbf{Compute the relevant turning points of the estimated curves for the world, OECD and non-OECD regressions. Summarize your results in a table.}
+	\item Compute the relevant turning points of the estimated curves for the world, OECD and non-OECD regressions. Summarize your results in a table.
 	
 	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q9.log}
 		
-	\item \textbf{Discuss why first-differencing may be a more appropriate method for the data.}
+	\item Discuss why first-differencing may be a more appropriate method for the data.
 	
-	Differencing reduces the serial correlation and removes the country effects that are related to the specifica-
-tion problems in the levels model. If there are omitted integrated variables the first
-differences estimator is consistent.
-	
-	\item \textbf{Estimate the model for the ``world'' using first-differences and interpret the results.}
+	\item Estimate the model for the ``world'' using first-differences and interpret the results.
 	
 	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q11.log}
 	
-	A first differencing model shows a smaller coefficient for both the linear and squared gdp terms, though both are significant. The turning point is estimated as 84276.43
+	\item Comment on any differences between the models you have run.
 	
-	\item \textbf{Comment on any differences between the models you have run.}
-	
-	Pooled OLS found no significant turning point for an EKC for sulfur emissions. 
-	
-	Fixed and random effects models estimated similar turning points at around 43000 and 46000 respectively, though we preferred fixed-effects based on a high Hausman statistic. Further analysis showed that the fixed-effects estimate was highly dependent on the sample. Excluding or including OECD and non-OECD countries changed the turning point estimate significantly. 
-	
-	A first differencing model, which may be preferable, estimated a much higher turning point close to 84000. 
-	
-	\item \textbf{Discuss whether we can observe an EKC for sulfur emissions with reference to your results.}
-	
-	We can conclude that a single global EKC model is misspecified. The estimation of the turning point is heavily dependent on the countries in the sample. However, fixed-effects, random-effects and first-difference models all find a significant turning point for sulfur emissions, though for first-difference model the turning point is higher than the maximum GDP value in the sample.
+	\item Discuss whether we can observe an EKC for sulfur emissions with reference to your results.
 	
 	\end{enumerate}
 	
