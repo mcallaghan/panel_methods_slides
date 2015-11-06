@@ -1,51 +1,50 @@
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q9.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q9.log
   log type:  text
- opened on:   4 Nov 2015, 20:12:11
+ opened on:   6 Nov 2015, 11:20:37
 
 . *@*lstart
-. eststo ran_world: quietly xtreg lsopc lgdp lgdpsq, re
+. eststo ran_world, title("World"): quietly xtreg lsopc lgdp lgdpsq, fe
 
 . estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 added scalar:
-               e(e_tp) =  46078.823
+               e(e_tp) =  42736.155
 
 . 
-. eststo ran_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==1000, re
+. eststo ran_oecd, title("OECD"): quietly xtreg lsopc lgdp lgdpsq if oe==1000, fe
 
 . estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 added scalar:
-               e(e_tp) =  9160.52
+               e(e_tp) =  9147.0899
 
 . 
-. eststo ran_non_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==2000, re
+. eststo ran_non_oecd, title("Non-OECD"): quietly xtreg lsopc lgdp lgdpsq if oe==2000, fe
 
 . estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
 added scalar:
-               e(e_tp) =  300636.6
+               e(e_tp) =  257479.18
 
 . 
-. esttab ran_world ran_oecd ran_non_oecd, stats(e_tp)
+. esttab ran_world ran_oecd ran_non_oecd, stats(e_tp) mtitle
 
 ------------------------------------------------------------
                       (1)             (2)             (3)   
-                    lsopc           lsopc           lsopc   
+                    World            OECD        Non-OECD   
 ------------------------------------------------------------
-lgdp                3.266***        12.22***        2.399***
-                   (9.34)         (16.77)          (5.50)   
+lgdp                3.253***        12.24***        2.410***
+                   (9.21)         (16.76)          (5.47)   
 
-lgdpsq             -0.152***       -0.670***      -0.0951***
-                  (-7.20)        (-16.28)         (-3.54)   
+lgdpsq             -0.153***       -0.671***      -0.0967***
+                  (-7.16)        (-16.28)         (-3.57)   
 
-_cons              -21.38***       -59.59***       -18.26***
-                 (-14.71)        (-18.47)        (-10.27)   
+_cons              -21.24***       -59.69***       -18.25***
+                 (-14.53)        (-18.46)        (-10.23)   
 ------------------------------------------------------------
-e_tp              46078.8          9160.5        300636.6   
+e_tp              42736.2          9147.1        257479.2   
 ------------------------------------------------------------
 t statistics in parentheses
 * p<0.05, ** p<0.01, *** p<0.001
@@ -53,8 +52,7 @@ t statistics in parentheses
 . *@*lend
 . log close
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q9.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q9.log
   log type:  text
- closed on:   4 Nov 2015, 20:12:11
---------------------------------------------------------------------------------
+ closed on:   6 Nov 2015, 11:20:37
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

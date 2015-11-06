@@ -1,9 +1,8 @@
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q11.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q11.log
   log type:  text
- opened on:   4 Nov 2015, 20:12:11
+ opened on:   6 Nov 2015, 11:20:37
 
 . *@*lstart
 . *First difference
@@ -31,8 +30,7 @@
 . *@*lend
 . log close
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q11.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q11.log
   log type:  text
- closed on:   4 Nov 2015, 20:12:11
---------------------------------------------------------------------------------
+ closed on:   6 Nov 2015, 11:20:37
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

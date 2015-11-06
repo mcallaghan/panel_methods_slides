@@ -76,16 +76,16 @@ log close
 
 log using stern_assignment_q9.log, replace text
 *@*lstart
-eststo ran_world: quietly xtreg lsopc lgdp lgdpsq, re
+eststo ran_world, title("World"): quietly xtreg lsopc lgdp lgdpsq, fe
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
-eststo ran_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==1000, re
+eststo ran_oecd, title("OECD"): quietly xtreg lsopc lgdp lgdpsq if oe==1000, fe
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
-eststo ran_non_oecd: quietly xtreg lsopc lgdp lgdpsq if oe==2000, re
+eststo ran_non_oecd, title("Non-OECD"): quietly xtreg lsopc lgdp lgdpsq if oe==2000, fe
 estadd scalar e_tp = exp(-_b[lgdp]/(2*_b[lgdpsq]))
 
-esttab ran_world ran_oecd ran_non_oecd, stats(e_tp)
+esttab ran_world ran_oecd ran_non_oecd, stats(e_tp) mtitle
 *@*lend
 log close
 

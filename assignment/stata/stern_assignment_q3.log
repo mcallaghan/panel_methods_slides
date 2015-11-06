@@ -1,9 +1,8 @@
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q3.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q3.log
   log type:  text
- opened on:   4 Nov 2015, 20:12:10
+ opened on:   6 Nov 2015, 11:20:36
 
 . *@*lstart
 . *plot lgdp and lsopc
@@ -15,8 +14,7 @@
 . *@*lend
 . log close
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q3.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q3.log
   log type:  text
- closed on:   4 Nov 2015, 20:12:10
---------------------------------------------------------------------------------
+ closed on:   6 Nov 2015, 11:20:37
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

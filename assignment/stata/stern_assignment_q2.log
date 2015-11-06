@@ -1,9 +1,8 @@
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q2.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q2.log
   log type:  text
- opened on:   4 Nov 2015, 20:12:09
+ opened on:   6 Nov 2015, 11:20:35
 
 . *@*lstart
 . /*load the data (delimiters can be either tab or space or a combination,
@@ -76,8 +75,7 @@ gdpppp   overall |  5359.908   6244.168        303   80830.76 |     N =    2294
 . *@*lend
 . log close
       name:  <unnamed>
-       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\assignme
-> nt\stata\stern_assignment_q2.log
+       log:  C:\Users\m.callaghan\Documents\Github\panel_methods_slides\assignment\stata\stern_assignment_q2.log
   log type:  text
- closed on:   4 Nov 2015, 20:12:10
---------------------------------------------------------------------------------
+ closed on:   6 Nov 2015, 11:20:36
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
