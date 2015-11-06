@@ -64,6 +64,12 @@
 	
 	\begin{enumerate}
 	\item \textbf{Read the paper by Stern and Common. Explain the EKC hypothesis in your own words. What is the difference between sulfur and carbon emissions in the empirical discussion and why? What is the authors' perceived contribution to the discussion? What is the role of panel data therein? [conceptual question]}
+	
+	The EKC hypothesis estimates that an inverted U-shape describes the relationship between income per capita and measures of environmental degradation. In other words, at low levels of income, increases in income will be associated with increases in environmental degradation, but as income rises, the effect will become smaller until a turning point, beyond which increases in income per capita will lead to decreases in environmental degradation.
+	
+	It was thought that carbon had a high turning point and sulfur had a low turning point, because the externalities of carbon emissions are global, whereas the externalities of sulfur emissions are local.
+	
+	The authors believe that previous estimates of an EKC for sulfur underestimate the turning point by relying on a sample of higher income countries. Panel data helps to control for time and country effects.
 		
 	\item \textbf{Start by examining your data. Try out some descriptive statistics of the xt command family and report relevant ones. What sort of distribution do our variables of interest display? What transformations could we apply to the data? If necessary, create new variables that are appropriately transformed.}
 	
@@ -79,13 +85,13 @@
       \caption{Sopc distribution}
     \end{figure}
 
-	Both variables are right-skewed, so a log transformation is appropriate.
+	Both variables are right-skewed (see figures 1 and 2), so a log transformation is appropriate.
 	
 	\item \textbf{Plot GDP per capita against sulfur emissions per capita (transformed if necessary). Describe the relationship you can see.}
-
-	At low levels of income, a positive effect of GDP per capita on sulphur emissions per capita is clearly visible. There seems to be some sign of a turning point, but it is not unambiguous.
 	
 	\lstinputlisting[linerange={lstart-lend}]{../stata/stern_assignment_q3.log}
+	
+	At low levels of income, a positive effect of GDP per capita on sulphur emissions per capita is clearly visible. There seems to be some sign of a turning point, but it is not unambiguous (see figure 3).
 	
 	 \begin{figure}
       \includegraphics[width=12cm]{../stata/lsopc_lgdp.png}
@@ -94,7 +100,7 @@
 	
 	\item \textbf{Write the equation for a model that could estimate an EKC for sulfur emissions. Create any extra variables that would be necessary to run this.}
 	
-	\[ \ln{SO_i} = \beta_0 + \beta_1 lsopc + \beta_2 lsopc^2\]
+	\[ \ln{SO_i} = \beta_0 + \beta_1 lgdp + \beta_2 lgdp^2\]
 	
 	
 	\item \textbf{Carry out a pooled regression using the equation described in question 3. Interpret the coefficients. Run fixed-effects and random-effects models and interpret the results.}
