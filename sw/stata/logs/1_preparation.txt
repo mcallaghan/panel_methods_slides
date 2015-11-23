@@ -8,7 +8,7 @@
              log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\s
       > tata\logs\1_preparation.smcl
         log type:  smcl
-       opened on:  23 Nov 2015, 14:29:15
+       opened on:  23 Nov 2015, 15:34:49
       
      1 . *@*lstart
       > set more 1;

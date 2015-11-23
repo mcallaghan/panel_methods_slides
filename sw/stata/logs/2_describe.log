@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\2_describe.log
+  log type:  text
+ opened on:  23 Nov 2015, 20:30:10
+
+. *@*lstart;
+. ***********************************;
+. * Results on Page 1;
+. **********************************;
+. sort black;
+
+. summarize deny if (black==1);
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+        deny |       339    .2831858    .4512119          0          1
+
+. summarize deny if (black==0);
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+        deny |      2041    .0926017    .2899445          0          1
+
+. *@*lend;
+. cap log close;

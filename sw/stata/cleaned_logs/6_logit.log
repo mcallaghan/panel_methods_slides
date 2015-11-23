@@ -1,0 +1,80 @@
+. ** col(2) - Logit with robust standard errors;
+. logit deny i.black `controls', r;
+
+Iteration 0:   log pseudolikelihood =  -872.0853  
+Iteration 1:   log pseudolikelihood = -672.05096  
+Iteration 2:   log pseudolikelihood = -656.94676  
+Iteration 3:   log pseudolikelihood = -636.05789  
+Iteration 4:   log pseudolikelihood = -635.63857  
+Iteration 5:   log pseudolikelihood = -635.63667  
+Iteration 6:   log pseudolikelihood = -635.63667  
+
+Logistic regression                               Number of obs   =       2380
+                                                  Wald chi2(10)   =     265.96
+                                                  Prob > chi2     =     0.0000
+Log pseudolikelihood = -635.63667                 Pseudo R2       =     0.2711
+
+------------------------------------------------------------------------------
+             |               Robust
+        deny |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     1.black |   .6884231   .1821237     3.78   0.000     .3314673    1.045379
+      pi_rat |   4.764416   1.329396     3.58   0.000     2.158848    7.369985
+     hse_inc |  -.1088114   1.294986    -0.08   0.933    -2.646938    2.429315
+     ltv_med |    .463525   .1600764     2.90   0.004      .149781     .777269
+    ltv_high |   1.494764   .3242173     4.61   0.000     .8593095    2.130218
+       ccred |   .2903017   .0388286     7.48   0.000     .2141991    .3664043
+       mcred |   .2790178   .1376277     2.03   0.043     .0092724    .5487631
+      pubrec |   1.225797   .2030504     6.04   0.000     .8278253    1.623768
+      denpmi |   4.548166   .5744167     7.92   0.000      3.42233    5.674002
+     selfemp |   .6661288   .2133542     3.12   0.002     .2479623    1.084295
+       _cons |  -5.707384   .4834338   -11.81   0.000    -6.654896   -4.759871
+------------------------------------------------------------------------------
+
+. eststo Logit_2;
+
+. quietly estadd margins black, atmeans;
+
+. mat m = e(margins_b);
+
+. estadd scalar prob_white = m[1,1];
+
+added scalar:
+         e(prob_white) =  .0702292
+
+. estadd scalar prob_black = m[1,2];
+
+added scalar:
+         e(prob_black) =  .13070374
+
+. estadd scalar prob_diff = m[1,2] - m[1,1];
+
+added scalar:
+          e(prob_diff) =  .06047453
+
+. margins black, atmeans vsquish;
+
+Adjusted predictions                              Number of obs   =       2380
+Model VCE    : Robust
+
+Expression   : Pr(deny), predict()
+at           : 0.black         =     .857563 (mean)
+               1.black         =     .142437 (mean)
+               pi_rat          =    .3308136 (mean)
+               hse_inc         =    .2553461 (mean)
+               ltv_med         =    .3743697 (mean)
+               ltv_high        =    .0323529 (mean)
+               ccred           =    2.116387 (mean)
+               mcred           =    1.721008 (mean)
+               pubrec          =    .0735294 (mean)
+               denpmi          =    .0201681 (mean)
+               selfemp         =    .1163866 (mean)
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |     Margin   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       black |
+          0  |   .0702292   .0061475    11.42   0.000     .0581803    .0822781
+          1  |   .1307037   .0200064     6.53   0.000     .0914919    .1699156
+------------------------------------------------------------------------------
