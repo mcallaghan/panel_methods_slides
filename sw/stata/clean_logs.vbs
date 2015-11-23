@@ -26,7 +26,7 @@ For Each objFile in colFiles
 
 		strText = Mid(strContents, intStart + 3, intCharacters)
 
-		Set newobjFile = objFSO.CreateTextFile(".\cleaned_logs\" & strFileName)
+		Set newobjFile = objFSO.CreateTextFile(".\..\word\" & strFileName)
 
 		newobjFile.Write strText
 

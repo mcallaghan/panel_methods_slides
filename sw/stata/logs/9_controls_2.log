@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\9_controls_2.log
   log type:  text
- opened on:  23 Nov 2015, 20:30:11
+ opened on:  23 Nov 2015, 20:45:34
 
 . *@*lstart;
 .  ** col(5) - Probit with even more controls;
@@ -50,20 +50,11 @@ Log pseudolikelihood = -625.06445                 Pseudo R2       =     0.2833
 
 . mat m = e(margins_b);
 
-. estadd scalar prob_white = m[1,1];
+. quietly estadd scalar prob_white = m[1,1];
 
-added scalar:
-         e(prob_white) =  .07041068
+. quietly estadd scalar prob_black = m[1,2];
 
-. estadd scalar prob_black = m[1,2];
-
-added scalar:
-         e(prob_black) =  .13350604
-
-. estadd scalar prob_diff = m[1,2] - m[1,1];
-
-added scalar:
-          e(prob_diff) =  .06309536
+. quietly estadd scalar prob_diff = m[1,2] - m[1,1];
 
 . eststo Probit_5;
 

@@ -1,0 +1,80 @@
+.  ** col(5) - Probit with even more controls;
+. probit deny i.black `controls' single hischl probunmp mcred3 mcred4 ccred3 ccred4 ccred5 ccred6 condo, r;
+
+Iteration 0:   log pseudolikelihood =  -872.0853  
+Iteration 1:   log pseudolikelihood = -633.80684  
+Iteration 2:   log pseudolikelihood = -625.09937  
+Iteration 3:   log pseudolikelihood = -625.06446  
+Iteration 4:   log pseudolikelihood = -625.06445  
+
+Probit regression                                 Number of obs   =       2380
+                                                  Wald chi2(20)   =     304.43
+                                                  Prob > chi2     =     0.0000
+Log pseudolikelihood = -625.06445                 Pseudo R2       =     0.2833
+
+------------------------------------------------------------------------------
+             |               Robust
+        deny |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     1.black |   .3627695   .0997689     3.64   0.000      .167226     .558313
+      pi_rat |   2.622164   .6104407     4.30   0.000     1.425723    3.818606
+     hse_inc |  -.5023815   .6968566    -0.72   0.471    -1.868195    .8634324
+     ltv_med |     .21508   .0832763     2.58   0.010     .0518614    .3782987
+    ltv_high |   .8355667   .1818635     4.59   0.000     .4791207    1.192013
+       ccred |   .3444342   .1060281     3.25   0.001      .136623    .5522454
+       mcred |   .1620425   .1019977     1.59   0.112    -.0378694    .3619544
+      pubrec |   .7171932   .1170008     6.13   0.000     .4878759    .9465106
+      denpmi |   2.588853   .2983341     8.68   0.000     2.004129    3.173577
+     selfemp |   .3416594   .1148723     2.97   0.003     .1165137     .566805
+      single |   .2298971    .084764     2.71   0.007     .0637626    .3960316
+      hischl |  -.6037497    .236641    -2.55   0.011    -1.067557   -.1399419
+    probunmp |   .0279591   .0178572     1.57   0.117    -.0070404    .0629585
+      mcred3 |  -.1065596   .2914909    -0.37   0.715    -.6778712    .4647521
+      mcred4 |  -.3827154   .4266523    -0.90   0.370    -1.218939    .4535079
+      ccred3 |  -.2262049   .2415353    -0.94   0.349    -.6996054    .2471956
+      ccred4 |  -.2514078   .3344922    -0.75   0.452    -.9070005     .404185
+      ccred5 |  -.7892635   .4067159    -1.94   0.052    -1.586412     .007885
+      ccred6 |  -.9048611   .5075612    -1.78   0.075    -1.899663    .0899406
+       condo |  -.0549583   .0934145    -0.59   0.556    -.2380474    .1281308
+       _cons |  -2.896153   .3879434    -7.47   0.000    -3.656508   -2.135798
+------------------------------------------------------------------------------
+
+. quietly estadd margins black, atmeans;
+
+. mat m = e(margins_b);
+
+. quietly estadd scalar prob_white = m[1,1];
+
+. quietly estadd scalar prob_black = m[1,2];
+
+. quietly estadd scalar prob_diff = m[1,2] - m[1,1];
+
+. eststo Probit_5;
+
+. test single hischl probunmp;
+
+ ( 1)  [deny]single = 0
+ ( 2)  [deny]hischl = 0
+ ( 3)  [deny]probunmp = 0
+
+           chi2(  3) =   15.66
+         Prob > chi2 =    0.0013
+
+. test mcred3 mcred4 ccred3 ccred4 ccred5 ccred6;
+
+ ( 1)  [deny]mcred3 = 0
+ ( 2)  [deny]mcred4 = 0
+ ( 3)  [deny]ccred3 = 0
+ ( 4)  [deny]ccred4 = 0
+ ( 5)  [deny]ccred5 = 0
+ ( 6)  [deny]ccred6 = 0
+
+           chi2(  6) =    7.33
+         Prob > chi2 =    0.2911
+
+. test condo;
+
+ ( 1)  [deny]condo = 0
+
+           chi2(  1) =    0.35
+         Prob > chi2 =    0.5563

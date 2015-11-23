@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\8_controls.log
   log type:  text
- opened on:  23 Nov 2015, 20:30:11
+ opened on:  23 Nov 2015, 20:45:34
 
 . *@*lstart;
 .  ** col(4) - Probit with more controls;

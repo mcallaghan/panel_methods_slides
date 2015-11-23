@@ -1,0 +1,3 @@
+.  esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter using sum_table.doc, 
+>         stats(prob_white prob_black prob_diff)  mtitle replace;
+(output written to sum_table.doc)

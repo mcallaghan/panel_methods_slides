@@ -1,0 +1,22 @@
+. *************************************
+> **** Table 11.2 ;
+. ************************************;
+. gen ltv_med = (loan_val>=0.80)*(loan_val<=.95);
+
+. gen ltv_high = (loan_val>0.95);
+
+.  gen blk_pi = black*pi_rat;
+
+. gen blk_hse = black*hse_inc;
+
+. gen ccred3 = (ccred==3);
+
+.  gen ccred4 = (ccred==4);
+
+. gen ccred5 = (ccred==5);
+
+. gen ccred6 = (ccred==6);
+
+. gen mcred3 = (mcred==3);
+
+. gen mcred4 = (mcred==4);
