@@ -135,9 +135,9 @@ log using logs\9_controls_2.log, replace;
 probit deny i.black `controls' single hischl probunmp mcred3 mcred4 ccred3 ccred4 ccred5 ccred6 condo, r;
 quietly estadd margins black, atmeans;
 mat m = e(margins_b);
-estadd scalar prob_white = m[1,1];
-estadd scalar prob_black = m[1,2];
-estadd scalar prob_diff = m[1,2] - m[1,1];
+quietly estadd scalar prob_white = m[1,1];
+quietly estadd scalar prob_black = m[1,2];
+quietly estadd scalar prob_diff = m[1,2] - m[1,1];
 eststo Probit_5;
 test single hischl probunmp;
 test mcred3 mcred4 ccred3 ccred4 ccred5 ccred6;
@@ -150,11 +150,11 @@ log using logs\10_interaction.log, replace;
 ** col(6) - Probit with interaction;
 probit deny i.black `controls'
  selfemp single hischl probunmp blk_pi blk_hse;
-estadd margins black, atmeans;
+quietly estadd margins black, atmeans;
 mat m = e(margins_b);
 quietly estadd scalar prob_white = m[1,1];
-estadd scalar prob_black = m[1,2];
-estadd scalar prob_diff = m[1,2] - m[1,1];
+quietly estadd scalar prob_black = m[1,2];
+quietly estadd scalar prob_diff = m[1,2] - m[1,1];
 eststo Probit_inter;
 
 test single hischl probunmp;
@@ -166,7 +166,8 @@ cap log close;
 
 log using logs\11_summary.log, replace;
 *@*lstart; 
-esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter, stats(prob_white prob_black prob_diff)  mtitle;
+esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter using sum_table.doc, 
+	stats(prob_white prob_black prob_diff)  mtitle replace;
 *@*lend;
 cap log close;
 
