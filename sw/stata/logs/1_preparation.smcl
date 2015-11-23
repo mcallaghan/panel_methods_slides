@@ -1,0 +1,905 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\1_preparation.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}23 Nov 2015, 14:29:15
+{txt}
+{com}. *@*lstart
+> set more 1;
+. ***********************************;
+. * Read In Data;
+.  * (Note: Change path name so that it is appropriate for your computer);
+. use hmda_sw.dta;
+{txt}
+{com}. ********************************************;
+. gen deny = (s7==3);
+{txt}
+{com}. gen pi_rat = s46/100;
+{txt}
+{com}. gen black = (s13==3);
+{txt}
+{com}. *@*lend
+> cap log close;
+. translate logs\1_preparation.smcl logs\1_preparation.txt, replace;
+{txt}(file logs\1_preparation.txt written in .txt format)
+
+{com}. ***********************************;
+. * Results on Page 1;
+. **********************************;
+. sort black;
+{txt}
+{com}. summarize deny if (black==1);
+
+{txt}    Variable {c |}       Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 56}
+{space 8}deny {c |}{res}       339    .2831858    .4512119          0          1
+{txt}
+{com}. summarize deny if (black==0);
+
+{txt}    Variable {c |}       Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 56}
+{space 8}deny {c |}{res}      2041    .0926017    .2899445          0          1
+{txt}
+{com}. ************************************;
+. **** Equation 11.1;
+. ************************************;
+. regress deny pi_rat, r;
+
+{txt}Linear regression                                      Number of obs ={res}    2380
+                                                       {txt}F(  1,  2378) ={res}   37.56
+                                                       {txt}Prob > F      = {res} 0.0000
+                                                       {txt}R-squared     = {res} 0.0397
+                                                       {txt}Root MSE      = {res} .31828
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}pi_rat {c |}{col 14}{res}{space 2} .6035349{col 26}{space 2} .0984826{col 37}{space 1}    6.13{col 46}{space 3}0.000{col 54}{space 4} .4104144{col 67}{space 3} .7966555
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.0799096{col 26}{space 2} .0319666{col 37}{space 1}   -2.50{col 46}{space 3}0.012{col 54}{space 4}-.1425949{col 67}{space 3}-.0172243
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. ************************************;
+. **** Equation 11.3;
+. ************************************;
+. regress deny pi_rat black, r;
+
+{txt}Linear regression                                      Number of obs ={res}    2380
+                                                       {txt}F(  2,  2377) ={res}   49.39
+                                                       {txt}Prob > F      = {res} 0.0000
+                                                       {txt}R-squared     = {res} 0.0760
+                                                       {txt}Root MSE      = {res} .31228
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}pi_rat {c |}{col 14}{res}{space 2} .5591946{col 26}{space 2} .0886663{col 37}{space 1}    6.31{col 46}{space 3}0.000{col 54}{space 4} .3853233{col 67}{space 3} .7330658
+{txt}{space 7}black {c |}{col 14}{res}{space 2} .1774282{col 26}{space 2} .0249463{col 37}{space 1}    7.11{col 46}{space 3}0.000{col 54}{space 4} .1285096{col 67}{space 3} .2263469
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.0905136{col 26}{space 2} .0285996{col 37}{space 1}   -3.16{col 46}{space 3}0.002{col 54}{space 4}-.1465963{col 67}{space 3}-.0344309
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. ************************************;
+. **** Equation 11.7;
+. ************************************;
+. probit deny pi_rat, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-832.02975}  
+Iteration 2:{space 3}log pseudolikelihood = {res: -831.7924}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-831.79234}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}1{txt}){col 67}= {res}     40.68
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-831.79234{txt}{col 51}Pseudo R2{col 67}= {res}    0.0462
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.967907{col 26}{space 2} .4653217{col 37}{space 1}    6.38{col 46}{space 3}0.000{col 54}{space 4} 2.055893{col 67}{space 3} 3.879921
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.194159{col 26}{space 2} .1649761{col 37}{space 1}  -13.30{col 46}{space 3}0.000{col 54}{space 4}-2.517506{col 67}{space 3}-1.870812
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 0 failures and 1 success completely determined.{p_end}
+
+{com}. ************************************;
+. **** Equation 11.8;
+. ************************************;
+. probit deny pi_rat black, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-800.88504}  
+Iteration 2:{space 3}log pseudolikelihood = {res: -797.1478}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-797.13604}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-797.13604}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}2{txt}){col 67}= {res}    118.18
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-797.13604{txt}{col 51}Pseudo R2{col 67}= {res}    0.0859
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.741637{col 26}{space 2} .4441747{col 37}{space 1}    6.17{col 46}{space 3}0.000{col 54}{space 4}  1.87107{col 67}{space 3} 3.612203
+{txt}{space 7}black {c |}{col 14}{res}{space 2} .7081579{col 26}{space 2}  .083188{col 37}{space 1}    8.51{col 46}{space 3}0.000{col 54}{space 4} .5451124{col 67}{space 3} .8712035
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.258738{col 26}{space 2} .1588211{col 37}{space 1}  -14.22{col 46}{space 3}0.000{col 54}{space 4}-2.570022{col 67}{space 3}-1.947454
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. ************************************;
+. **** Equation 11.10;
+. ************************************;
+. logit deny pi_rat black, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res: -806.3571}  
+Iteration 2:{space 3}log pseudolikelihood = {res:-795.72934}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-795.69521}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-795.69521}  
+{res}
+{txt}Logistic regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}2{txt}){col 67}= {res}    117.75
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-795.69521{txt}{col 51}Pseudo R2{col 67}= {res}    0.0876
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}pi_rat {c |}{col 14}{res}{space 2} 5.370362{col 26}{space 2} .9633435{col 37}{space 1}    5.57{col 46}{space 3}0.000{col 54}{space 4} 3.482244{col 67}{space 3} 7.258481
+{txt}{space 7}black {c |}{col 14}{res}{space 2} 1.272782{col 26}{space 2} .1460986{col 37}{space 1}    8.71{col 46}{space 3}0.000{col 54}{space 4} .9864339{col 67}{space 3}  1.55913
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-4.125558{col 26}{space 2}  .345825{col 37}{space 1}  -11.93{col 46}{space 3}0.000{col 54}{space 4}-4.803362{col 67}{space 3}-3.447753
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. *************************************
+> **** Table 11.1 ;
+. ************************************;
+. gen hse_inc = s45/100;
+{txt}
+{com}. gen loan_val = s6/s50;
+{txt}
+{com}. gen ccred = s43;
+{txt}
+{com}. gen mcred = s42;
+{txt}
+{com}. gen pubrec = (s44>0);
+{txt}
+{com}. gen denpmi = (s53==1);
+{txt}
+{com}. gen selfemp = (s27a==1);
+{txt}
+{com}. gen married = (s23a=="M");
+{txt}
+{com}. gen single = (married==0);
+{txt}
+{com}. gen hischl = (school>=12);
+{txt}
+{com}. gen probunmp = uria;
+{txt}
+{com}. gen condo = (s51 == 1);
+{txt}
+{com}. sum pi_rat hse_inc loan_val ccred mcred pubrec denpmi selfemp
+>  single hischl probunmp condo black deny;
+
+{txt}    Variable {c |}       Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 56}
+{space 6}pi_rat {c |}{res}      2380    .3308136    .1072573          0          3
+{txt}{space 5}hse_inc {c |}{res}      2380    .2553461    .0966556          0          3
+{txt}{space 4}loan_val {c |}{res}      2380    .7377759     .178751        .02       1.95
+{txt}{space 7}ccred {c |}{res}      2380    2.116387    1.666721          1          6
+{txt}{space 7}mcred {c |}{res}      2380    1.721008    .5372816          1          4
+{txt}{hline 13}{c +}{hline 56}
+{space 6}pubrec {c |}{res}      2380    .0735294    .2610584          0          1
+{txt}{space 6}denpmi {c |}{res}      2380    .0201681    .1406045          0          1
+{txt}{space 5}selfemp {c |}{res}      2380    .1163866    .3207553          0          1
+{txt}{space 6}single {c |}{res}      2380    .3932773    .4885802          0          1
+{txt}{space 6}hischl {c |}{res}      2380    .9836134    .1269835          0          1
+{txt}{hline 13}{c +}{hline 56}
+{space 4}probunmp {c |}{res}      2380    3.774496    2.027062        1.8       10.6
+{txt}{space 7}condo {c |}{res}      2380    .2882353    .4530364          0          1
+{txt}{space 7}black {c |}{res}      2380     .142437    .3495712          0          1
+{txt}{space 8}deny {c |}{res}      2380    .1197479    .3247347          0          1
+{txt}
+{com}. *************************************
+> **** Table 11.2 ;
+. ************************************;
+. gen ltv_med = (loan_val>=0.80)*(loan_val<=.95);
+{txt}
+{com}. gen ltv_high = (loan_val>0.95);
+{txt}
+{com}.  gen blk_pi = black*pi_rat;
+{txt}
+{com}. gen blk_hse = black*hse_inc;
+{txt}
+{com}. gen ccred3 = (ccred==3);
+{txt}
+{com}.  gen ccred4 = (ccred==4);
+{txt}
+{com}. gen ccred5 = (ccred==5);
+{txt}
+{com}. gen ccred6 = (ccred==6);
+{txt}
+{com}. gen mcred3 = (mcred==3);
+{txt}
+{com}. gen mcred4 = (mcred==4);
+{txt}
+{com}. ** Preliminary Analysis ... compute means of all variables;
+. sum deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp mcred3 mcred4 ccred3 ccred4 ccred5 ccred6
+>  condo;
+
+{txt}    Variable {c |}       Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 56}
+{space 8}deny {c |}{res}      2380    .1197479    .3247347          0          1
+{txt}{space 7}black {c |}{res}      2380     .142437    .3495712          0          1
+{txt}{space 6}pi_rat {c |}{res}      2380    .3308136    .1072573          0          3
+{txt}{space 5}hse_inc {c |}{res}      2380    .2553461    .0966556          0          3
+{txt}{space 5}ltv_med {c |}{res}      2380    .3743697    .4840615          0          1
+{txt}{hline 13}{c +}{hline 56}
+{space 4}ltv_high {c |}{res}      2380    .0323529    .1769728          0          1
+{txt}{space 7}ccred {c |}{res}      2380    2.116387    1.666721          1          6
+{txt}{space 7}mcred {c |}{res}      2380    1.721008    .5372816          1          4
+{txt}{space 6}pubrec {c |}{res}      2380    .0735294    .2610584          0          1
+{txt}{space 6}denpmi {c |}{res}      2380    .0201681    .1406045          0          1
+{txt}{hline 13}{c +}{hline 56}
+{space 5}selfemp {c |}{res}      2380    .1163866    .3207553          0          1
+{txt}{space 6}single {c |}{res}      2380    .3932773    .4885802          0          1
+{txt}{space 6}hischl {c |}{res}      2380    .9836134    .1269835          0          1
+{txt}{space 4}probunmp {c |}{res}      2380    3.774496    2.027062        1.8       10.6
+{txt}{space 6}mcred3 {c |}{res}      2380    .0172269    .1301432          0          1
+{txt}{hline 13}{c +}{hline 56}
+{space 6}mcred4 {c |}{res}      2380    .0088235     .093538          0          1
+{txt}{space 6}ccred3 {c |}{res}      2380    .0529412    .2239631          0          1
+{txt}{space 6}ccred4 {c |}{res}      2380    .0323529    .1769728          0          1
+{txt}{space 6}ccred5 {c |}{res}      2380    .0764706    .2658054          0          1
+{txt}{space 6}ccred6 {c |}{res}      2380    .0844538    .2781256          0          1
+{txt}{hline 13}{c +}{hline 56}
+{space 7}condo {c |}{res}      2380    .2882353    .4530364          0          1
+{txt}
+{com}.   ** col(1);
+. regress deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp, r;
+
+{txt}Linear regression                                      Number of obs ={res}    2380
+                                                       {txt}F( 10,  2369) ={res}   67.22
+                                                       {txt}Prob > F      = {res} 0.0000
+                                                       {txt}R-squared     = {res} 0.2663
+                                                       {txt}Root MSE      = {res} .27875
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .0836967{col 26}{space 2} .0225623{col 37}{space 1}    3.71{col 46}{space 3}0.000{col 54}{space 4} .0394529{col 67}{space 3} .1279406
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} .4487963{col 26}{space 2} .1135962{col 37}{space 1}    3.95{col 46}{space 3}0.000{col 54}{space 4} .2260381{col 67}{space 3} .6715545
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.0480226{col 26}{space 2}  .109559{col 37}{space 1}   -0.44{col 46}{space 3}0.661{col 54}{space 4} -.262864{col 67}{space 3} .1668187
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .0314498{col 26}{space 2} .0127391{col 37}{space 1}    2.47{col 46}{space 3}0.014{col 54}{space 4} .0064688{col 67}{space 3} .0564308
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .1890511{col 26}{space 2} .0501681{col 37}{space 1}    3.77{col 46}{space 3}0.000{col 54}{space 4} .0906732{col 67}{space 3}  .287429
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .0307716{col 26}{space 2} .0045843{col 37}{space 1}    6.71{col 46}{space 3}0.000{col 54}{space 4} .0217819{col 67}{space 3} .0397612
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .0209104{col 26}{space 2} .0112898{col 37}{space 1}    1.85{col 46}{space 3}0.064{col 54}{space 4}-.0012284{col 67}{space 3} .0430493
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .1970876{col 26}{space 2} .0348812{col 37}{space 1}    5.65{col 46}{space 3}0.000{col 54}{space 4} .1286867{col 67}{space 3} .2654885
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} .7018841{col 26}{space 2} .0451051{col 37}{space 1}   15.56{col 46}{space 3}0.000{col 54}{space 4} .6134345{col 67}{space 3} .7903337
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .0598438{col 26}{space 2} .0205233{col 37}{space 1}    2.92{col 46}{space 3}0.004{col 54}{space 4} .0195983{col 67}{space 3} .1000894
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.1829933{col 26}{space 2} .0276729{col 37}{space 1}   -6.61{col 46}{space 3}0.000{col 54}{space 4}-.2372589{col 67}{space 3}-.1287277
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.  ** col(2);
+.  logit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp;
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res: -872.0853}  
+Iteration 1:{space 3}log likelihood = {res:-672.05096}  
+Iteration 2:{space 3}log likelihood = {res:-656.94676}  
+Iteration 3:{space 3}log likelihood = {res:-636.05789}  
+Iteration 4:{space 3}log likelihood = {res:-635.63857}  
+Iteration 5:{space 3}log likelihood = {res:-635.63667}  
+Iteration 6:{space 3}log likelihood = {res:-635.63667}  
+{res}
+{txt}Logistic regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}LR chi2({res}10{txt}){col 67}= {res}    472.90
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-635.63667{txt}{col 51}Pseudo R2{col 67}= {res}    0.2711
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .6884231{col 26}{space 2} .1773918{col 37}{space 1}    3.88{col 46}{space 3}0.000{col 54}{space 4} .3407416{col 67}{space 3} 1.036105
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 4.764416{col 26}{space 2} 1.042587{col 37}{space 1}    4.57{col 46}{space 3}0.000{col 54}{space 4} 2.720983{col 67}{space 3}  6.80785
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.1088114{col 26}{space 2} 1.239403{col 37}{space 1}   -0.09{col 46}{space 3}0.930{col 54}{space 4}-2.537996{col 67}{space 3} 2.320374
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2}  .463525{col 26}{space 2}  .159096{col 37}{space 1}    2.91{col 46}{space 3}0.004{col 54}{space 4} .1517025{col 67}{space 3} .7753475
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} 1.494764{col 26}{space 2} .3112213{col 37}{space 1}    4.80{col 46}{space 3}0.000{col 54}{space 4} .8847812{col 67}{space 3} 2.104746
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .2903017{col 26}{space 2} .0398178{col 37}{space 1}    7.29{col 46}{space 3}0.000{col 54}{space 4} .2122603{col 67}{space 3} .3683431
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .2790178{col 26}{space 2} .1399192{col 37}{space 1}    1.99{col 46}{space 3}0.046{col 54}{space 4} .0047811{col 67}{space 3} .5532544
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} 1.225797{col 26}{space 2} .2054334{col 37}{space 1}    5.97{col 46}{space 3}0.000{col 54}{space 4} .8231547{col 67}{space 3} 1.628439
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 4.548166{col 26}{space 2} .5524863{col 37}{space 1}    8.23{col 46}{space 3}0.000{col 54}{space 4} 3.465312{col 67}{space 3} 5.631019
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .6661288{col 26}{space 2} .2115319{col 37}{space 1}    3.15{col 46}{space 3}0.002{col 54}{space 4} .2515338{col 67}{space 3} 1.080724
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-5.707384{col 26}{space 2} .4097911{col 37}{space 1}  -13.93{col 46}{space 3}0.000{col 54}{space 4}-6.510559{col 67}{space 3}-4.904208
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. logit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-672.05096}  
+Iteration 2:{space 3}log pseudolikelihood = {res:-656.94676}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-636.05789}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-635.63857}  
+Iteration 5:{space 3}log pseudolikelihood = {res:-635.63667}  
+Iteration 6:{space 3}log pseudolikelihood = {res:-635.63667}  
+{res}
+{txt}Logistic regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}10{txt}){col 67}= {res}    265.96
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-635.63667{txt}{col 51}Pseudo R2{col 67}= {res}    0.2711
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .6884231{col 26}{space 2} .1821237{col 37}{space 1}    3.78{col 46}{space 3}0.000{col 54}{space 4} .3314673{col 67}{space 3} 1.045379
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 4.764416{col 26}{space 2} 1.329396{col 37}{space 1}    3.58{col 46}{space 3}0.000{col 54}{space 4} 2.158848{col 67}{space 3} 7.369985
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.1088114{col 26}{space 2} 1.294986{col 37}{space 1}   -0.08{col 46}{space 3}0.933{col 54}{space 4}-2.646938{col 67}{space 3} 2.429315
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2}  .463525{col 26}{space 2} .1600764{col 37}{space 1}    2.90{col 46}{space 3}0.004{col 54}{space 4}  .149781{col 67}{space 3}  .777269
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} 1.494764{col 26}{space 2} .3242173{col 37}{space 1}    4.61{col 46}{space 3}0.000{col 54}{space 4} .8593095{col 67}{space 3} 2.130218
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .2903017{col 26}{space 2} .0388286{col 37}{space 1}    7.48{col 46}{space 3}0.000{col 54}{space 4} .2141991{col 67}{space 3} .3664043
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .2790178{col 26}{space 2} .1376277{col 37}{space 1}    2.03{col 46}{space 3}0.043{col 54}{space 4} .0092724{col 67}{space 3} .5487631
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} 1.225797{col 26}{space 2} .2030504{col 37}{space 1}    6.04{col 46}{space 3}0.000{col 54}{space 4} .8278253{col 67}{space 3} 1.623768
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 4.548166{col 26}{space 2} .5744167{col 37}{space 1}    7.92{col 46}{space 3}0.000{col 54}{space 4}  3.42233{col 67}{space 3} 5.674002
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .6661288{col 26}{space 2} .2133542{col 37}{space 1}    3.12{col 46}{space 3}0.002{col 54}{space 4} .2479623{col 67}{space 3} 1.084295
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-5.707384{col 26}{space 2} .4834338{col 37}{space 1}  -11.81{col 46}{space 3}0.000{col 54}{space 4}-6.654896{col 67}{space 3}-4.759871
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.  scalar w0 =  _b[black]*0
+>               + _b[ pi_rat]*  .3308136 
+>               + _b[ hse_inc]* .2553461 
+>               + _b[ ltv_med]* .3743697 
+>               + _b[ltv_high]* .0323529 
+>               + _b[   ccred]*  2.116387 
+>               + _b[   mcred]*  1.721008 
+>               + _b[  pubrec]* .0735294 
+>               + _b[  denpmi]* .0201681 
+>               + _b[ selfemp]* .1163866 
+>               + _b[   _cons]*  1;
+{txt}
+{com}. scalar w1 = w0 + _b[black]*1;
+{txt}
+{com}. dis "Prob for white at means = " 1/(1+exp(-w0));
+{res}Prob for white at means = .07022922
+{txt}
+{com}. dis "Prob for black at means = " 1/(1+exp(-w1));
+{res}Prob for black at means = .13070377
+{txt}
+{com}. dis "Difference in probs     = " (1/(1+exp(-w1))) - (1/(1+exp(-w0)));
+{res}Difference in probs     = .06047455
+{txt}
+{com}.  ** col(3);
+.  probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp;
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res: -872.0853}  
+Iteration 1:{space 3}log likelihood = {res:-643.92086}  
+Iteration 2:{space 3}log likelihood = {res:-636.87532}  
+Iteration 3:{space 3}log likelihood = {res:-636.84706}  
+Iteration 4:{space 3}log likelihood = {res:-636.84706}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}LR chi2({res}10{txt}){col 67}= {res}    470.48
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-636.84706{txt}{col 51}Pseudo R2{col 67}= {res}    0.2697
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .3891261{col 26}{space 2} .0966749{col 37}{space 1}    4.03{col 46}{space 3}0.000{col 54}{space 4} .1996468{col 67}{space 3} .5786054
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.441787{col 26}{space 2} .5279727{col 37}{space 1}    4.62{col 46}{space 3}0.000{col 54}{space 4} 1.406979{col 67}{space 3} 3.476594
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.1846764{col 26}{space 2} .6519372{col 37}{space 1}   -0.28{col 46}{space 3}0.777{col 54}{space 4} -1.46245{col 67}{space 3} 1.093097
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .2139677{col 26}{space 2} .0819881{col 37}{space 1}    2.61{col 46}{space 3}0.009{col 54}{space 4}  .053274{col 67}{space 3} .3746614
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .7910831{col 26}{space 2} .1744755{col 37}{space 1}    4.53{col 46}{space 3}0.000{col 54}{space 4} .4491174{col 67}{space 3} 1.133049
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .1546224{col 26}{space 2} .0214869{col 37}{space 1}    7.20{col 46}{space 3}0.000{col 54}{space 4} .1125089{col 67}{space 3}  .196736
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1477082{col 26}{space 2} .0735792{col 37}{space 1}    2.01{col 46}{space 3}0.045{col 54}{space 4} .0034956{col 67}{space 3} .2919209
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .6974496{col 26}{space 2} .1190143{col 37}{space 1}    5.86{col 46}{space 3}0.000{col 54}{space 4} .4641859{col 67}{space 3} .9307134
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.556796{col 26}{space 2} .2814955{col 37}{space 1}    9.08{col 46}{space 3}0.000{col 54}{space 4} 2.005075{col 67}{space 3} 3.108517
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3586252{col 26}{space 2}   .11169{col 37}{space 1}    3.21{col 46}{space 3}0.001{col 54}{space 4} .1397168{col 67}{space 3} .5775336
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-3.040568{col 26}{space 2} .2014292{col 37}{space 1}  -15.09{col 46}{space 3}0.000{col 54}{space 4}-3.435362{col 67}{space 3}-2.645774
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-643.92086}  
+Iteration 2:{space 3}log pseudolikelihood = {res:-636.87532}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-636.84706}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-636.84706}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}10{txt}){col 67}= {res}    293.99
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-636.84706{txt}{col 51}Pseudo R2{col 67}= {res}    0.2697
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .3891261{col 26}{space 2} .0977879{col 37}{space 1}    3.98{col 46}{space 3}0.000{col 54}{space 4} .1974653{col 67}{space 3} .5807869
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.441787{col 26}{space 2} .6092459{col 37}{space 1}    4.01{col 46}{space 3}0.000{col 54}{space 4} 1.247687{col 67}{space 3} 3.635887
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.1846764{col 26}{space 2} .6753349{col 37}{space 1}   -0.27{col 46}{space 3}0.785{col 54}{space 4}-1.508308{col 67}{space 3} 1.138956
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .2139677{col 26}{space 2} .0815119{col 37}{space 1}    2.62{col 46}{space 3}0.009{col 54}{space 4} .0542073{col 67}{space 3} .3737281
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .7910831{col 26}{space 2} .1797445{col 37}{space 1}    4.40{col 46}{space 3}0.000{col 54}{space 4} .4387903{col 67}{space 3} 1.143376
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .1546224{col 26}{space 2} .0209979{col 37}{space 1}    7.36{col 46}{space 3}0.000{col 54}{space 4} .1134672{col 67}{space 3} .1957776
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1477082{col 26}{space 2}  .072594{col 37}{space 1}    2.03{col 46}{space 3}0.042{col 54}{space 4} .0054266{col 67}{space 3} .2899899
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .6974496{col 26}{space 2} .1153109{col 37}{space 1}    6.05{col 46}{space 3}0.000{col 54}{space 4} .4714445{col 67}{space 3} .9234548
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.556796{col 26}{space 2} .2983301{col 37}{space 1}    8.57{col 46}{space 3}0.000{col 54}{space 4}  1.97208{col 67}{space 3} 3.141512
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3586252{col 26}{space 2} .1126041{col 37}{space 1}    3.18{col 46}{space 3}0.001{col 54}{space 4} .1379252{col 67}{space 3} .5793252
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-3.040568{col 26}{space 2} .2300051{col 37}{space 1}  -13.22{col 46}{space 3}0.000{col 54}{space 4} -3.49137{col 67}{space 3}-2.589766
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.  scalar z0 =  _b[black]*0
+>               + _b[ pi_rat]*  .3308136 
+>               + _b[ hse_inc]* .2553461 
+>               + _b[ ltv_med]* .3743697 
+>               + _b[ltv_high]* .0323529 
+>               + _b[   ccred]*  2.116387 
+>               + _b[   mcred]*  1.721008 
+>               + _b[  pubrec]* .0735294 
+>               + _b[  denpmi]* .0201681 
+>               + _b[ selfemp]* .1163866 
+>               + _b[   _cons]*  1;
+{txt}
+{com}. scalar z1 = z0 + _b[black]*1;
+{txt}
+{com}. dis "Prob for white at means = " normprob(z0);
+{res}Prob for white at means = .07377841
+{txt}
+{com}. dis "Prob for black at means = " normprob(z1);
+{res}Prob for black at means = .14477956
+{txt}
+{com}. dis "Difference in probs     = " normprob(z1)-normprob(z0);
+{res}Difference in probs     = .07100115
+{txt}
+{com}.  ** col(4);
+. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp;
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res: -872.0853}  
+Iteration 1:{space 3}log likelihood = {res:-636.63836}  
+Iteration 2:{space 3}log likelihood = {res: -628.6448}  
+Iteration 3:{space 3}log likelihood = {res:-628.61368}  
+Iteration 4:{space 3}log likelihood = {res:-628.61368}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}LR chi2({res}13{txt}){col 67}= {res}    486.94
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-628.61368{txt}{col 51}Pseudo R2{col 67}= {res}    0.2792
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .3710683{col 26}{space 2} .0981246{col 37}{space 1}    3.78{col 46}{space 3}0.000{col 54}{space 4} .1787477{col 67}{space 3}  .563389
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.464318{col 26}{space 2} .5314041{col 37}{space 1}    4.64{col 46}{space 3}0.000{col 54}{space 4} 1.422785{col 67}{space 3} 3.505851
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.3024734{col 26}{space 2} .6550308{col 37}{space 1}   -0.46{col 46}{space 3}0.644{col 54}{space 4} -1.58631{col 67}{space 3} .9813635
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .2157285{col 26}{space 2} .0825715{col 37}{space 1}    2.61{col 46}{space 3}0.009{col 54}{space 4} .0538914{col 67}{space 3} .3775656
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .7945421{col 26}{space 2} .1756759{col 37}{space 1}    4.52{col 46}{space 3}0.000{col 54}{space 4} .4502236{col 67}{space 3} 1.138861
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .1575922{col 26}{space 2} .0216547{col 37}{space 1}    7.28{col 46}{space 3}0.000{col 54}{space 4} .1151499{col 67}{space 3} .2000346
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1104117{col 26}{space 2} .0754013{col 37}{space 1}    1.46{col 46}{space 3}0.143{col 54}{space 4}-.0373722{col 67}{space 3} .2581956
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .7021586{col 26}{space 2} .1197005{col 37}{space 1}    5.87{col 46}{space 3}0.000{col 54}{space 4} .4675499{col 67}{space 3} .9367672
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.585178{col 26}{space 2} .2857295{col 37}{space 1}    9.05{col 46}{space 3}0.000{col 54}{space 4} 2.025159{col 67}{space 3} 3.145198
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3459452{col 26}{space 2} .1131198{col 37}{space 1}    3.06{col 46}{space 3}0.002{col 54}{space 4} .1242344{col 67}{space 3}  .567656
+{txt}{space 6}single {c |}{col 14}{res}{space 2} .2294801{col 26}{space 2} .0797936{col 37}{space 1}    2.88{col 46}{space 3}0.004{col 54}{space 4} .0730876{col 67}{space 3} .3858726
+{txt}{space 6}hischl {c |}{col 14}{res}{space 2} -.612624{col 26}{space 2} .2394879{col 37}{space 1}   -2.56{col 46}{space 3}0.011{col 54}{space 4}-1.082012{col 67}{space 3}-.1432364
+{txt}{space 4}probunmp {c |}{col 14}{res}{space 2} .0300305{col 26}{space 2} .0181144{col 37}{space 1}    1.66{col 46}{space 3}0.097{col 54}{space 4} -.005473{col 67}{space 3}  .065534
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.574574{col 26}{space 2} .3206086{col 37}{space 1}   -8.03{col 46}{space 3}0.000{col 54}{space 4}-3.202955{col 67}{space 3}-1.946193
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. test single hischl probunmp;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]single = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]hischl = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]probunmp = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   16.81
+{txt}{col 10}Prob > chi2 =  {res}  0.0008
+{txt}
+{com}. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-636.63836}  
+Iteration 2:{space 3}log pseudolikelihood = {res: -628.6448}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-628.61368}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-628.61368}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}13{txt}){col 67}= {res}    311.96
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-628.61368{txt}{col 51}Pseudo R2{col 67}= {res}    0.2792
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .3710683{col 26}{space 2} .0987537{col 37}{space 1}    3.76{col 46}{space 3}0.000{col 54}{space 4} .1775146{col 67}{space 3}  .564622
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.464318{col 26}{space 2} .5992224{col 37}{space 1}    4.11{col 46}{space 3}0.000{col 54}{space 4} 1.289864{col 67}{space 3} 3.638772
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.3024734{col 26}{space 2} .6753734{col 37}{space 1}   -0.45{col 46}{space 3}0.654{col 54}{space 4}-1.626181{col 67}{space 3} 1.021234
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .2157285{col 26}{space 2} .0818919{col 37}{space 1}    2.63{col 46}{space 3}0.008{col 54}{space 4} .0552234{col 67}{space 3} .3762336
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .7945421{col 26}{space 2} .1808344{col 37}{space 1}    4.39{col 46}{space 3}0.000{col 54}{space 4} .4401132{col 67}{space 3} 1.148971
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .1575922{col 26}{space 2} .0210859{col 37}{space 1}    7.47{col 46}{space 3}0.000{col 54}{space 4} .1162647{col 67}{space 3} .1989198
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1104117{col 26}{space 2} .0757864{col 37}{space 1}    1.46{col 46}{space 3}0.145{col 54}{space 4} -.038127{col 67}{space 3} .2589504
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .7021586{col 26}{space 2} .1160344{col 37}{space 1}    6.05{col 46}{space 3}0.000{col 54}{space 4} .4747354{col 67}{space 3} .9295818
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.585178{col 26}{space 2} .2937658{col 37}{space 1}    8.80{col 46}{space 3}0.000{col 54}{space 4} 2.009408{col 67}{space 3} 3.160949
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3459452{col 26}{space 2} .1147379{col 37}{space 1}    3.02{col 46}{space 3}0.003{col 54}{space 4}  .121063{col 67}{space 3} .5708273
+{txt}{space 6}single {c |}{col 14}{res}{space 2} .2294801{col 26}{space 2} .0798497{col 37}{space 1}    2.87{col 46}{space 3}0.004{col 54}{space 4} .0729776{col 67}{space 3} .3859826
+{txt}{space 6}hischl {c |}{col 14}{res}{space 2} -.612624{col 26}{space 2} .2312135{col 37}{space 1}   -2.65{col 46}{space 3}0.008{col 54}{space 4}-1.065794{col 67}{space 3} -.159454
+{txt}{space 4}probunmp {c |}{col 14}{res}{space 2} .0300305{col 26}{space 2} .0181281{col 37}{space 1}    1.66{col 46}{space 3}0.098{col 54}{space 4}   -.0055{col 67}{space 3}  .065561
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.574574{col 26}{space 2} .3352743{col 37}{space 1}   -7.68{col 46}{space 3}0.000{col 54}{space 4}-3.231699{col 67}{space 3}-1.917448
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. scalar z0 =  _b[black]*0
+>               + _b[ pi_rat]*  .3308136 
+>               + _b[ hse_inc]* .2553461 
+>               + _b[ ltv_med]* .3743697 
+>               + _b[ltv_high]* .0323529 
+>               + _b[   ccred]*  2.116387 
+>               + _b[   mcred]*  1.721008 
+>               + _b[  pubrec]* .0735294 
+>               + _b[  denpmi]* .0201681 
+>               + _b[ selfemp]* .1163866               
+>               + _b[  single]* .3932773 
+>               + _b[  hischl]* .9836134
+>               + _b[probunmp]*  3.774496
+>               + _b[   _cons]*  1;
+{txt}
+{com}. scalar z1 = z0 + _b[black]*1;
+{txt}
+{com}. dis "Prob for white at means = " normprob(z0);
+{res}Prob for white at means = .07193626
+{txt}
+{com}. dis "Prob for black at means = " normprob(z1);
+{res}Prob for black at means = .1377569
+{txt}
+{com}. dis "Difference in probs     = " normprob(z1)-normprob(z0);
+{res}Difference in probs     = .06582064
+{txt}
+{com}. test single hischl probunmp;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]single = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]hischl = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]probunmp = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   17.54
+{txt}{col 10}Prob > chi2 =  {res}  0.0005
+{txt}
+{com}. ** col(5);
+. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp mcred3 mcred4 ccred3 ccred4 ccred5 ccred6 condo;
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res: -872.0853}  
+Iteration 1:{space 3}log likelihood = {res:-633.80684}  
+Iteration 2:{space 3}log likelihood = {res:-625.09937}  
+Iteration 3:{space 3}log likelihood = {res:-625.06446}  
+Iteration 4:{space 3}log likelihood = {res:-625.06445}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}LR chi2({res}20{txt}){col 67}= {res}    494.04
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-625.06445{txt}{col 51}Pseudo R2{col 67}= {res}    0.2833
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .3627695{col 26}{space 2} .1002796{col 37}{space 1}    3.62{col 46}{space 3}0.000{col 54}{space 4} .1662252{col 67}{space 3} .5593138
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.622164{col 26}{space 2} .5465828{col 37}{space 1}    4.80{col 46}{space 3}0.000{col 54}{space 4} 1.550882{col 67}{space 3} 3.693447
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.5023815{col 26}{space 2} .6737587{col 37}{space 1}   -0.75{col 46}{space 3}0.456{col 54}{space 4}-1.822924{col 67}{space 3} .8181614
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2}   .21508{col 26}{space 2} .0838755{col 37}{space 1}    2.56{col 46}{space 3}0.010{col 54}{space 4} .0506872{col 67}{space 3} .3794729
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .8355667{col 26}{space 2} .1780007{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .4866917{col 67}{space 3} 1.184442
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .3444342{col 26}{space 2} .1070834{col 37}{space 1}    3.22{col 46}{space 3}0.001{col 54}{space 4} .1345546{col 67}{space 3} .5543139
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1620425{col 26}{space 2}  .098931{col 37}{space 1}    1.64{col 46}{space 3}0.101{col 54}{space 4}-.0318588{col 67}{space 3} .3559438
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .7171932{col 26}{space 2}  .121701{col 37}{space 1}    5.89{col 46}{space 3}0.000{col 54}{space 4} .4786636{col 67}{space 3} .9557229
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.588853{col 26}{space 2} .2869354{col 37}{space 1}    9.02{col 46}{space 3}0.000{col 54}{space 4}  2.02647{col 67}{space 3} 3.151236
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3416594{col 26}{space 2} .1147439{col 37}{space 1}    2.98{col 46}{space 3}0.003{col 54}{space 4} .1167655{col 67}{space 3} .5665532
+{txt}{space 6}single {c |}{col 14}{res}{space 2} .2298971{col 26}{space 2} .0830523{col 37}{space 1}    2.77{col 46}{space 3}0.006{col 54}{space 4} .0671177{col 67}{space 3} .3926766
+{txt}{space 6}hischl {c |}{col 14}{res}{space 2}-.6037497{col 26}{space 2}  .240583{col 37}{space 1}   -2.51{col 46}{space 3}0.012{col 54}{space 4}-1.075284{col 67}{space 3}-.1322157
+{txt}{space 4}probunmp {c |}{col 14}{res}{space 2} .0279591{col 26}{space 2} .0183906{col 37}{space 1}    1.52{col 46}{space 3}0.128{col 54}{space 4} -.008086{col 67}{space 3} .0640041
+{txt}{space 6}mcred3 {c |}{col 14}{res}{space 2}-.1065596{col 26}{space 2} .2852411{col 37}{space 1}   -0.37{col 46}{space 3}0.709{col 54}{space 4}-.6656218{col 67}{space 3} .4525027
+{txt}{space 6}mcred4 {c |}{col 14}{res}{space 2}-.3827154{col 26}{space 2} .4321711{col 37}{space 1}   -0.89{col 46}{space 3}0.376{col 54}{space 4}-1.229755{col 67}{space 3} .4643244
+{txt}{space 6}ccred3 {c |}{col 14}{res}{space 2}-.2262049{col 26}{space 2} .2367345{col 37}{space 1}   -0.96{col 46}{space 3}0.339{col 54}{space 4}-.6901959{col 67}{space 3} .2377861
+{txt}{space 6}ccred4 {c |}{col 14}{res}{space 2}-.2514078{col 26}{space 2} .3403345{col 37}{space 1}   -0.74{col 46}{space 3}0.460{col 54}{space 4}-.9184512{col 67}{space 3} .4156356
+{txt}{space 6}ccred5 {c |}{col 14}{res}{space 2}-.7892635{col 26}{space 2} .4126943{col 37}{space 1}   -1.91{col 46}{space 3}0.056{col 54}{space 4} -1.59813{col 67}{space 3} .0196026
+{txt}{space 6}ccred6 {c |}{col 14}{res}{space 2}-.9048611{col 26}{space 2} .5124114{col 37}{space 1}   -1.77{col 46}{space 3}0.077{col 54}{space 4}-1.909169{col 67}{space 3} .0994468
+{txt}{space 7}condo {c |}{col 14}{res}{space 2}-.0549583{col 26}{space 2} .0909076{col 37}{space 1}   -0.60{col 46}{space 3}0.545{col 54}{space 4} -.233134{col 67}{space 3} .1232174
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.896153{col 26}{space 2} .3764731{col 37}{space 1}   -7.69{col 46}{space 3}0.000{col 54}{space 4}-3.634027{col 67}{space 3} -2.15828
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. test single hischl probunmp;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]single = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]hischl = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]probunmp = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   15.69
+{txt}{col 10}Prob > chi2 =  {res}  0.0013
+{txt}
+{com}. test mcred3 mcred4 ccred3 ccred4 ccred5 ccred6;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]mcred3 = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]mcred4 = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]ccred3 = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} [deny]ccred4 = 0{p_end}
+{p 0 7}{space 1}{text:( 5)}{space 1} [deny]ccred5 = 0{p_end}
+{p 0 7}{space 1}{text:( 6)}{space 1} [deny]ccred6 = 0{p_end}
+
+{txt}{col 12}chi2(  6) ={res}    6.88
+{txt}{col 10}Prob > chi2 =  {res}  0.3322
+{txt}
+{com}. test condo;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]condo = 0{p_end}
+
+{txt}{col 12}chi2(  1) ={res}    0.37
+{txt}{col 10}Prob > chi2 =  {res}  0.5455
+{txt}
+{com}. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp mcred3 mcred4 ccred3 ccred4 ccred5 ccred6 condo, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-633.80684}  
+Iteration 2:{space 3}log pseudolikelihood = {res:-625.09937}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-625.06446}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-625.06445}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}20{txt}){col 67}= {res}    304.43
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-625.06445{txt}{col 51}Pseudo R2{col 67}= {res}    0.2833
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .3627695{col 26}{space 2} .0997689{col 37}{space 1}    3.64{col 46}{space 3}0.000{col 54}{space 4}  .167226{col 67}{space 3}  .558313
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.622164{col 26}{space 2} .6104407{col 37}{space 1}    4.30{col 46}{space 3}0.000{col 54}{space 4} 1.425723{col 67}{space 3} 3.818606
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.5023815{col 26}{space 2} .6968566{col 37}{space 1}   -0.72{col 46}{space 3}0.471{col 54}{space 4}-1.868195{col 67}{space 3} .8634324
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2}   .21508{col 26}{space 2} .0832763{col 37}{space 1}    2.58{col 46}{space 3}0.010{col 54}{space 4} .0518614{col 67}{space 3} .3782987
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .8355667{col 26}{space 2} .1818635{col 37}{space 1}    4.59{col 46}{space 3}0.000{col 54}{space 4} .4791207{col 67}{space 3} 1.192013
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .3444342{col 26}{space 2} .1060281{col 37}{space 1}    3.25{col 46}{space 3}0.001{col 54}{space 4}  .136623{col 67}{space 3} .5522454
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1620425{col 26}{space 2} .1019977{col 37}{space 1}    1.59{col 46}{space 3}0.112{col 54}{space 4}-.0378694{col 67}{space 3} .3619544
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .7171932{col 26}{space 2} .1170008{col 37}{space 1}    6.13{col 46}{space 3}0.000{col 54}{space 4} .4878759{col 67}{space 3} .9465106
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.588853{col 26}{space 2} .2983341{col 37}{space 1}    8.68{col 46}{space 3}0.000{col 54}{space 4} 2.004129{col 67}{space 3} 3.173577
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3416594{col 26}{space 2} .1148723{col 37}{space 1}    2.97{col 46}{space 3}0.003{col 54}{space 4} .1165137{col 67}{space 3}  .566805
+{txt}{space 6}single {c |}{col 14}{res}{space 2} .2298971{col 26}{space 2}  .084764{col 37}{space 1}    2.71{col 46}{space 3}0.007{col 54}{space 4} .0637626{col 67}{space 3} .3960316
+{txt}{space 6}hischl {c |}{col 14}{res}{space 2}-.6037497{col 26}{space 2}  .236641{col 37}{space 1}   -2.55{col 46}{space 3}0.011{col 54}{space 4}-1.067557{col 67}{space 3}-.1399419
+{txt}{space 4}probunmp {c |}{col 14}{res}{space 2} .0279591{col 26}{space 2} .0178572{col 37}{space 1}    1.57{col 46}{space 3}0.117{col 54}{space 4}-.0070404{col 67}{space 3} .0629585
+{txt}{space 6}mcred3 {c |}{col 14}{res}{space 2}-.1065596{col 26}{space 2} .2914909{col 37}{space 1}   -0.37{col 46}{space 3}0.715{col 54}{space 4}-.6778712{col 67}{space 3} .4647521
+{txt}{space 6}mcred4 {c |}{col 14}{res}{space 2}-.3827154{col 26}{space 2} .4266523{col 37}{space 1}   -0.90{col 46}{space 3}0.370{col 54}{space 4}-1.218939{col 67}{space 3} .4535079
+{txt}{space 6}ccred3 {c |}{col 14}{res}{space 2}-.2262049{col 26}{space 2} .2415353{col 37}{space 1}   -0.94{col 46}{space 3}0.349{col 54}{space 4}-.6996054{col 67}{space 3} .2471956
+{txt}{space 6}ccred4 {c |}{col 14}{res}{space 2}-.2514078{col 26}{space 2} .3344922{col 37}{space 1}   -0.75{col 46}{space 3}0.452{col 54}{space 4}-.9070005{col 67}{space 3}  .404185
+{txt}{space 6}ccred5 {c |}{col 14}{res}{space 2}-.7892635{col 26}{space 2} .4067159{col 37}{space 1}   -1.94{col 46}{space 3}0.052{col 54}{space 4}-1.586412{col 67}{space 3}  .007885
+{txt}{space 6}ccred6 {c |}{col 14}{res}{space 2}-.9048611{col 26}{space 2} .5075612{col 37}{space 1}   -1.78{col 46}{space 3}0.075{col 54}{space 4}-1.899663{col 67}{space 3} .0899406
+{txt}{space 7}condo {c |}{col 14}{res}{space 2}-.0549583{col 26}{space 2} .0934145{col 37}{space 1}   -0.59{col 46}{space 3}0.556{col 54}{space 4}-.2380474{col 67}{space 3} .1281308
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.896153{col 26}{space 2} .3879434{col 37}{space 1}   -7.47{col 46}{space 3}0.000{col 54}{space 4}-3.656508{col 67}{space 3}-2.135798
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. scalar z0 =  _b[black]*0
+>               + _b[ pi_rat]*  .3308136 
+>               + _b[ hse_inc]* .2553461 
+>               + _b[ ltv_med]* .3743697 
+>               + _b[ltv_high]* .0323529 
+>               + _b[   ccred]*  2.116387 
+>               + _b[   mcred]*  1.721008 
+>               + _b[  pubrec]* .0735294 
+>               + _b[  denpmi]* .0201681 
+>               + _b[ selfemp]* .1163866               
+>               + _b[  single]* .3932773 
+>               + _b[  hischl]* .9836134
+>               + _b[probunmp]*  3.774496
+>               + _b[  mcred3]* .0172269              
+>               + _b[  mcred4]* .0088235             
+>               + _b[  ccred3]* .0529412
+>               + _b[  ccred4]* .0323529
+>               + _b[  ccred5]* .0764706
+>               + _b[  ccred6]* .0844538 
+>               + _b[   condo]* .2882353                                                                     
+>               + _b[   _cons]*  1;
+{txt}
+{com}. scalar z1 = z0 + _b[black]*1;
+{txt}
+{com}. dis "Prob for white at means = " normprob(z0);
+{res}Prob for white at means = .07041072
+{txt}
+{com}. dis "Prob for black at means = " normprob(z1);
+{res}Prob for black at means = .13350609
+{txt}
+{com}. dis "Difference in probs     = " normprob(z1)-normprob(z0);
+{res}Difference in probs     = .06309538
+{txt}
+{com}. test single hischl probunmp;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]single = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]hischl = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]probunmp = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   15.66
+{txt}{col 10}Prob > chi2 =  {res}  0.0013
+{txt}
+{com}. test mcred3 mcred4 ccred3 ccred4 ccred5 ccred6;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]mcred3 = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]mcred4 = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]ccred3 = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} [deny]ccred4 = 0{p_end}
+{p 0 7}{space 1}{text:( 5)}{space 1} [deny]ccred5 = 0{p_end}
+{p 0 7}{space 1}{text:( 6)}{space 1} [deny]ccred6 = 0{p_end}
+
+{txt}{col 12}chi2(  6) ={res}    7.33
+{txt}{col 10}Prob > chi2 =  {res}  0.2911
+{txt}
+{com}. test condo;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]condo = 0{p_end}
+
+{txt}{col 12}chi2(  1) ={res}    0.35
+{txt}{col 10}Prob > chi2 =  {res}  0.5563
+{txt}
+{com}. ** col(6);
+. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp blk_pi blk_hse;
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res: -872.0853}  
+Iteration 1:{space 3}log likelihood = {res:-636.10667}  
+Iteration 2:{space 3}log likelihood = {res:-628.37393}  
+Iteration 3:{space 3}log likelihood = {res:-628.33217}  
+Iteration 4:{space 3}log likelihood = {res:-628.33216}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}LR chi2({res}15{txt}){col 67}= {res}    487.51
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-628.33216{txt}{col 51}Pseudo R2{col 67}= {res}    0.2795
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .2462823{col 26}{space 2} .3938629{col 37}{space 1}    0.63{col 46}{space 3}0.532{col 54}{space 4}-.5256748{col 67}{space 3} 1.018239
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.571702{col 26}{space 2} .5854259{col 37}{space 1}    4.39{col 46}{space 3}0.000{col 54}{space 4} 1.424288{col 67}{space 3} 3.719116
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.5380259{col 26}{space 2} .7255947{col 37}{space 1}   -0.74{col 46}{space 3}0.458{col 54}{space 4}-1.960165{col 67}{space 3} .8841136
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .2158857{col 26}{space 2} .0826142{col 37}{space 1}    2.61{col 46}{space 3}0.009{col 54}{space 4} .0539649{col 67}{space 3} .3778065
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .7881879{col 26}{space 2} .1761974{col 37}{space 1}    4.47{col 46}{space 3}0.000{col 54}{space 4} .4428474{col 67}{space 3} 1.133529
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .1578707{col 26}{space 2}  .021675{col 37}{space 1}    7.28{col 46}{space 3}0.000{col 54}{space 4} .1153884{col 67}{space 3} .2003529
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1114918{col 26}{space 2} .0754066{col 37}{space 1}    1.48{col 46}{space 3}0.139{col 54}{space 4}-.0363023{col 67}{space 3}  .259286
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .7047677{col 26}{space 2} .1198014{col 37}{space 1}    5.88{col 46}{space 3}0.000{col 54}{space 4} .4699612{col 67}{space 3} .9395742
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.590097{col 26}{space 2} .2858882{col 37}{space 1}    9.06{col 46}{space 3}0.000{col 54}{space 4} 2.029766{col 67}{space 3} 3.150427
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3475272{col 26}{space 2} .1130931{col 37}{space 1}    3.07{col 46}{space 3}0.002{col 54}{space 4} .1258687{col 67}{space 3} .5691856
+{txt}{space 6}single {c |}{col 14}{res}{space 2} .2255941{col 26}{space 2} .0801531{col 37}{space 1}    2.81{col 46}{space 3}0.005{col 54}{space 4}  .068497{col 67}{space 3} .3826912
+{txt}{space 6}hischl {c |}{col 14}{res}{space 2}-.6198276{col 26}{space 2}  .239398{col 37}{space 1}   -2.59{col 46}{space 3}0.010{col 54}{space 4}-1.089039{col 67}{space 3}-.1506162
+{txt}{space 4}probunmp {c |}{col 14}{res}{space 2} .0297126{col 26}{space 2}  .018134{col 37}{space 1}    1.64{col 46}{space 3}0.101{col 54}{space 4}-.0058293{col 67}{space 3} .0652546
+{txt}{space 6}blk_pi {c |}{col 14}{res}{space 2}-.5792648{col 26}{space 2} 1.378903{col 37}{space 1}   -0.42{col 46}{space 3}0.674{col 54}{space 4}-3.281865{col 67}{space 3} 2.123335
+{txt}{space 5}blk_hse {c |}{col 14}{res}{space 2} 1.231736{col 26}{space 2} 1.663421{col 37}{space 1}    0.74{col 46}{space 3}0.459{col 54}{space 4}-2.028509{col 67}{space 3}  4.49198
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.543412{col 26}{space 2} .3276657{col 37}{space 1}   -7.76{col 46}{space 3}0.000{col 54}{space 4}-3.185625{col 67}{space 3}-1.901199
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. test single hischl probunmp;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]single = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]hischl = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]probunmp = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   16.63
+{txt}{col 10}Prob > chi2 =  {res}  0.0008
+{txt}
+{com}. test black blk_pi blk_hse;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]black = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]blk_pi = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]blk_hse = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   14.87
+{txt}{col 10}Prob > chi2 =  {res}  0.0019
+{txt}
+{com}. test blk_pi blk_hse;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]blk_pi = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]blk_hse = 0{p_end}
+
+{txt}{col 12}chi2(  2) ={res}    0.56
+{txt}{col 10}Prob > chi2 =  {res}  0.7561
+{txt}
+{com}. probit deny black pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi
+>  selfemp single hischl probunmp blk_pi blk_hse, r;
+
+{res}{txt}Iteration 0:{space 3}log pseudolikelihood = {res: -872.0853}  
+Iteration 1:{space 3}log pseudolikelihood = {res:-636.10667}  
+Iteration 2:{space 3}log pseudolikelihood = {res:-628.37393}  
+Iteration 3:{space 3}log pseudolikelihood = {res:-628.33217}  
+Iteration 4:{space 3}log pseudolikelihood = {res:-628.33216}  
+{res}
+{txt}Probit regression{col 51}Number of obs{col 67}= {res}      2380
+{txt}{col 51}Wald chi2({res}15{txt}){col 67}= {res}    315.60
+{txt}{col 51}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log pseudolikelihood = {res}-628.33216{txt}{col 51}Pseudo R2{col 67}= {res}    0.2795
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        deny{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}black {c |}{col 14}{res}{space 2} .2462823{col 26}{space 2} .4480002{col 37}{space 1}    0.55{col 46}{space 3}0.582{col 54}{space 4} -.631782{col 67}{space 3} 1.124347
+{txt}{space 6}pi_rat {c |}{col 14}{res}{space 2} 2.571702{col 26}{space 2} .6623891{col 37}{space 1}    3.88{col 46}{space 3}0.000{col 54}{space 4} 1.273443{col 67}{space 3} 3.869961
+{txt}{space 5}hse_inc {c |}{col 14}{res}{space 2}-.5380259{col 26}{space 2} .7429056{col 37}{space 1}   -0.72{col 46}{space 3}0.469{col 54}{space 4}-1.994094{col 67}{space 3} .9180423
+{txt}{space 5}ltv_med {c |}{col 14}{res}{space 2} .2158857{col 26}{space 2} .0819145{col 37}{space 1}    2.64{col 46}{space 3}0.008{col 54}{space 4} .0553362{col 67}{space 3} .3764352
+{txt}{space 4}ltv_high {c |}{col 14}{res}{space 2} .7881879{col 26}{space 2} .1814846{col 37}{space 1}    4.34{col 46}{space 3}0.000{col 54}{space 4} .4324847{col 67}{space 3} 1.143891
+{txt}{space 7}ccred {c |}{col 14}{res}{space 2} .1578707{col 26}{space 2} .0211387{col 37}{space 1}    7.47{col 46}{space 3}0.000{col 54}{space 4} .1164396{col 67}{space 3} .1993017
+{txt}{space 7}mcred {c |}{col 14}{res}{space 2} .1114918{col 26}{space 2} .0758759{col 37}{space 1}    1.47{col 46}{space 3}0.142{col 54}{space 4}-.0372223{col 67}{space 3} .2602059
+{txt}{space 6}pubrec {c |}{col 14}{res}{space 2} .7047677{col 26}{space 2} .1156898{col 37}{space 1}    6.09{col 46}{space 3}0.000{col 54}{space 4} .4780198{col 67}{space 3} .9315156
+{txt}{space 6}denpmi {c |}{col 14}{res}{space 2} 2.590097{col 26}{space 2} .2937427{col 37}{space 1}    8.82{col 46}{space 3}0.000{col 54}{space 4} 2.014371{col 67}{space 3} 3.165822
+{txt}{space 5}selfemp {c |}{col 14}{res}{space 2} .3475272{col 26}{space 2} .1145316{col 37}{space 1}    3.03{col 46}{space 3}0.002{col 54}{space 4} .1230494{col 67}{space 3}  .572005
+{txt}{space 6}single {c |}{col 14}{res}{space 2} .2255941{col 26}{space 2} .0802929{col 37}{space 1}    2.81{col 46}{space 3}0.005{col 54}{space 4} .0682229{col 67}{space 3} .3829653
+{txt}{space 6}hischl {c |}{col 14}{res}{space 2}-.6198276{col 26}{space 2} .2308051{col 37}{space 1}   -2.69{col 46}{space 3}0.007{col 54}{space 4}-1.072197{col 67}{space 3} -.167458
+{txt}{space 4}probunmp {c |}{col 14}{res}{space 2} .0297126{col 26}{space 2} .0181141{col 37}{space 1}    1.64{col 46}{space 3}0.101{col 54}{space 4}-.0057903{col 67}{space 3} .0652156
+{txt}{space 6}blk_pi {c |}{col 14}{res}{space 2}-.5792648{col 26}{space 2} 1.472873{col 37}{space 1}   -0.39{col 46}{space 3}0.694{col 54}{space 4}-3.466043{col 67}{space 3} 2.307514
+{txt}{space 5}blk_hse {c |}{col 14}{res}{space 2} 1.231736{col 26}{space 2} 1.693551{col 37}{space 1}    0.73{col 46}{space 3}0.467{col 54}{space 4}-2.087564{col 67}{space 3} 4.551035
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.543412{col 26}{space 2} .3487455{col 37}{space 1}   -7.29{col 46}{space 3}0.000{col 54}{space 4}-3.226941{col 67}{space 3}-1.859884
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. scalar z0 =  _b[black]*0
+>               + _b[ pi_rat]*  .3308136 
+>               + _b[ hse_inc]* .2553461 
+>               + _b[ ltv_med]* .3743697 
+>               + _b[ltv_high]* .0323529 
+>               + _b[   ccred]*  2.116387 
+>               + _b[   mcred]*  1.721008 
+>               + _b[  pubrec]* .0735294 
+>               + _b[ selfemp]* .1163866               
+>               + _b[  denpmi]* .0201681 
+>               + _b[  single]* .3932773 
+>               + _b[  hischl]* .9836134
+>               + _b[probunmp]*  3.774496
+>               + _b[   _cons]*  1;
+{txt}
+{com}. scalar z1 = z0 + _b[black]*1 
+>           + _b[blk_pi]*1* .3308136 
+>           + _b[blk_hse]*1* .2553461 ;
+{txt}
+{com}.  dis "Prob for white at means = " normprob(z0);
+{res}Prob for white at means = .07186792
+{txt}
+{com}. dis "Prob for black at means = " normprob(z1);
+{res}Prob for black at means = .13723047
+{txt}
+{com}. dis "Difference in probs     = " normprob(z1)-normprob(z0);
+{res}Difference in probs     = .06536255
+{txt}
+{com}.  test single hischl probunmp;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]single = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]hischl = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]probunmp = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   17.36
+{txt}{col 10}Prob > chi2 =  {res}  0.0006
+{txt}
+{com}. test black blk_pi blk_hse;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]black = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]blk_pi = 0{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [deny]blk_hse = 0{p_end}
+
+{txt}{col 12}chi2(  3) ={res}   14.89
+{txt}{col 10}Prob > chi2 =  {res}  0.0019
+{txt}
+{com}. test blk_pi blk_hse;
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}[deny]blk_pi = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [deny]blk_hse = 0{p_end}
+
+{txt}{col 12}chi2(  2) ={res}    0.53
+{txt}{col 10}Prob > chi2 =  {res}  0.7658
+{txt}
+{com}. log close;
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\1_preparation.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}23 Nov 2015, 14:29:17
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

@@ -4,17 +4,22 @@ cap log close;
 *************************************************************;
 * Replication program for Chapter 11 in SW3E;
 *************************************************************;
-log using ch11.log,replace;
+
+log using logs/1_preparation, replace;
+*@*lstart
 set more 1;
 ***********************************;
 * Read In Data; 
 * (Note: Change path name so that it is appropriate for your computer);
-use \tb\3e\supplements\replicationfiles\data\hmda_sw.dta;
+use hmda_sw.dta;
 ********************************************;
 
 gen deny = (s7==3);
 gen pi_rat = s46/100;
 gen black = (s13==3);
+*@*lend
+cap log close;
+translate logs/1_preparation.smcl logs/1_preparation.txt, replace;
 
 ***********************************;
 * Results on Page 1;
@@ -214,4 +219,5 @@ test single hischl probunmp;
 test black blk_pi blk_hse;
 test blk_pi blk_hse;
 log close;
+translate ch11.smcl ch11.txt, replace;
 exit;
