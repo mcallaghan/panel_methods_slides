@@ -2,10 +2,10 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\12_graph.log
   log type:  text
- opened on:  25 Nov 2015, 12:08:32
+ opened on:  25 Nov 2015, 17:21:43
 
-. *@*lstart;
-.  logit deny i.black `controls', r;
+. *@*lstart 
+. logit deny i.black `controls', r
 
 Iteration 0:   log pseudolikelihood =  -872.0853  
 Iteration 1:   log pseudolikelihood = -672.05096  
@@ -37,7 +37,7 @@ Log pseudolikelihood = -635.63667                 Pseudo R2       =     0.2711
        _cons |  -5.707384   .4834338   -11.81   0.000    -6.654896   -4.759871
 ------------------------------------------------------------------------------
 
-. margins black, atmeans;
+. margins black, atmeans
 
 Adjusted predictions                              Number of obs   =       2380
 Model VCE    : Robust
@@ -64,12 +64,12 @@ at           : 0.black         =     .857563 (mean)
           1  |   .1307037   .0200064     6.53   0.000     .0914919    .1699156
 ------------------------------------------------------------------------------
 
-. marginsplot;
+. marginsplot
 
   Variables that uniquely identify margins: black
 
-. graph export graphs\margins_black.png, replace;
+. graph export graphs\margins_black.png, replace
 (file graphs\margins_black.png written in PNG format)
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

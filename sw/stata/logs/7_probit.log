@@ -2,11 +2,11 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\7_probit.log
   log type:  text
- opened on:  25 Nov 2015, 12:08:30
+ opened on:  25 Nov 2015, 17:21:41
 
-. *@*lstart;
-.  ** col(3) - Probit with robust standard errors;
-. probit deny i.black `controls', r;
+. *@*lstart 
+. ** col(3) - Probit with robust standard errors
+. probit deny i.black `controls', r
 
 Iteration 0:   log pseudolikelihood =  -872.0853  
 Iteration 1:   log pseudolikelihood = -643.92086  
@@ -36,28 +36,28 @@ Log pseudolikelihood = -636.84706                 Pseudo R2       =     0.2697
        _cons |  -3.040568   .2300051   -13.22   0.000     -3.49137   -2.589766
 ------------------------------------------------------------------------------
 
-. quietly estadd margins black, atmeans;
+. quietly estadd margins black, atmeans
 
-. mat m = e(margins_b);
+. mat m = e(margins_b)
 
-. estadd scalar prob_white = m[1,1];
+. estadd scalar prob_white = m[1,1]
 
 added scalar:
          e(prob_white) =  .07377839
 
-. estadd scalar prob_black = m[1,2];
+. estadd scalar prob_black = m[1,2]
 
 added scalar:
          e(prob_black) =  .14477953
 
-. estadd scalar prob_diff = m[1,2] - m[1,1];
+. estadd scalar prob_diff = m[1,2] - m[1,1]
 
 added scalar:
           e(prob_diff) =  .07100114
 
-. eststo Probit_3;
+. eststo Probit_3
 
-. margins black, atmeans;
+. margins black, atmeans
 
 Adjusted predictions                              Number of obs   =       2380
 Model VCE    : Robust
@@ -84,5 +84,5 @@ at           : 0.black         =     .857563 (mean)
           1  |   .1447795   .0209432     6.91   0.000     .1037316    .1858274
 ------------------------------------------------------------------------------
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

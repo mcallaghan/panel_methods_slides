@@ -2,31 +2,31 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\4_catvars.log
   log type:  text
- opened on:  25 Nov 2015, 12:08:30
+ opened on:  25 Nov 2015, 17:21:41
 
-. *@*lstart;
+. *@*lstart
 . *************************************
-> **** Table 11.2 ;
-. ************************************;
-. gen ltv_med = (loan_val>=0.80)*(loan_val<=.95);
+. **** Table 11.2 
+. ************************************
+. gen ltv_med = (loan_val>=0.80)*(loan_val<=.95)
 
-. gen ltv_high = (loan_val>0.95);
+. gen ltv_high = (loan_val>0.95) 
 
-.  gen blk_pi = black*pi_rat;
+. gen blk_pi = black*pi_rat
 
-. gen blk_hse = black*hse_inc;
+. gen blk_hse = black*hse_inc
 
-. gen ccred3 = (ccred==3);
+. gen ccred3 = (ccred==3) 
 
-.  gen ccred4 = (ccred==4);
+. gen ccred4 = (ccred==4)
 
-. gen ccred5 = (ccred==5);
+. gen ccred5 = (ccred==5)
 
-. gen ccred6 = (ccred==6);
+. gen ccred6 = (ccred==6)
 
-. gen mcred3 = (mcred==3);
+. gen mcred3 = (mcred==3)
 
-. gen mcred4 = (mcred==4);
+. gen mcred4 = (mcred==4)
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

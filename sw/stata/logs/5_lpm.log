@@ -2,14 +2,14 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\5_lpm.log
   log type:  text
- opened on:  25 Nov 2015, 12:08:30
+ opened on:  25 Nov 2015, 17:21:41
 
-. *@*lstart;
-.  ** define list of basic regressors;
-. local controls pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi selfemp;
+. *@*lstart 
+. ** define list of basic regressors
+. local controls pi_rat hse_inc ltv_med ltv_high ccred mcred pubrec denpmi selfemp
 
-. ** col(1);
-. regress deny i.black `controls', r;
+. ** col(1)
+. regress deny i.black `controls', r
 
 Linear regression                                      Number of obs =    2380
                                                        F( 10,  2369) =   67.22
@@ -34,7 +34,7 @@ Linear regression                                      Number of obs =    2380
        _cons |  -.1829933   .0276729    -6.61   0.000    -.2372589   -.1287277
 ------------------------------------------------------------------------------
 
-. eststo LPM;
+. eststo LPM
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

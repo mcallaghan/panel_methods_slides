@@ -2,11 +2,12 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\9_controls_2.log
   log type:  text
- opened on:  25 Nov 2015, 12:08:31
+ opened on:  25 Nov 2015, 17:21:42
 
-. *@*lstart;
-.  ** col(5) - Probit with even more controls;
-. probit deny i.black `controls' single hischl probunmp mcred3 mcred4 ccred3 ccred4 ccred5 ccred6 condo, r;
+. *@*lstart 
+. ** col(5) - Probit with even more controls
+. probit deny i.black `controls' single hischl probunmp mcred3 mcred4 ccred3 ///
+>  ccred4 ccred5 ccred6 condo, r
 
 Iteration 0:   log pseudolikelihood =  -872.0853  
 Iteration 1:   log pseudolikelihood = -633.80684  
@@ -46,19 +47,19 @@ Log pseudolikelihood = -625.06445                 Pseudo R2       =     0.2833
        _cons |  -2.896153   .3879434    -7.47   0.000    -3.656508   -2.135798
 ------------------------------------------------------------------------------
 
-. quietly estadd margins black, atmeans;
+. quietly estadd margins black, atmeans
 
-. mat m = e(margins_b);
+. mat m = e(margins_b)
 
-. quietly estadd scalar prob_white = m[1,1];
+. quietly estadd scalar prob_white = m[1,1]
 
-. quietly estadd scalar prob_black = m[1,2];
+. quietly estadd scalar prob_black = m[1,2]
 
-. quietly estadd scalar prob_diff = m[1,2] - m[1,1];
+. quietly estadd scalar prob_diff = m[1,2] - m[1,1]
 
-. eststo Probit_5;
+. eststo Probit_5
 
-. test single hischl probunmp;
+. test single hischl probunmp
 
  ( 1)  [deny]single = 0
  ( 2)  [deny]hischl = 0
@@ -67,7 +68,7 @@ Log pseudolikelihood = -625.06445                 Pseudo R2       =     0.2833
            chi2(  3) =   15.66
          Prob > chi2 =    0.0013
 
-. test mcred3 mcred4 ccred3 ccred4 ccred5 ccred6;
+. test mcred3 mcred4 ccred3 ccred4 ccred5 ccred6
 
  ( 1)  [deny]mcred3 = 0
  ( 2)  [deny]mcred4 = 0
@@ -79,12 +80,12 @@ Log pseudolikelihood = -625.06445                 Pseudo R2       =     0.2833
            chi2(  6) =    7.33
          Prob > chi2 =    0.2911
 
-. test condo;
+. test condo
 
  ( 1)  [deny]condo = 0
 
            chi2(  1) =    0.35
          Prob > chi2 =    0.5563
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

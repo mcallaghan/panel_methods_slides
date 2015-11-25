@@ -2,38 +2,38 @@
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\3_controlvars.log
   log type:  text
- opened on:  25 Nov 2015, 12:08:30
+ opened on:  25 Nov 2015, 17:21:41
 
-. *@*lstart;
+. *@*lstart
 . *************************************
-> **** Table 11.1 ;
-. ************************************;
-. gen hse_inc = s45/100;
+. **** Table 11.1 
+. ************************************
+. gen hse_inc = s45/100
 
-. gen loan_val = s6/s50;
+. gen loan_val = s6/s50
 
-. gen ccred = s43;
+. gen ccred = s43
 
-. gen mcred = s42;
+. gen mcred = s42
 
-. gen pubrec = (s44>0);
+. gen pubrec = (s44>0)
 
-. gen denpmi = (s53==1);
+. gen denpmi = (s53==1)
 
-. gen selfemp = (s27a==1);
+. gen selfemp = (s27a==1)
 
-. gen married = (s23a=="M");
+. gen married = (s23a=="M")
 
-. gen single = (married==0);
+. gen single = (married==0)
 
-. gen hischl = (school>=12);
+. gen hischl = (school>=12)
 
-. gen probunmp = uria;
+. gen probunmp = uria
 
-. gen condo = (s51 == 1);
+. gen condo = (s51 == 1)
 
-. sum pi_rat hse_inc loan_val ccred mcred pubrec denpmi selfemp
->  single hischl probunmp condo black deny;
+. sum pi_rat hse_inc loan_val ccred mcred pubrec denpmi selfemp ///
+>  single hischl probunmp condo black deny
 
     Variable |       Obs        Mean    Std. Dev.       Min        Max
 -------------+--------------------------------------------------------
@@ -54,5 +54,5 @@
        black |      2380     .142437    .3495712          0          1
         deny |      2380    .1197479    .3247347          0          1
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

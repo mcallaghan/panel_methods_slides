@@ -149,7 +149,7 @@ log using logs\10_interaction.log, replace;
 *@*lstart; 
 ** col(6) - Probit with interaction;
 probit deny i.black `controls'
- selfemp single hischl probunmp blk_pi blk_hse;
+ single hischl probunmp i.black#c.pi_rat i.black#c.hse_inc;
 quietly estadd margins black, atmeans;
 mat m = e(margins_b);
 quietly estadd scalar prob_white = m[1,1];
@@ -158,15 +158,15 @@ quietly estadd scalar prob_diff = m[1,2] - m[1,1];
 eststo Probit_inter;
 
 test single hischl probunmp;
-test 1.black blk_pi blk_hse;
-test blk_pi blk_hse;
+test 1.black 1.black#c.pi_rat 1.black#c.hse_inc;
+test 1.black#c.pi_rat 1.black#c.hse_inc;
 *@*lend;
 cap log close;
 
 
 log using logs\11_summary.log, replace;
 *@*lstart; 
-esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter using sum_table.doc, 
+esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter using ..\word\sum_table.doc, 
 	stats(prob_white prob_black prob_diff)  mtitle replace;
 *@*lend;
 cap log close;
