@@ -1,0 +1,130 @@
+\documentclass{scrartcl}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\begin{document}
+
+	\title{Content Outline for Stats II Extra Stata sessions}
+	\author{Max Callaghan}
+	\date{November 2015}
+	
+	\maketitle
+	
+\section{Reproducible Research and Literate Programming}
+This first session should give students the tools necessary to produce research output that links data, code and narrative.
+\subsection{About Reproducible Research and Literate Programming}
+\begin{itemize}
+  \item Explanation of the principles of Reproducible Research and Literate Programming
+  \begin{itemize}
+    \item ``The standard of reproducibility calls for the data and the computer code used to analyze the data be made available to others" \cite{peng}
+    \item Literate programming ties together data, code and the actual research output, enhancing reproducibility
+  \end{itemize}
+  \item How these can help students avoid errors and unnecessary repetetive tasks
+  
+\end{itemize}
+
+\subsection{Tools for Reproducible Research and Literate Programming}
+\begin{itemize}
+  \item Git and Github
+  \item Rmarkdown
+\end{itemize}
+\subsubsection{Options for Creating Documents that include Stata Output}
+\begin{itemize}
+  \item Why is copying, taking screenshots, and pasting into word suboptimal?
+  \item Option 1: Use word's -link- or -includetext- fields to include log output that can be updated automatically
+  \begin{itemize}
+    \item Text fields can include output from log files that automatically updates when you run your do file. However, you would have to run a script to clean these log files [Need to check if this works on school computers. Also, it may be easier to make this a stata function \& this needs to be extended to control formatting. Perhaps it's possible to write a stata function that allows for including text and document writing instructions within a do file].
+    \item Word is easy to use but can be frustrating when what you want to do is very specific. Formatting can be an issue.
+  \end{itemize}
+  \item Option 2: Use latex to write your document. Write your output tables into .tex files and graphs into image files and link to them into your document.
+  \begin{itemize}
+    \item This way, if you make a change to your do file which changes your output, recompiling your pdf will automatically reflect those changes.
+    \item{[Is it possible to install latex on school computers?]}
+  \end{itemize}
+  \item Option 3: Use \href{http://homepage.stat.uiowa.edu/~rlenth/StatWeave/}{Statweave} to create one document containing instructions for writing and formatting your document as well as instructions for stata to run. [As above, is installation on school computers an issue?]
+\end{itemize}
+
+\section{Getting Started with Stata}
+This, and the following sections, should give students a clearer understanding of how stata works, and should equip them with some further strategies and tools for solving problems with stata.
+\subsection{General Pointers}
+\begin{itemize}
+\item Where to look for help
+\item How to read stata manual pages
+\end{itemize}
+
+\subsection{Directory Structure}
+
+\begin{itemize}
+\item File paths and the working directory
+\item How thinking about directory structure can make things easier
+\end{itemize}
+
+\subsection{Reading Data}
+\begin{itemize}
+\item Reading data types not formatted for stata: xlsx, csv, etc. Overcoming issues with delimiters and unhelpfully formatted data files
+\item Reading data from web sources
+\end{itemize}
+
+\subsection{Processing Data}
+\begin{itemize}
+\item Data types
+\item Generating new variables
+\end{itemize}
+
+\section{Automating Stata}
+
+\subsection{Macros}
+\begin{itemize}
+  \item Using macros to store text
+  \begin{itemize}
+    \item Storing and evaluating a macro
+    \item Using a macro to re-use a list of variables without retyping
+    \item Including a macro within a macro
+  \end{itemize}
+  \item Using macros to store results
+  \begin{itemize}
+    \item Storing estimation results
+  \end{itemize}
+\end{itemize}
+
+\subsection{Loops}
+\begin{itemize}
+  \item Looping through sequences of numbers
+  \item Looping through lists of variables
+\end{itemize}
+
+\section{Presenting Results with Stata}
+
+\subsection{Postestimation}
+\begin{itemize}
+  \item Accessing and using postestimation results in e()
+  \item Using -predict- to generate new variables
+\end{itemize}
+
+\subsection{The -estout- program}
+\begin{itemize}
+  \item Storing regression output and presenting using -esttab-
+  \item Computing additional statistics to add to results tables
+  \item Saving tables to various file formats for use in output
+\end{itemize}
+
+\subsection{Producing Graphs}
+\begin{itemize}
+  \item Different types of graphs using stata
+  \item Combining graphs
+  \item Customising the appearance of graphs in stata
+  \item Saving and presenting graphs in your output
+\end{itemize}
+
+
+
+\section*{Some Further Resources}
+\begin{itemize}
+  \item \url{http://data.princeton.edu/stata/}
+  \item \url{https://github.com/HertieDataScience/SyllabusAndLectures}
+\end{itemize}
+
+\bibliography{stata.bib}
+\bibliographystyle{plain}
+
+\end{document}
