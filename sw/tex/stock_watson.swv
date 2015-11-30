@@ -1,0 +1,200 @@
+ \documentclass{scrartcl}
+
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+
+\usepackage{fvrb-ex}
+\fvset{gobble=0,numbersep=3pt}
+\fvset{numbers=left,frame=single}
+%\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{commandchars=§µ¶}
+\DefineVerbatimEnvironment%
+{CVerbatim}{Verbatim}
+{fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl,formatcom=\color{blue}}
+
+\DefineVerbatimEnvironment{SinputC}{Verbatim}{fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata Example - Input}}
+\DefineVerbatimEnvironment{SoutputC}{Verbatim}{fontfamily=tt,fontsize=\small,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example - Output}}
+\DefineVerbatimEnvironment{STinyoutputC}{Verbatim}{fontfamily=tt,fontsize=\tiny,frame=single,formatcom=\color{blue},label=\emph{Interactive Stata example - Output}}
+
+\lstset{ %
+  basicstyle=\tiny\ttfamily\color{blue}, %
+  frame=single, %
+  includerangemarker = false, %
+  title = \footnotesize\ttfamily\color{blue}\emph{Interactive Stata Example}, %
+  captionpos = t, %
+  rangeprefix=*@*, %
+  %belowcaptionskip = -0.08in, %
+  label={bla}
+}
+
+\lstnewenvironment{stata}
+  {label=blabla}{}
+
+\usepackage{Statweave}
+\begin{document}
+
+	\title{Homework assignment \#7\\ Panel Data Analysis}
+	\subtitle{MPP-C6: Statistics 2}
+	\author{Prof. Jan C. Minx\\ \texttt{minx@hertie-school.org} \\
+		\url{http://moodle.hertie-school.org/course/view.php?id=1192}}
+	\date{November 2015}
+	
+	\maketitle
+	
+\subsection{Preparing the Data}
+
+We load the dataset and create some new variables:
+
+\begin{itemize}
+\item deny is a binary variable taking the value 1 if a mortgage application is rejected and 0 if it is not rejected
+\item pi\_rat shows the debt to income ratio (the banks' calculation of housing expense/income) divided by 100
+\item black is a dummy variable taking the value of 1 if the applicant is black.
+\end{itemize}
+
+\weaveOpts{codestyle=SinputC,outstyle=SoutputC} 
+
+\begin{Statacode}
+set linesize 80
+use ..\stata\hmda_sw.dta
+gen deny = (s7==3)
+gen pi_rat = s46/100
+gen black = (s13==3)
+\end{Statacode}
+
+We can generate tables showing the probability of an application being rejected for black and other applicants.
+
+\begin{Statacode}
+summarize deny if (black==1)
+\end{Statacode}
+
+\begin{Statacode}
+summarize deny if (black==0)
+\end{Statacode}
+
+We create some control variables and summarise them
+
+\begin{Statacode}
+gen hse_inc = s45/100
+gen loan_val = s6/s50
+gen ccred = s43
+gen mcred = s42
+gen pubrec = (s44>0)
+gen denpmi = (s53==1)
+gen selfemp = (s27a==1)
+gen married = (s23a=="M")
+gen single = (married==0)
+gen hischl = (school>=12)
+gen probunmp = uria
+gen condo = (s51 == 1)
+sum pi_rat hse_inc loan_val ccred mcred pubrec denpmi selfemp ///
+ single hischl probunmp condo black deny
+\end{Statacode}
+ 
+ We also create a list of categorical variables
+
+\begin{Statacode}
+gen ltv_med = (loan_val>=0.80)*(loan_val<=.95)
+gen ltv_high = (loan_val>0.95) 
+gen blk_pi = black*pi_rat
+gen blk_hse = black*hse_inc
+gen ccred3 = (ccred==3) 
+gen ccred4 = (ccred==4)
+gen ccred5 = (ccred==5)
+gen ccred6 = (ccred==6)
+gen mcred3 = (mcred==3)
+gen mcred4 = (mcred==4)
+\end{Statacode}
+
+ \subsection{Analysis}
+
+First we run a linear probability model. With this, as with the following models, we will store the results using the -eststo- comman (from the user-written programme -estout-). To save typing out the regressors multiple times, we can store them in a macro called `controls'. We can access this again with the macro name surrounded by the backtick and the single inverted comma.
+
+\begin{Statacode}
+local controls pi_rat hse_inc ltv_med ltv_high ccred mcred ///
+	pubrec denpmi selfemp
+regress deny i.black `controls', robust
+eststo LPM
+\end{Statacode}
+
+Then we run a logit model. We can compute the predicted probability for each value of black at the means of all other variables using the -margins- command
+
+\begin{Statacode}
+logit deny i.black `controls', r
+margins black, atmeans vsquish
+quietly estadd margins black, atmeans
+mat m = e(margins_b)
+quietly estadd scalar prob_white = m[1,1]
+quietly estadd scalar prob_black = m[1,2]
+quietly estadd scalar prob_diff = m[1,2] - m[1,1]
+eststo Logit_2
+\end{Statacode}
+
+Notice that we can also add the resuts of the margins command to the regression results saved by eststo using -estadd-. We add all results of the -margins- command, then set m as a matrix of the margin betas, and take the probability for white applicants, black applicants and the difference between them from that matrix.
+
+We run a probit model in the same way using the -probit- command (we are supressing the results as we will compile a table with all reults at the end).
+
+\begin{Statacode}
+quietly probit deny i.black `controls', r
+quietly estadd margins black, atmeans
+mat m = e(margins_b)
+quietly estadd scalar prob_white = m[1,1]
+quietly estadd scalar prob_black = m[1,2]
+quietly estadd scalar prob_diff = m[1,2] - m[1,1]
+eststo Probit_3
+\end{Statacode}
+
+And we do the same for three more models, adding more control variables and specifying an interaction.
+
+\begin{Statacode}
+quietly probit deny i.black `controls' single hischl probunmp, r
+quietly estadd margins black, atmeans
+mat m = e(margins_b)
+quietly estadd scalar prob_white = m[1,1]
+quietly estadd scalar prob_black = m[1,2]
+quietly estadd scalar prob_diff = m[1,2] - m[1,1]
+eststo Probit_4
+
+quietly probit deny i.black `controls' single hischl probunmp ///
+ mcred3 mcred4 ccred3 ccred4 ccred5 ccred6 condo, r
+quietly estadd margins black, atmeans
+mat m = e(margins_b)
+quietly estadd scalar prob_white = m[1,1]
+quietly estadd scalar prob_black = m[1,2]
+quietly estadd scalar prob_diff = m[1,2] - m[1,1]
+eststo Probit_5
+
+quietly probit deny i.black `controls' ///
+ single hischl probunmp i.black#c.pi_rat i.black#c.hse_inc
+quietly estadd margins black, atmeans
+mat m = e(margins_b)
+quietly estadd scalar prob_white = m[1,1]
+quietly estadd scalar prob_black = m[1,2]
+quietly estadd scalar prob_diff = m[1,2] - m[1,1]
+eststo Probit_inter
+\end{Statacode}
+
+We can now use esttab to compile all our stored results into one table. We specify with the -stats- option that the table should include the values for prob\_white, prob\_black and prob\_diff that we computed for each model.
+
+\begin{Statacode}{outstyle=STinyoutputC}
+set linesize 120
+esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter, ///
+	stats(prob_white prob_black prob_diff)  mtitle replace
+\end{Statacode}
+
+We can create a graph by running the -marginsplot- command after using -margins-.
+\begin{Statacode}{fig=TRUE}
+quietly logit deny i.black `controls', r
+quietly margins black, atmeans
+quietly marginsplot
+\end{Statacode}
+
+%\begin{Statacode}
+%\end{Statacode}
+
+\end{document}

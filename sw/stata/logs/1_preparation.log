@@ -1,23 +1,24 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\1_preparation.log
   log type:  text
- opened on:  23 Nov 2015, 20:45:33
+ opened on:  25 Nov 2015, 17:21:41
 
-. *@*lstart;
-. set more 1;
+. *@*lstart
+. set more 1
 
-. ***********************************;
-. * Read In Data;
-.  * (Note: Change path name so that it is appropriate for your computer);
-. use hmda_sw.dta;
+. ***********************************
+. * Read In Data 
+. * (Note: Change path name so that it is appropriate for your computer)
+. use hmda_sw.dta
 
-. ********************************************;
-. gen deny = (s7==3);
+. ********************************************
+. 
+. gen deny = (s7==3)
 
-. gen pi_rat = s46/100;
+. gen pi_rat = s46/100
 
-. gen black = (s13==3);
+. gen black = (s13==3)
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

@@ -1,13 +1,13 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\11_summary.log
   log type:  text
- opened on:  23 Nov 2015, 20:45:35
+ opened on:  25 Nov 2015, 17:21:43
 
-. *@*lstart;
-.  esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter using sum_table.doc, 
->         stats(prob_white prob_black prob_diff)  mtitle replace;
-(output written to sum_table.doc)
+. *@*lstart 
+. esttab LPM Logit_2 Probit_3 Probit_4 Probit_5 Probit_inter using ..\word\sum_table.doc, ///
+>         stats(prob_white prob_black prob_diff)  mtitle replace
+(output written to ..\word\sum_table.doc)
 
-. *@*lend;
-. cap log close;
+. *@*lend
+. cap log close

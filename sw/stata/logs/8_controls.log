@@ -1,12 +1,12 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\j.heemann-minx\Documents\GitHub\panel_methods_slides\sw\stata\logs\8_controls.log
   log type:  text
- opened on:  23 Nov 2015, 20:45:34
+ opened on:  25 Nov 2015, 17:21:42
 
-. *@*lstart;
-.  ** col(4) - Probit with more controls;
-. probit deny i.black `controls' single hischl probunmp, r;
+. *@*lstart 
+. ** col(4) - Probit with more controls
+. probit deny i.black `controls' single hischl probunmp, r
 
 Iteration 0:   log pseudolikelihood =  -872.0853  
 Iteration 1:   log pseudolikelihood = -636.63836  
@@ -39,28 +39,7 @@ Log pseudolikelihood = -628.61368                 Pseudo R2       =     0.2792
        _cons |  -2.574574   .3352743    -7.68   0.000    -3.231699   -1.917448
 ------------------------------------------------------------------------------
 
-. quietly estadd margins black, atmeans;
-
-. mat m = e(margins_b);
-
-. estadd scalar prob_white = m[1,1];
-
-added scalar:
-         e(prob_white) =  .07193624
-
-. estadd scalar prob_black = m[1,2];
-
-added scalar:
-         e(prob_black) =  .13775686
-
-. estadd scalar prob_diff = m[1,2] - m[1,1];
-
-added scalar:
-          e(prob_diff) =  .06582062
-
-. eststo Probit_4;
-
-. test single hischl probunmp;
+. testparm single hischl probunmp
 
  ( 1)  [deny]single = 0
  ( 2)  [deny]hischl = 0
@@ -69,5 +48,30 @@ added scalar:
            chi2(  3) =   17.54
          Prob > chi2 =    0.0005
 
-. *@*lend;
-. cap log close;
+. quietly estadd margins black, atmeans
+
+. mat m = e(margins_b)
+
+. estadd scalar prob_white = m[1,1]
+
+added scalar:
+         e(prob_white) =  .07193624
+
+. estadd scalar prob_black = m[1,2]
+
+added scalar:
+         e(prob_black) =  .13775686
+
+. estadd scalar prob_diff = m[1,2] - m[1,1]
+
+added scalar:
+          e(prob_diff) =  .06582062
+
+. eststo Probit_4
+
+. 
+. disp r(F)
+.
+
+. *@*lend
+. cap log close
