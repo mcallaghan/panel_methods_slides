@@ -11,7 +11,8 @@ Set colFiles = objFolder.Files
 For Each objFile in colFiles
 	If instr(objFile.Name,".log") > 0 Then
 		strFileName = objFile.Name
-		'Wscript.Echo objFile.Name
+		strFileName2 = replace(objFile.Name,".log",".rtf")
+		Wscript.Echo strFileName2 
 		Set objFSO = CreateObject("Scripting.FileSystemObject")
 		Set objFile = objFSO.OpenTextFile("logs\" & strFileName, ForReading)
 
@@ -26,8 +27,9 @@ For Each objFile in colFiles
 
 		strText = Mid(strContents, intStart + 3, intCharacters)
 
-		Set newobjFile = objFSO.CreateTextFile(".\..\word\" & strFileName)
+		Set newobjFile = objFSO.CreateTextFile(".\..\word\" & strFileName2)
 
+		'newobjFile.Write "{\rtf1\ansi\deff0{\fonttbl{\f0 Times New Roman;}}" & strText
 		newobjFile.Write strText
 
 		objFile.Close
