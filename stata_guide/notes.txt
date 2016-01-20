@@ -1,0 +1,14 @@
+Stata
+
+ToInclude
+- Troubleshooting/errors
+- Data Importing and processing
+- Macros
+- Loops
+- Estimation Results
+- Matrices
+- 
+
+
+Resources
+- http://data.princeton.edu/stata/programming.html

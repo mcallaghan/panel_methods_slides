@@ -1,0 +1,245 @@
+\documentclass{beamer}
+
+\usepackage{color}
+\usepackage{alltt}
+\usepackage{graphicx}
+
+\usetheme{Boadilla}
+
+%\usecolortheme{orchid}
+%\usecolortheme{beaver}
+%\setbeamercolor{item projected}{fg=black,bg=white}
+\usecolortheme{beaver}
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamercolor{item projected}{fg=darkred, bg=lightgray}
+\setbeamercolor{subitem projected}{fg=darkred}
+\setbeamercolor{local structure}{fg=darkred}
+
+
+\usefonttheme{professionalfonts}
+
+\title{MPP-C6: Statistics II}
+\subtitle{Programming with Stata}
+\author{Max Callaghan}
+\institute[HSoG]{Hertie School of Governance}
+\titlegraphic{\includegraphics[width=2cm]{HSOG_logo.png}}
+\date{?? February 2015}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Outline}
+  \begin{itemize}
+    \item Why Program?
+    \item Reproducible Research
+    \item Programming in Stata to accomplish difficult tasks and simplify repetitive tasks
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why Program?}
+  \begin{itemize}
+    \item Computers can perform calculations faster and more accurately than humans
+    \item When a task is difficult or repetitive, if often makes sense to instruct the computer to do it
+    \item When those instructions are written down, we and others can see exactly what has been done
+    \begin{itemize}
+      \item It's easier to repeat the work
+      \item It's easier to spot errors
+      \item It's easier to repeat the work, changing just one detail, without doing every subsequent step again.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reproducible Research}
+  \begin{itemize}
+    \item ``The standard of reproducibility calls for the data and the computer code used to analyse the data to be made available to others" \cite{peng}
+    \item Literate programming ties together data, code and the actual research output, enhancing reproducibility
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reproducible Research}
+  \frametitle{Reproducible Research with Stata}
+  \begin{itemize}
+    \item What do we already do that helps to keep our research reproducible?
+    \item How do we ensure that what's in our research output reflects the calculations we report making?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reproducible Research}
+  \frametitle{Reproducible Research with Stata}
+  \begin{itemize}
+    \item The ideal for perfect reproducibility would be to have a single document that contains instructions for performing calculations as well as for producing the research output we present.
+    \item This is not possible in Stata without \LaTeX\ but we can at least make the way we include Stata output in Word documents more systematic
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reproducible Research}
+  \frametitle{Reproducible Research with Stata}
+  [Include instructions to do this, with a simple example of output that changes to reflect a change in a do file]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Programming with Stata}
+  %\framesubtitle{Stata Refresher}
+  \framesubtitle{Outline}
+  \begin{itemize}
+    \item Stata basics
+    \item Directory structure
+    \item Reading data
+    \item Transforming and processing data
+    \item Presenting results with Stata
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Programming with Stata}
+  \frametitle{Stata Basics}
+  %\framesubtitle{Outline}
+  \begin{itemize}
+    \item Pointing and clicking is fine for exploring data
+    \item The command line is fine for trying out commands
+    \item Anything you want to be able to reproduce, you should put in the do file
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Programming with Stata}
+  \frametitle{Stata Basics}
+  \framesubtitle{Writing a good do file}
+  A good do file should be readable by humans as well as computers.
+  \begin{itemize}
+    \item Use comments to explain what each line is doing
+    \item Empty lines are free, space makes your code easier to read
+    \item Use meaningful names when you create them, and write them consistently (variable\_name, variableName or VariableName)
+    \item Follow indentation conventions e.g.
+    \begin{verbatim}
+for i in 1/5 {
+  print i
+}
+    \end{verbatim}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Programming with Stata}
+  \frametitle{Stata Basics}
+  \framesubtitle{Understanding Stata Commands}
+  Stata commands are preprogrammed functions that take information we give to them, do something with the information, then output something. We pass information to commands with \textit{arguments} and \textit{options}.
+  
+  If you are not sure how to use a command you can get help by typing "help" and then the name of the command. For example,
+  \begin{verbatim} help regress \end{verbatim}
+  will take you to the regress command's \href{http://www.stata.com/manuals13/rregress.pdf}{manual}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Programming with Stata}
+  \frametitle{Stata Basics}
+  \framesubtitle{Reading the Stata manual}
+  The Syntax \texttt{\underline{reg}ress} \textit{\textcolor{blue}{depvar [indepvars] [if] [in] [weight]} [,options]} describes the basic use of the command
+  \begin{itemize}
+    \item Pay attention to the order of the arguments. This is how Stata knows which arguments are which
+    \item Items in square brackets are optional
+    \item Options come after a comma. Possible options are described in the help file
+    \item You don't always need to set a lot of options, but you should pay atention to what the defaults are
+  \end{itemize}
+  If you don't know the command you want to use, you will have try and describe your problem to google.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Directory Structure}
+  %\framesubtitle{Directory Structure}
+  File paths tell the computer where to read and write information. They differ between Windows and Mac/Linux. (\textbackslash or /)
+  \begin{itemize}
+    \item Absolute paths start from the top of the tree and specify each subdirectory until the file e.g. "C:bla\textbackslash bla\textbackslash data.dta" (or "/bla/bla/data.dta", or even "http://bla.com/data.dta")
+    \item Relative paths start from the current working directory
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Directory Structure}
+  \framesubtitle{}
+  If you refer to more than one resource, it makes sense to set the working directory at the top of your do file and use relative paths. You'll want to think about how you structure your directory so that you can access items easily.
+  \begin{itemize}
+    \item If your do file produces output, think about where you want to save it so that you can access it automatically with another program
+    \item This also allows you to change computers easily. Dropbox is an easy way to carry entire directories between computers. \href{https://desktop.github.com/}{Git/Github} is even better as it incorporates version control.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{References}
+\bibliography{stata.bib}
+\bibliographystyle{plain}
+\end{frame}
+
+
+\end{document}
