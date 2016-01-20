@@ -29,8 +29,8 @@ For Each objFile in colFiles
 
 		Set newobjFile = objFSO.CreateTextFile(".\..\word\" & strFileName2)
 
-		'newobjFile.Write "{\rtf1\ansi\deff0{\fonttbl{\f0 Times New Roman;}}" & strText
-		newobjFile.Write strText
+		newobjFile.Write "{\rtf1\ansi\deff0{\fonttbl{\f0 Times New Roman;}}\r\n" & strText
+		'newobjFile.Write strText
 
 		objFile.Close
 
