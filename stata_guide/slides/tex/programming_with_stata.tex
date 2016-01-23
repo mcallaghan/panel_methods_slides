@@ -3,6 +3,17 @@
 \usepackage{color}
 \usepackage{alltt}
 \usepackage{graphicx}
+\usepackage{listings}
+\lstset{ %
+  basicstyle=\tiny\ttfamily\color{blue}, %
+  frame=single, %
+  includerangemarker = false, %
+  title = \footnotesize\ttfamily\color{blue}\emph{Interactive Stata Example}, %
+  captionpos = t, %
+  rangeprefix=*@*, %
+  %belowcaptionskip = -0.08in, %
+  label={bla}
+}
 
 \usetheme{Boadilla}
 
@@ -176,53 +187,88 @@ for i in 1/5 {
   \framesubtitle{}
 Data doesn't always come in nicely formatted dta files. Sometimes you have a data source or sources in files that aren't set up for stata to read. You often have to do a bit of work to get things into the format you want: the more of that work is recorded the better.
 
-Some principles
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reading Data}
+  \framesubtitle{}
+Some things to pay attention to when reading data
   \begin{itemize}
     \item Keep an original copy of the data exactly as you found it, if you make changes, save to a new name
-    \item Check the data has been imported properly before you use it
     \item Try and make changes with Stata in your do file. If you have to change in Excel, write down what you did
+    \item Check the data has been imported properly before you use it
+	\begin{itemize}
+	    \item You may need to specify what character signifies missing values in your data 
+	    \item You might need to specify the delimiter in csv or txt files
+	    \item 
+	\end{itemize}
+    \item 
+
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{}
-  \framesubtitle{}
-  \begin{itemize}
-    \item 
-  \end{itemize}
+  \frametitle{Reading Data}
+  \framesubtitle{Example}
+In our first example, we want to read data from a source we found on the web \href{http://data.london.gov.uk/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/resource/e831234d-2bde-4fff-8ab8-7e2e70f0677a}{(link)}. We want to look at some crime statistics by borough, and we'll start with fear of crime by borough.
+
+We copy it onto our computer and use -import excel- to read into stata the data we want
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/foCrime_import.log}
+
 \end{frame}
 
 \begin{frame}
-  \frametitle{}
+  \frametitle{Transforming data}
   \framesubtitle{}
-  \begin{itemize}
-    \item 
-  \end{itemize}
+In stata, columns are called variables and rows are observations. We don't always receive data like that.
+
+\smallskip
+
+How would you reformat this data? What variables do we have?
+
+\includegraphics[width=5in]{data.PNG}
 \end{frame}
 
 \begin{frame}
-  \frametitle{}
+  \frametitle{Transforming Data}
   \framesubtitle{}
-  \begin{itemize}
-    \item 
-  \end{itemize}
+Our data is too wide: we can use the -reshape- command to switch between ``wide" and ``long" formats. First we need to give the borough coloums a common prefix, then we can tell reshape to create a new variable. Attempting this also lets us know that we have two records for September 2008
+
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/foCrime_reshape.log}
+
 \end{frame}
 
-\begin{frame}
-  \frametitle{}
-  \framesubtitle{}
-  \begin{itemize}
-    \item 
-  \end{itemize}
-\end{frame}
 
 \begin{frame}
-  \frametitle{}
+  \frametitle{Data types}
   \framesubtitle{}
+Stata stores data in various different data types. Each variable can only be one data type. Some operations can only be done on data of certain types
   \begin{itemize}
-    \item 
+    \item Numeric data can be stored in various degrees of precision: check -help data types- for more information
+    \item Anything with non-numeric characters will be saved as a string (text)
   \end{itemize}
+
+It's easy for data to arrive in the wrong format when we read from other sources.
+
+
+We can use -tostring- and -destring- to convert between string and numeric data, as well as -encode- to create a numeric variable out of non-numeric string data.
 \end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Data types}
+  \framesubtitle{}
+The reason why Stata thinks our fear of crime variable is a string is that some of the values have \% characters (probably an artefact of inconsisten Excel cell formatting).
+
+\smallskip
+
+We can remove these using the -subinstr- command
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/destring.log}
+
 
 \begin{frame}
   \frametitle{}

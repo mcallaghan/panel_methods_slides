@@ -1,0 +1,28 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/foCrime_import.log
+  log type:  text
+ opened on:  23 Jan 2016, 19:47:28
+
+. *@*lstart
+. *** Copy the dataset onto our computer (if it doesn't exist already
+. capture confirm file data/crime.xls
+
+. if _rc==601 {
+.         copy https://files.datapress.com/london/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/2015-12-23T15:58:16/MASTER_mps
+> -figures.xls ///
+>                 data/crime.xls, replace
+. }
+
+. import excel data/crime.xls, ///
+>         sheet("Fear of Crime-Borough") /// Tell stata which sheet to import
+>         cellrange(A3:AG31) /// Specify the cells we want to import
+>         firstrow // tell stata that variable names are in the first row
+
+.         
+. cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
+
+. cap rename A MonthYear // Merged cell caused problem
+
+. *@*lend
+. cap log close

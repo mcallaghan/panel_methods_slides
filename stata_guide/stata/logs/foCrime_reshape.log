@@ -1,0 +1,28 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/foCrime_reshape.log
+  log type:  text
+ opened on:  23 Jan 2016, 19:47:28
+
+. *@*lstart
+. rename(BarkingDagenham-Westminster) foCrime=
+
+. keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008) // There were 2 values for sep 2008, best to delete them both
+(2 observations deleted)
+
+. reshape long foCrime, i(MonthYear) j(Borough) string
+(note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithandFulham Haringey Harrow Havering Hillingdon
+>  Hounslow Islington KensingtonandChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets Waltham
+> Forest Wandsworth Westminster)
+
+Data                               wide   ->   long
+-----------------------------------------------------------------------------
+Number of obs.                       26   ->     832
+Number of variables                  33   ->       3
+j variable (32 values)                    ->   Borough
+xij variables:
+foCrimeBarkingDagenham foCrimeBarnet ... foCrimeWestminster->foCrime
+-----------------------------------------------------------------------------
+
+. *@*lend
+. cap log close

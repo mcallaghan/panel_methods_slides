@@ -1,0 +1,16 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/destring.log
+  log type:  text
+ opened on:  23 Jan 2016, 19:47:33
+
+. *@*lstart
+. gen foCrime2 = subinstr(foCrime,"%","",.)
+(2,219 missing values generated)
+
+. destring foCrime2, replace
+foCrime2 has all characters numeric; replaced as double
+(2219 missing values generated)
+
+. *@*lend
+. cap log close

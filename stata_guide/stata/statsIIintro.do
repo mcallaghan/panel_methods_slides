@@ -3,97 +3,143 @@ clear all
 
 cd C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata
 
-* Data's from here http://data.london.gov.uk/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/resource/e831234d-2bde-4fff-8ab8-7e2e70f0677a
-local crimeData https://files.datapress.com/london/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/2015-12-23T15:58:16/MASTER_mps-figures.xls
+confirm file data/crime.xls
 
-import excel `crimeData'
+
 
 *******
-* Specify the MOPAC sheet
+*FoCrime - import the data
 clear all
-import excel `crimeData', ///
-	sheet("MOPAC Priority-Borough") ///
-	cellrange(A3:AI58) ///
-
-*******
-* Tell stata that varnames are in the first row
-clear all
-import excel `crimeData', ///
-	sheet("MOPAC Priority-Borough") ///
-	cellrange(A3:AH58) ///
-	firstrow
-
-rename(BarkingDagenham-Westminster) mopac=
-
-reshape long mopac, i(MonthYear) j(Borough) string
-
-save data/MOPAC.dta, replace
-
-clear all 
-
-import excel `crimeData', ///
-	sheet("Officer Strength-Borough") ///
-	cellrange(A5:AG97) /// Note the change
-	firstrow
+cap log close
+log using logs/foCrime_import, text replace
+*@*lstart
+*** Copy the dataset onto our computer (if it doesn't exist already
+capture confirm file data/crime.xls
+if _rc==601 {
+	copy https://files.datapress.com/london/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/2015-12-23T15:58:16/MASTER_mps-figures.xls ///
+		data/crime.xls, replace
+}
+import excel data/crime.xls, ///
+	sheet("Fear of Crime-Borough") /// Tell stata which sheet to import
+	cellrange(A3:AG31) /// Specify the cells we want to import
+	firstrow // tell stata that variable names are in the first row
 	
-cap rename A MonthYear
-
-rename(BarkingDagenham-Westminster) offStrength=
-
-reshape long offStrength, i(MonthYear) j(Borough) string
-
-save data/offStrength.dta, replace
-
+cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
+cap rename A MonthYear // Merged cell caused problem
+*@*lend
+cap log close
 
 
 *******
-*SgtStrength
-clear all 
-import excel `crimeData', ///
-	sheet("Sergeant Strength-Borough") ///
-	cellrange(A4:AG36) /// Note the change
-	firstrow
-	
-cap rename A MonthYear
-
-rename(BarkingDagenham-Westminster) sgtStrength=
-
-reshape long sgtStrength, i(MonthYear) j(Borough) string
-
-save data/sgtStrength.dta, replace
-
-
-*******
-*FoCrime
-clear all
-import excel `crimeData', ///
-	sheet("Fear of Crime-Borough") ///
-	cellrange(A3:AG31) /// Note the change
-	firstrow
-	
-cap rename BarkingandDagenham BarkingDagenham /// They use a different name in this sheet...
-	
-cap rename A MonthYear
-
+*FoCrime - reshape the data
+cap log close
+log using logs/foCrime_reshape, text replace
+*@*lstart
 rename(BarkingDagenham-Westminster) foCrime=
-
-keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008) /// There were 2 values for sep 2008, best to delete them both
-
+keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008) // There were 2 values for sep 2008, best to delete them both
 reshape long foCrime, i(MonthYear) j(Borough) string
+*@*lend
+cap log close
 
 save data/foCrime.dta, replace
 
-*******
+
+
+
+
+********************************
+* import all sheets using a loop
+
+cap log close
+log using logs/import_loop, text replace
+*@*lstart
+foreach sheet in "Fear of Crime-Borough" "MOPAC Priority-Borough" ///
+	"Officer Strength-Borough" "Sergeant Strength-Borough" ///
+	"Special Strength-Borough" "PCSO Strength-Borough" "Staff Strength-Borough" {
+	if "`sheet'"=="Fear of Crime-Borough" {
+		local crange "A3:AG31"
+		local varname "foCrime"
+	}
+	if "`sheet'"=="MOPAC Priority-Borough" {
+		local crange "A3:AH58"
+		local varname "mopac"
+	}
+	if "`sheet'"=="Officer Strength-Borough" {
+		local crange "A5:AG97"
+		local varname "offStrength"
+	}
+	if "`sheet'"=="Sergeant Strength-Borough" {
+		local crange "A4:AG36"
+		local varname "sgtStrength"
+	}
+	if "`sheet'"=="Special Strength-Borough" {
+		local crange "A5:AG97"
+		local varname "spclStrength"
+	}
+	if "`sheet'"=="PCSO Strength-Borough" {
+		local crange "A5:AG97"
+		local varname "PCSOStrength"
+	}
+	if "`sheet'"=="Staff Strength-Borough" {
+		local crange "A5:AG97"
+		local varname "staffStrength"
+	}
+	
+	clear all
+	
+	import excel data/crime.xls, ///
+		sheet("`sheet'") ///
+		cellrange("`crange'") ///
+		firstrow
+		
+	if "`sheet'"=="Fear of Crime-Borough" {
+		keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008)
+	}	
+	
+	cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
+	cap rename A MonthYear // Merged cell caused problem
+	
+	rename(BarkingDagenham-Westminster) `varname'=
+
+	reshape long `varname', i(MonthYear) j(Borough) string
+
+	save data/`varname'.dta, replace
+}
+*@*lend
+cap log close
+
+
+
+
+********************
 * Merge the datasets
-foreach i in "MOPAC" "offStrength" "sgtStrength" {
+cap log close
+log using logs/merge_loop, text replace
+*@*lstart
+foreach i in "foCrime" "mopac" "offStrength" "sgtStrength"  ///
+	"PCSOStrength" "spclStrength" {
 	display "`i'"
 	merge m:m MonthYear Borough using "data/`i'
 	drop _merge
 }
+*@*lend
+cap log close
 
+
+
+********************
+* Destring foCrime
+
+cap log close
+log using logs/destring, text replace
+*@*lstart
 gen foCrime2 = subinstr(foCrime,"%","",.)
-
 destring foCrime2, replace
+*@*lend
+cap log close
+
+
+
 
 reg foCrime2 mopac offStrength
 
