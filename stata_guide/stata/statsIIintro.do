@@ -108,6 +108,12 @@ foreach sheet in "Fear of Crime-Borough" "MOPAC Priority-Borough" ///
 *@*lend
 cap log close
 
+forvalues i in 1/20 {
+	if mod(`i',2)==0 {
+		di "`i'"
+	}
+}
+
 
 
 
