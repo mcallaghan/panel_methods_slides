@@ -2,10 +2,10 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/foCrime_import.log
   log type:  text
- opened on:  23 Jan 2016, 19:47:28
+ opened on:  25 Jan 2016, 19:35:20
 
-. *@*lstart
 . *** Copy the dataset onto our computer (if it doesn't exist already
+. *@*lstart
 . capture confirm file data/crime.xls
 
 . if _rc==601 {
@@ -20,7 +20,8 @@
 >         firstrow // tell stata that variable names are in the first row
 
 .         
-. cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
+. cap rename (BarkingandDagenham HammersmithandFulham KensingtonandChelsea) ///
+>    (BarkingDagenham HammersmithFulham KensingtonChelsea) // Inconsistent names
 
 . cap rename A MonthYear // Merged cell caused problem
 

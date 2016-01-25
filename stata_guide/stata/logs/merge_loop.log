@@ -2,74 +2,64 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/merge_loop.log
   log type:  text
- opened on:  23 Jan 2016, 19:47:33
+ opened on:  25 Jan 2016, 19:35:24
 
 . *@*lstart
-. foreach i in "foCrime" "mopac" "offStrength" "sgtStrength"  ///
->         "PCSOStrength" "spclStrength" {
-  2.         display "`i'"
-  3.         merge m:m MonthYear Borough using "data/`i'
-  4.         drop _merge
-  5. }
-foCrime
-(note: variable Borough was str18, now str20 to accommodate using data's values)
+. clear
+
+. forvalues i = 1/`N' {
+  2.   local varname : word `i' of `varnames'
+  3.   if `i'==1 {
+  4.     use data/`varname'
+  5.   } 
+  6.   else {
+  7.     merge m:m MonthYear Borough using data/`varname'
+  8.         drop _merge
+  9.   }
+ 10. }
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         2,216
-        from master                     2,164  (_merge==1)
-        from using                         52  (_merge==2)
+    not matched                         1,568
+        from master                       320  (_merge==1)
+        from using                      1,248  (_merge==2)
 
-    matched                               780  (_merge==3)
+    matched                               512  (_merge==3)
     -----------------------------------------
-mopac
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                         1,291
-        from master                     1,236  (_merge==1)
-        from using                         55  (_merge==2)
-
-    matched                             1,760  (_merge==3)
-    -----------------------------------------
-offStrength
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                           107
-        from master                       107  (_merge==1)
-        from using                          0  (_merge==2)
+    not matched                           864
+        from master                         0  (_merge==1)
+        from using                        864  (_merge==2)
 
-    matched                             2,944  (_merge==3)
+    matched                             2,080  (_merge==3)
     -----------------------------------------
-sgtStrength
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         2,027
-        from master                     2,027  (_merge==1)
+    not matched                         1,920
+        from master                     1,920  (_merge==1)
         from using                          0  (_merge==2)
 
     matched                             1,024  (_merge==3)
     -----------------------------------------
-PCSOStrength
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                           107
-        from master                       107  (_merge==1)
-        from using                          0  (_merge==2)
-
+    not matched                             0
     matched                             2,944  (_merge==3)
     -----------------------------------------
-spclStrength
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                           107
-        from master                       107  (_merge==1)
-        from using                          0  (_merge==2)
+    not matched                             0
+    matched                             2,944  (_merge==3)
+    -----------------------------------------
 
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
     matched                             2,944  (_merge==3)
     -----------------------------------------
 

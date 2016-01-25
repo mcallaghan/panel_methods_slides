@@ -2,65 +2,44 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/import_loop.log
   log type:  text
- opened on:  23 Jan 2016, 19:47:28
+ opened on:  25 Jan 2016, 19:35:21
 
 . *@*lstart
-. foreach sheet in "Fear of Crime-Borough" "MOPAC Priority-Borough" ///
->         "Officer Strength-Borough" "Sergeant Strength-Borough" ///
->         "Special Strength-Borough" "PCSO Strength-Borough" "Staff Strength-Borough" {
-  2.         if "`sheet'"=="Fear of Crime-Borough" {
-  3.                 local crange "A3:AG31"
-  4.                 local varname "foCrime"
-  5.         }
-  6.         if "`sheet'"=="MOPAC Priority-Borough" {
-  7.                 local crange "A3:AH58"
-  8.                 local varname "mopac"
-  9.         }
- 10.         if "`sheet'"=="Officer Strength-Borough" {
- 11.                 local crange "A5:AG97"
- 12.                 local varname "offStrength"
- 13.         }
- 14.         if "`sheet'"=="Sergeant Strength-Borough" {
- 15.                 local crange "A4:AG36"
- 16.                 local varname "sgtStrength"
- 17.         }
- 18.         if "`sheet'"=="Special Strength-Borough" {
- 19.                 local crange "A5:AG97"
- 20.                 local varname "spclStrength"
- 21.         }
- 22.         if "`sheet'"=="PCSO Strength-Borough" {
- 23.                 local crange "A5:AG97"
- 24.                 local varname "PCSOStrength"
- 25.         }
- 26.         if "`sheet'"=="Staff Strength-Borough" {
- 27.                 local crange "A5:AG97"
- 28.                 local varname "staffStrength"
- 29.         }
- 30.         
-.         clear all
- 31.         
-.         import excel data/crime.xls, ///
+. local sheets `" "Fear of Crime-Borough" "MOPAC Priority-Borough" "Officer Strength-Borough" "Sergeant Strength-Borough" "Special Strength-Borough" "PCSO Stre
+> ngth-Borough" "Staff Strength-Borough" "'  
+
+. local cranges A3:AG31 A3:AH58 A5:AG97 A4:AG36 A5:AG97 A5:AG97 A5:AG97
+
+. local varnames FoC MOPAC OffStrength SgtStrength SpclStrength PCSOStrength StaffStrength
+
+. local N : word count `sheets'
+
+. 
+. forvalues i = 1/`N' {
+  2.         local sheet : word `i' of `sheets'
+  3.         local crange : word `i' of `cranges'
+  4.         local varname : word `i' of `varnames'
+  5.         clear   
+  6.         import excel data/crime.xls, ///
 >                 sheet("`sheet'") ///
 >                 cellrange("`crange'") ///
->                 firstrow
- 32.                 
-.         if "`sheet'"=="Fear of Crime-Borough" {
- 33.                 keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008)
- 34.         }       
- 35.         
-.         cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
- 36.         cap rename A MonthYear // Merged cell caused problem
- 37.         
-.         rename(BarkingDagenham-Westminster) `varname'=
- 38. 
-.         reshape long `varname', i(MonthYear) j(Borough) string
- 39. 
-.         save data/`varname'.dta, replace
- 40. }
+>                 firstrow        
+  7.         cap rename (BarkingandDagenham HammersmithandFulham KensingtonandChelsea) ///
+>       (BarkingDagenham HammersmithFulham KensingtonChelsea) // Inconsistent names
+  8.         cap drop HeathrowAirport
+  9.         cap rename A MonthYear // Merged cell caused problem    
+ 10.         sort MonthYear
+ 11.         by MonthYear: gen dup = cond(_N==1,0,_n)
+ 12.         drop if dup > 0
+ 13.         drop dup
+ 14.         rename (BarkingDagenham-Westminster) `varname'=
+ 15.         reshape long "`varname'", i(MonthYear) j(Borough) string
+ 16.         save data/`varname'.dta, replace
+ 17. }
 (2 observations deleted)
-(note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithandFulham Haringey Harrow Havering Hillingdon
->  Hounslow Islington KensingtonandChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets Waltham
-> Forest Wandsworth Westminster)
+(note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
+> unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
+>  Wandsworth Westminster)
 
 Data                               wide   ->   long
 -----------------------------------------------------------------------------
@@ -68,22 +47,24 @@ Number of obs.                       26   ->     832
 Number of variables                  33   ->       3
 j variable (32 values)                    ->   Borough
 xij variables:
-foCrimeBarkingDagenham foCrimeBarnet ... foCrimeWestminster->foCrime
+FoCBarkingDagenham FoCBarnet ... FoCWestminster->FoC
 -----------------------------------------------------------------------------
-file data/foCrime.dta saved
-(note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering HeathrowAirpo
-> rt Hillingdon Hounslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamle
-> ts WalthamForest Wandsworth Westminster)
+file data/FoC.dta saved
+(0 observations deleted)
+(note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
+> unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
+>  Wandsworth Westminster)
 
 Data                               wide   ->   long
 -----------------------------------------------------------------------------
-Number of obs.                       55   ->    1815
-Number of variables                  34   ->       3
-j variable (33 values)                    ->   Borough
+Number of obs.                       55   ->    1760
+Number of variables                  33   ->       3
+j variable (32 values)                    ->   Borough
 xij variables:
-mopacBarkingDagenham mopacBarnet ... mopacWestminster->mopac
+MOPACBarkingDagenham MOPACBarnet ... MOPACWestminster->MOPAC
 -----------------------------------------------------------------------------
-file data/mopac.dta saved
+file data/MOPAC.dta saved
+(0 observations deleted)
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
 >  Wandsworth Westminster)
@@ -94,9 +75,10 @@ Number of obs.                       92   ->    2944
 Number of variables                  33   ->       3
 j variable (32 values)                    ->   Borough
 xij variables:
-offStrengthBarkingDagenham offStrengthBarnet ... offStrengthWestminster->offStrength
+OffStrengthBarkingDagenham OffStrengthBarnet ... OffStrengthWestminster->OffStrength
 -----------------------------------------------------------------------------
-file data/offStrength.dta saved
+file data/OffStrength.dta saved
+(0 observations deleted)
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
 >  Wandsworth Westminster)
@@ -107,9 +89,10 @@ Number of obs.                       32   ->    1024
 Number of variables                  33   ->       3
 j variable (32 values)                    ->   Borough
 xij variables:
-sgtStrengthBarkingDagenham sgtStrengthBarnet ... sgtStrengthWestminster->sgtStrength
+SgtStrengthBarkingDagenham SgtStrengthBarnet ... SgtStrengthWestminster->SgtStrength
 -----------------------------------------------------------------------------
-file data/sgtStrength.dta saved
+file data/SgtStrength.dta saved
+(0 observations deleted)
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
 >  Wandsworth Westminster)
@@ -120,9 +103,10 @@ Number of obs.                       92   ->    2944
 Number of variables                  33   ->       3
 j variable (32 values)                    ->   Borough
 xij variables:
-spclStrengthBarkingDagenham spclStrengthBarnet ... spclStrengthWestminster->spclStrength
+SpclStrengthBarkingDagenham SpclStrengthBarnet ... SpclStrengthWestminster->SpclStrength
 -----------------------------------------------------------------------------
-file data/spclStrength.dta saved
+file data/SpclStrength.dta saved
+(0 observations deleted)
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
 >  Wandsworth Westminster)
@@ -136,6 +120,7 @@ xij variables:
 PCSOStrengthBarkingDagenham PCSOStrengthBarnet ... PCSOStrengthWestminster->PCSOStrength
 -----------------------------------------------------------------------------
 file data/PCSOStrength.dta saved
+(0 observations deleted)
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
 >  Wandsworth Westminster)
@@ -146,9 +131,9 @@ Number of obs.                       92   ->    2944
 Number of variables                  33   ->       3
 j variable (32 values)                    ->   Borough
 xij variables:
-staffStrengthBarkingDagenham staffStrengthBarnet ... staffStrengthWestminster->staffStrength
+StaffStrengthBarkingDagenham StaffStrengthBarnet ... StaffStrengthWestminster->StaffStrength
 -----------------------------------------------------------------------------
-file data/staffStrength.dta saved
+file data/StaffStrength.dta saved
 
 . *@*lend
 . cap log close

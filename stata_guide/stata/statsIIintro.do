@@ -3,7 +3,40 @@ clear all
 
 cd C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata
 
-confirm file data/crime.xls
+cap log close
+log using logs/byreg, text replace
+*@*lstart
+sysuse auto
+by foreign: reg price mpg
+*@*lend
+cap log close
+
+
+forvalues i = 1/20 {
+  if mod(`i',2)==0 {
+    di "`i' is even"
+  } 
+  else {
+    di "`i' is odd"
+  }
+}
+
+sysuse auto
+
+forvalues i = 1/100 {
+  if mod(`i',3)==0 & mod(`i',5)==0{
+    di "fizzbuzz"
+  } 
+  else if mod(`i',5)==0{
+    di "buzz"
+  }
+  else if mod(`i',3)==0{
+    di "fizz"
+  }
+  else {
+    di "`i'"
+  }
+}
 
 
 
@@ -12,8 +45,8 @@ confirm file data/crime.xls
 clear all
 cap log close
 log using logs/foCrime_import, text replace
-*@*lstart
 *** Copy the dataset onto our computer (if it doesn't exist already
+*@*lstart
 capture confirm file data/crime.xls
 if _rc==601 {
 	copy https://files.datapress.com/london/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/2015-12-23T15:58:16/MASTER_mps-figures.xls ///
@@ -24,10 +57,23 @@ import excel data/crime.xls, ///
 	cellrange(A3:AG31) /// Specify the cells we want to import
 	firstrow // tell stata that variable names are in the first row
 	
-cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
+cap rename (BarkingandDagenham HammersmithandFulham KensingtonandChelsea) ///
+   (BarkingDagenham HammersmithFulham KensingtonChelsea) // Inconsistent names
 cap rename A MonthYear // Merged cell caused problem
 *@*lend
 cap log close
+
+*******
+*FoCrime - clean the data
+cap log close
+log using logs/foCrime_clean, text replace
+*@*lstart
+sort MonthYear
+by MonthYear: gen dup = cond(_N==1,0,_n)
+drop if dup > 0 
+*@*lend
+cap log close
+
 
 
 *******
@@ -36,15 +82,11 @@ cap log close
 log using logs/foCrime_reshape, text replace
 *@*lstart
 rename(BarkingDagenham-Westminster) foCrime=
-keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008) // There were 2 values for sep 2008, best to delete them both
 reshape long foCrime, i(MonthYear) j(Borough) string
 *@*lend
 cap log close
 
 save data/foCrime.dta, replace
-
-
-
 
 
 ********************************
@@ -53,80 +95,50 @@ save data/foCrime.dta, replace
 cap log close
 log using logs/import_loop, text replace
 *@*lstart
-foreach sheet in "Fear of Crime-Borough" "MOPAC Priority-Borough" ///
-	"Officer Strength-Borough" "Sergeant Strength-Borough" ///
-	"Special Strength-Borough" "PCSO Strength-Borough" "Staff Strength-Borough" {
-	if "`sheet'"=="Fear of Crime-Borough" {
-		local crange "A3:AG31"
-		local varname "foCrime"
-	}
-	if "`sheet'"=="MOPAC Priority-Borough" {
-		local crange "A3:AH58"
-		local varname "mopac"
-	}
-	if "`sheet'"=="Officer Strength-Borough" {
-		local crange "A5:AG97"
-		local varname "offStrength"
-	}
-	if "`sheet'"=="Sergeant Strength-Borough" {
-		local crange "A4:AG36"
-		local varname "sgtStrength"
-	}
-	if "`sheet'"=="Special Strength-Borough" {
-		local crange "A5:AG97"
-		local varname "spclStrength"
-	}
-	if "`sheet'"=="PCSO Strength-Borough" {
-		local crange "A5:AG97"
-		local varname "PCSOStrength"
-	}
-	if "`sheet'"=="Staff Strength-Borough" {
-		local crange "A5:AG97"
-		local varname "staffStrength"
-	}
-	
-	clear all
-	
+local sheets `" "Fear of Crime-Borough" "MOPAC Priority-Borough" "Officer Strength-Borough" "Sergeant Strength-Borough" "Special Strength-Borough" "PCSO Strength-Borough" "Staff Strength-Borough" "'	
+local cranges A3:AG31 A3:AH58 A5:AG97 A4:AG36 A5:AG97 A5:AG97 A5:AG97
+local varnames FoC MOPAC OffStrength SgtStrength SpclStrength PCSOStrength StaffStrength
+local N : word count `sheets'
+
+forvalues i = 1/`N' {
+	local sheet : word `i' of `sheets'
+	local crange : word `i' of `cranges'
+	local varname : word `i' of `varnames'
+ 	clear   
 	import excel data/crime.xls, ///
 		sheet("`sheet'") ///
 		cellrange("`crange'") ///
-		firstrow
-		
-	if "`sheet'"=="Fear of Crime-Borough" {
-		keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008)
-	}	
-	
-	cap rename BarkingandDagenham BarkingDagenham // Inconsistent name
-	cap rename A MonthYear // Merged cell caused problem
-	
-	rename(BarkingDagenham-Westminster) `varname'=
-
-	reshape long `varname', i(MonthYear) j(Borough) string
-
+		firstrow	
+	cap rename (BarkingandDagenham HammersmithandFulham KensingtonandChelsea) ///
+      (BarkingDagenham HammersmithFulham KensingtonChelsea) // Inconsistent names
+	cap drop HeathrowAirport
+	cap rename A MonthYear // Merged cell caused problem	
+	sort MonthYear
+	by MonthYear: gen dup = cond(_N==1,0,_n)
+	drop if dup > 0
+	drop dup
+	rename (BarkingDagenham-Westminster) `varname'=
+	reshape long "`varname'", i(MonthYear) j(Borough) string
 	save data/`varname'.dta, replace
 }
 *@*lend
 cap log close
-
-forvalues i in 1/20 {
-	if mod(`i',2)==0 {
-		di "`i'"
-	}
-}
-
-
-
 
 ********************
 * Merge the datasets
 cap log close
 log using logs/merge_loop, text replace
 *@*lstart
-foreach i in "foCrime" "mopac" "offStrength" "sgtStrength"  ///
-	"PCSOStrength" "spclStrength" {
-	display "`i'"
-	merge m:m MonthYear Borough using "data/`i'
+clear
+forvalues i = 1/`N' {
+  local varname : word `i' of `varnames'
+  if `i'==1 {
+    use data/`varname'
+  } 
+  else {
+    merge m:m MonthYear Borough using data/`varname'
 	drop _merge
+  }
 }
 *@*lend
 cap log close
@@ -139,29 +151,39 @@ cap log close
 cap log close
 log using logs/destring, text replace
 *@*lstart
-gen foCrime2 = subinstr(foCrime,"%","",.)
-destring foCrime2, replace
+gen FoC2 = subinstr(FoC,"%","",.)
+destring FoC2, replace
 *@*lend
 cap log close
 
 
 
 
-reg foCrime2 mopac offStrength
+reg FoC2 MOPAC OffStrength
 
-reg mopac offStrength
+reg MOPAC OffStrength
 
 
 *******
 * Encode borough numerically so that stata can match it
+cap log close
+log using logs/encode, text replace
+*@*lstart
 encode Borough, generate(nBorough)
 xtset nBorough MonthYear
+*@*lend
+cap log close
 
-xtreg mopac offStrength sgtStrength, fe
+xtsum MOPAC
 
-xtreg foCrime2 mopac offStrength sgtStrength, fe
+egen BoMeanCrime = mean(MOPAC), by(Borough)
 
-xtreg offStrength mopac foCrime2, fe
+
+xtreg MOPAC OffStrength SgtStrength, fe
+
+xtreg FoC2 MOPAC OffStrength SgtStrength, fe
+
+xtreg OffStrength MOPAC FoC2, fe
 
 /*
 import excel data\bd0075hoursworkedbysexandethnicity_tcm77-384854.xls
