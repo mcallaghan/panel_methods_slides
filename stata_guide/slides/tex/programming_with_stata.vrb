@@ -1,8 +1,2 @@
 \frametitle{Programming with Stata}
-  \frametitle{Stata Basics}
-  \framesubtitle{Understanding Stata Commands}
-  Stata commands are preprogrammed functions that take information we give to them, do something with the information, then output something. We pass information to commands with \textit{arguments} and \textit{options}.
-
-  If you are not sure how to use a command you can get help by typing "help" and then the name of the command. For example,
-  \begin{verbatim} help regress \end{verbatim}
-  will take you to the regress command's \href{http://www.stata.com/manuals13/rregress.pdf}{manual}
+  \framesubtitle{The -by- command}

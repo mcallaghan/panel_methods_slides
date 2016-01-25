@@ -1,0 +1,17 @@
+\documentclass{article}
+\makeatletter
+
+
+\begin{document}
+
+  \begin{verbatim}
+forvalues i in 1/20 {
+  local res `i'
+  if mod(`i',3) = 0 local res "fizz"  
+  if mod(`i',5) = 0 local res "buzz"  
+  if mod(`i',3) = 0 & mod(`i',5) = 0 local res "fizz-buzz"
+  display `res'
+}
+  \end{verbatim}
+
+\end{document}

@@ -1,5 +1,6 @@
 \documentclass{beamer}
 
+\usepackage{upquote}
 \usepackage{color}
 \usepackage{alltt}
 \usepackage{graphicx}
@@ -10,9 +11,9 @@
   includerangemarker = false, %
   title = \footnotesize\ttfamily\color{blue}\emph{Interactive Stata Example}, %
   captionpos = t, %
-  rangeprefix=*@*, %
+  rangeprefix=*@*%, %
   %belowcaptionskip = -0.08in, %
-  label={bla}
+  %label={bla}
 }
 
 \usetheme{Boadilla}
@@ -29,12 +30,16 @@
 
 \usefonttheme{professionalfonts}
 
+%\usepackage{verbatim}
+%{\catcode`\`=13 \g@addto@macro\@verbatim{\chardef`=18 }}
+
 \title{MPP-C6: Statistics II}
 \subtitle{Programming with Stata}
 \author{Max Callaghan}
 \institute[HSoG]{Hertie School of Governance}
 \titlegraphic{\includegraphics[width=2cm]{HSOG_logo.png}}
 \date{?? February 2015}
+
 
 \begin{document}
 
@@ -66,7 +71,7 @@
 \begin{frame}
   \frametitle{Reproducible Research}
   \begin{itemize}
-    \item ``The standard of reproducibility calls for the data and the computer code used to analyse the data to be made available to others" \cite{peng}
+    \item ``The standard of reproducibility calls for the data and the computer code used to analyse the data to be made available to others" \cite{Peng}
     \item Literate programming ties together data, code and the actual research output, enhancing reproducibility
   \end{itemize}
 \end{frame}
@@ -130,8 +135,8 @@
     \item Use meaningful names when you create them, and write them consistently (variable\_name, variableName or VariableName)
     \item Follow indentation conventions e.g.
     \begin{verbatim}
-for i in 1/5 {
-  print i
+forvalues i in 1/5 {
+  display `i'
 }
     \end{verbatim}
   \end{itemize}
@@ -209,6 +214,62 @@ Some things to pay attention to when reading data
 \end{frame}
 
 \begin{frame}
+  \frametitle{Data types}
+  \framesubtitle{}
+Stata stores data in various different data types. Each variable can only be one data type. Some operations can only be done on data of certain types
+  \begin{itemize}
+    \item Numeric data can be stored in various degrees of precision: check -help data types- for more information
+    \item Anything with non-numeric characters will be saved as a string (text)
+  \end{itemize}
+
+It's easy for data to arrive in the wrong format when we read from other sources.
+
+
+We can use -tostring- and -destring- to convert between string and numeric data, as well as -encode- to create a numeric variable out of non-numeric string data.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Programming with Stata}
+  \framesubtitle{Macros}
+  Stata already helps us to perform calculations quickly, but we can speed up how we interact with Stata by using some simple programming to avoid repetition.  The most simple concept is storing something as a macro.
+  \begin{itemize}
+    \item Macros can tie a name to some text 
+    \item \verb|local controls age gender incCat| ties the word "controls" to ``age gender inc\_cat''
+    \item Now, everytime we type  \verb|`controls'|, stata understands ``age gender inc\_cat'' (note the backtick, which is under the tilde)
+    \item If we type ``age gender inc\_cat'' a lot, then we save ourselves time by defining it once and referring to the definition the other times
+    \item This also reduces the risk of errors. Why?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Programming with Stata}
+  \framesubtitle{Loops}
+  Loops can speed up our work by repeating tasks while changing one thing. 
+  \begin{verbatim}
+forvalues i in 1/20 {
+  display "`i'"
+}
+  \end{verbatim}
+
+Of
+
+  \begin{verbatim}
+foreach control of local controls {
+  display "`control'"
+}
+  \end{verbatim}
+  We can loops within loops, and apply conditions within loops. It's often helpful to try the operation once, and it's often helpful to display the iterator so that you know what is happening in your loop.
+  
+  Can you write a fizz-buzz loop?
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Programming with Stata}
+  \framesubtitle{The -by- command}
+\end{frame}
+
+\begin{frame}
   \frametitle{Reading Data}
   \framesubtitle{Example}
 In our first example, we want to read data from a source we found on the web \href{http://data.london.gov.uk/dataset/metropolitan-police-service-recorded-crime-figures-and-associated-data/resource/e831234d-2bde-4fff-8ab8-7e2e70f0677a}{(link)}. We want to look at some crime statistics by borough, and we'll start with fear of crime by borough.
@@ -241,34 +302,21 @@ Our data is too wide: we can use the -reshape- command to switch between ``wide"
 \end{frame}
 
 
-\begin{frame}
-  \frametitle{Data types}
-  \framesubtitle{}
-Stata stores data in various different data types. Each variable can only be one data type. Some operations can only be done on data of certain types
-  \begin{itemize}
-    \item Numeric data can be stored in various degrees of precision: check -help data types- for more information
-    \item Anything with non-numeric characters will be saved as a string (text)
-  \end{itemize}
 
-It's easy for data to arrive in the wrong format when we read from other sources.
-
-
-We can use -tostring- and -destring- to convert between string and numeric data, as well as -encode- to create a numeric variable out of non-numeric string data.
-\end{frame}
 
 
 
 \begin{frame}
   \frametitle{Data types}
   \framesubtitle{}
-The reason why Stata thinks our fear of crime variable is a string is that some of the values have \% characters (probably an artefact of inconsisten Excel cell formatting).
+The reason why Stata thinks our fear of crime variable is a string is that some of the values have \% characters (probably an artefact of inconsistent Excel cell formatting).
 
 \smallskip
 
 We can remove these using the -subinstr- command
 
 \lstinputlisting[linerange={lstart-lend}]{../../stata/logs/destring.log}
-
+\end{frame}
 
 \begin{frame}
   \frametitle{}

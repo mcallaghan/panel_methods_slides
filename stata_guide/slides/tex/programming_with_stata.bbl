@@ -1,3 +1,8 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{Peng}
+Roger~D. Peng.
+\newblock Reproducible research in computational science.
+\newblock {\em Science}, 334(6060):1226--1227, 2011.
 
 \end{thebibliography}
