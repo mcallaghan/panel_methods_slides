@@ -7,6 +7,7 @@ cap log close
 log using logs/byreg, text replace
 *@*lstart
 sysuse auto
+sort foreign
 by foreign: reg price mpg
 *@*lend
 cap log close
