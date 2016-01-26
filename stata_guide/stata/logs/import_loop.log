@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/import_loop.log
   log type:  text
- opened on:  25 Jan 2016, 19:35:21
+ opened on:  26 Jan 2016, 15:33:11
 
 . *@*lstart
 . local sheets `" "Fear of Crime-Borough" "MOPAC Priority-Borough" "Officer Strength-Borough" "Sergeant Strength-Borough" "Special Strength-Borough" "PCSO Stre
@@ -34,8 +34,9 @@
  13.         drop dup
  14.         rename (BarkingDagenham-Westminster) `varname'=
  15.         reshape long "`varname'", i(MonthYear) j(Borough) string
- 16.         save data/`varname'.dta, replace
- 17. }
+ 16.         label variable `varname' "`sheet'"
+ 17.         save data/`varname'.dta, replace
+ 18. }
 (2 observations deleted)
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest

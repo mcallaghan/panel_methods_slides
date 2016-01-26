@@ -5,12 +5,14 @@
 \usepackage{alltt}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{multicol}
 \lstset{ %
   basicstyle=\Tiny\ttfamily\color{blue}, %
   frame=single, %
   includerangemarker = false, %
-  title = \footnotesize\ttfamily\color{blue}\emph{Interactive Stata Example}, %
+  title = \tiny\ttfamily\color{blue}\emph{Interactive Stata Example}, %
   captionpos = t, %
+  %xleftmargin=-0.6cm, %
   rangeprefix=*@*%, %
   %belowcaptionskip = -0.08in, %
   %label={bla}
@@ -173,7 +175,7 @@ forvalues i in 1/5 {
   File paths tell the computer where to read and write information. They differ between Windows and Mac/Linux. (\textbackslash or /)
   \begin{itemize}
     \item Absolute paths start from the top of the tree and specify each subdirectory until the file e.g. "C:bla\textbackslash bla\textbackslash data.dta" (or "/bla/bla/data.dta", or even "http://bla.com/data.dta")
-    \item Relative paths start from the current working directory
+    \item Relative paths start from the current working directory; use ../ or ..\textbackslash to move to the directory above the current one
   \end{itemize}
 \end{frame}
 
@@ -409,8 +411,7 @@ How would you reformat this data? What variables do we have?
 \begin{frame}
   \frametitle{Example 1}
   \framesubtitle{Transforming data}
-Our data is too wide: we can use the -reshape- command to switch between ``wide" and ``long" formats. First we need to give the borough coloums a common prefix, then we can tell reshape to create a new variable. 
-
+Our data is too wide: we can use the -reshape- command to switch between ``wide" and ``long" formats. First we need to give the borough coloums a common prefix, then we can tell reshape to create a new variable. While we're at it, we can label the new variable we create
 
 \lstinputlisting[linerange={lstart-lend}]{../../stata/logs/foCrime_reshape.log}
 
@@ -420,7 +421,7 @@ Our data is too wide: we can use the -reshape- command to switch between ``wide"
   \frametitle{Example 1}
   \framesubtitle{Using a loop}
 
-Now we know how to read in one sheet, we need to do the same for the others. We could write the below 7 times  (=70 lines) and change all the relevant parts...
+Now we know how to read in one sheet, we need to do the same for the others. We could write the below 7 times  (=77 lines) and change all the relevant parts...
 
 \scriptsize
 \begin{verbatim}
@@ -435,15 +436,10 @@ cap rename A MonthYear // Merged cell caused problem
 rename(BarkingDagenham-Westminster) foCrime=
 keep if MonthYear > td(2sep2008) | MonthYear < td(2aug2008) // There were 2 values for sep 2008, best to delete them both
 reshape long foCrime, i(MonthYear) j(Borough) string
+label variable FoC "Fear of Crime-Borough"
 save foCrime.dta
 \end{verbatim}
 
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Example 1}
-  \framesubtitle{Using a loop}
-  Now we can use the same list to loop through the saved datasets and merge them with each other
 \end{frame}
 
 \begin{frame}[fragile]
@@ -480,6 +476,16 @@ forvalues i = 1/`N' {
 
 \end{frame}
 
+\begin{frame}[fragile]
+  \frametitle{Example 1}
+  \framesubtitle{Using a loop}
+  Now we can use the same list to loop through the saved datasets and merge them with each other
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/merge_loop.log}
+
+\end{frame}
+
+
 \begin{frame}
   \frametitle{Example 1}
   \framesubtitle{Cleaning Data}
@@ -502,6 +508,7 @@ We can remove these using the -subinstr- command
 \end{frame}
 
 
+%% Remove?
 \begin{frame}
   \frametitle{Example 1}
   \framesubtitle{Cleaning Data}
@@ -509,26 +516,224 @@ We also need to encode a numerical version of our Borough variable in order to f
 
 \lstinputlisting[linerange={lstart-lend}]{../../stata/logs/encode.log}
 
-\smallskip
+\end{frame}
 
-We can remove these using the -subinstr- command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/destring.log}
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Tables}
+The -estout- program is a good way to present professional looking regression tables.
+
+\medskip
+
+You usually want to present the results of several models side by side
+  \begin{itemize}
+    \item After each regression, save the results of the model using -eststo-
+    \item Create a table using -esttab-
+    \item You can save the table as an rtf file, and include a link to it in a word document that can be refreshed if you change your analysis
+  \end{itemize}
 \end{frame}
 
 
 
 \begin{frame}
   \frametitle{Presenting Results with Stata}
-  \framesubtitle{Tables}
-  \begin{itemize}
-    \item 
-  \end{itemize}
+  \framesubtitle{Regression results}
+
+\begin{columns}[onlytextwidth]
+  \begin{column}{6cm}
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/esttab.log}
+\normalsize
+
+  \end{column}
+  \begin{column}{6cm}
+\input{reg_table_1.tex}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+After running a regression, you can access post-estimation statistics with -ereturn-.
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/post.log}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+You can access these and use them just like any other number with e([statistic])
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/post_r2.log}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+You can also view a matrix of the coefficients
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/post_mb.log}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+And the variance covariance matrix
+
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/post_mv.log}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+As well as individual coefficients and standard errors
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/post_ib.log}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+
+\begin{columns}[onlytextwidth]
+  \begin{column}{5.5cm}
+This is useful because we can specify the statistics we want to include in our regression table with the stats option.
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/esttab_2.log}
+\normalsize
+
+  \end{column}
+  \begin{column}{6cm}
+
+\input{reg_table_2.tex}
+
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Regression results}
+
+\begin{columns}[onlytextwidth]
+  \begin{column}{5.5cm}
+We can also calculate our own statistics, and include them in the model. Here we compute the turning point for a squared term
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/esttab_tp.log}
+\normalsize
+
+  \end{column}
+  \begin{column}{6cm}
+
+\input{reg_table_tp.tex}
+
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Graphs}
+-graph twoway- has many different ways to show relationships between variables
+\begin{columns}[onlytextwidth]
+  \begin{column}{5.5cm}
+Here we show a basic scatter plot
+\Tiny
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/graph_scatter.log}
+\normalsize
+After saving, we can insert a picture as link into word
+  \end{column}
+  \begin{column}{6cm}
+\includegraphics[width=2.5in]{../../word/scatter.PNG}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Graphs}
+-twoway- is extendable - we can overlay lots of plots one on top of the other
+\begin{columns}[onlytextwidth]
+  \begin{column}{5.5cm}
+We just add each plot in a set of brackets
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/graph_overlay.log}
+  \end{column}
+  \begin{column}{6cm}
+\includegraphics[width=2.5in]{../../word/overlay.PNG}
+  \end{column}
+\end{columns}
+
 \end{frame}
 
 \begin{frame}
   \frametitle{Presenting Results with Stata}
   \framesubtitle{Graphs}
+Various schemes are available -  a lighter option than built schemes can be downloaded with -ssc install burd-
+\begin{columns}[onlytextwidth]
+  \begin{column}{5.5cm}
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/scheme.log}
+  \end{column}
+  \begin{column}{6cm}
+\includegraphics[width=2.5in]{../../word/scheme.PNG}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Graphs}
+There are many more options we can set for the graph. They can be applied universally, or to individual layers
+\begin{columns}[onlytextwidth]
+  \begin{column}{5.5cm}
+\lstinputlisting[linerange={lstart-lend}]{../../stata/logs/graph_options.log}
+  \end{column}
+  \begin{column}{6cm}
+\includegraphics[width=2.5in]{../../word/graph_options.PNG}
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Graphs}
+-graph matrix- draws a scatterplot matrix showing the relationship between pairs of variables in a list
+
+\medskip
+
+You can apply it to all numeric variables
+  \begin{itemize}
+    \item 
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Presenting Results with Stata}
+  \framesubtitle{Graphs}
+-graph matrix-
   \begin{itemize}
     \item 
   \end{itemize}

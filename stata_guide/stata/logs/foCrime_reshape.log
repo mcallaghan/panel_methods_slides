@@ -2,12 +2,12 @@
       name:  <unnamed>
        log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/foCrime_reshape.log
   log type:  text
- opened on:  25 Jan 2016, 19:35:20
+ opened on:  26 Jan 2016, 15:33:11
 
 . *@*lstart
-. rename(BarkingDagenham-Westminster) foCrime=
+. rename(BarkingDagenham-Westminster) FoC=
 
-. reshape long foCrime, i(MonthYear) j(Borough) string
+. reshape long FoC, i(MonthYear) j(Borough) string
 (note: j = BarkingDagenham Barnet Bexley Brent Bromley Camden Croydon Ealing Enfield Greenwich Hackney HammersmithFulham Haringey Harrow Havering Hillingdon Ho
 > unslow Islington KensingtonChelsea KingstonuponThames Lambeth Lewisham Merton Newham Redbridge RichmonduponThames Southwark Sutton TowerHamlets WalthamForest
 >  Wandsworth Westminster)
@@ -18,8 +18,10 @@ Number of obs.                       26   ->     832
 Number of variables                  34   ->       4
 j variable (32 values)                    ->   Borough
 xij variables:
-foCrimeBarkingDagenham foCrimeBarnet ... foCrimeWestminster->foCrime
+FoCBarkingDagenham FoCBarnet ... FoCWestminster->FoC
 -----------------------------------------------------------------------------
+
+. label variable FoC "Fear of Crime-Borough"
 
 . *@*lend
 . cap log close

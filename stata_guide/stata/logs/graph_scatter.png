@@ -1,0 +1,19 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\m.callaghan\Documents\GitHub\panel_methods_slides\stata_guide\stata\logs/graph_scatter.png
+  log type:  text
+ opened on:  26 Jan 2016, 16:39:40
+
+. *@*lstart
+. clear all
+
+. sysuse auto
+(1978 Automobile Data)
+
+. twoway scatter price mpg
+
+. graph export ../word/scatter.png, replace
+(file ../word/scatter.png written in PNG format)
+
+. *@*lend
+. cap log close
